@@ -29,18 +29,18 @@ $date_now = date("Y-m-d");
 			<p class="text-center" style="font-size: 80px;">
 				<i class="zmdi zmdi-account-circle"></i>
 			</p>
-			<p class="text-center text-condensedLight">Sign in with your Account</p>
+			<p class="text-center text-condensedLight">Iniciar Sesión</p>
 			<form action="funciones/validar.php" method="post">
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    <input class="mdl-textfield__input" type="text" name="usuario" id="userName">
-				    <label class="mdl-textfield__label" for="userName">User Name</label>
+				    <label class="mdl-textfield__label" for="userName">Usuario</label>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    <input class="mdl-textfield__input" type="password" name="contraseña" id="pass">
-				    <label class="mdl-textfield__label" for="pass">Password</label>
+				    <label class="mdl-textfield__label" for="pass">Contraseña</label>
 				</div>
 				<button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" value ="LISTO" style="color: #3F51B5; margin: 0 auto; display: block;">
-					SIGN IN
+					INICIAR
 				</button>
 			</form>
 		</div>
