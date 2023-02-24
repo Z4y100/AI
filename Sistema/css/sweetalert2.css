@@ -90,7 +90,7 @@
     position: relative;
     box-sizing: content-box; }
     .sweet-alert .icon.error {
-      border-color: #f27474; }
+      border-color: #7FBCAB; }
       .sweet-alert .icon.error .x-mark {
         position: relative;
         display: block; }
@@ -98,7 +98,7 @@
         position: absolute;
         height: 5px;
         width: 47px;
-        background-color: #f27474;
+        background-color: #7FBCAB;
         display: block;
         top: 37px;
         border-radius: 2px; }
@@ -111,7 +111,7 @@
                   transform: rotate(-45deg);
           right: 16px; }
     .sweet-alert .icon.warning {
-      border-color: #f8bb86; }
+      border-color: #7FBCAB; }
       .sweet-alert .icon.warning .body {
         position: absolute;
         width: 5px;
@@ -120,7 +120,7 @@
         top: 10px;
         border-radius: 2px;
         margin-left: -2px;
-        background-color: #f8bb86; }
+        background-color: #7FBCAB; }
       .sweet-alert .icon.warning .dot {
         position: absolute;
         width: 7px;
@@ -129,7 +129,7 @@
         margin-left: -3px;
         left: 50%;
         bottom: 10px;
-        background-color: #f8bb86; }
+        background-color: #7FBCAB; }
     .sweet-alert .icon.info {
       border-color: #c9dae1; }
       .sweet-alert .icon.info::before {
@@ -472,13 +472,13 @@
   0% {
     border-color: #f8d486; }
   100% {
-    border-color: #f8bb86; } }
+    border-color: #7FBCAB; } }
 
 @keyframes pulse-warning {
   0% {
     border-color: #f8d486; }
   100% {
-    border-color: #f8bb86; } }
+    border-color: #7FBCAB; } }
 
 .pulse-warning {
   -webkit-animation: pulse-warning 0.75s infinite alternate;
@@ -488,13 +488,13 @@
   0% {
     background-color: #f8d486; }
   100% {
-    background-color: #f8bb86; } }
+    background-color: #7FBCAB; } }
 
 @keyframes pulse-warning-ins {
   0% {
     background-color: #f8d486; }
   100% {
-    background-color: #f8bb86; } }
+    background-color: #7FBCAB; } }
 
 .pulse-warning-ins {
   -webkit-animation: pulse-warning-ins 0.75s infinite alternate;

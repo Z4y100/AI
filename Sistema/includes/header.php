@@ -7,7 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home</title>
+	<title>Header</title>
 	<link rel="stylesheet" href="../css/normalize.css">
 	<link rel="stylesheet" href="../css/sweetalert2.css">
 	<link rel="stylesheet" href="../css/material.min.css">
@@ -28,7 +28,7 @@
 		<div class="full-width navLateral-bg btn-menu"></div>
 		<div class="full-width navLateral-body">
 			<div class="full-width navLateral-body-logo text-center tittles">
-				<i class="zmdi zmdi-close btn-menu"></i> Inventory 
+				<i class="zmdi zmdi-close btn-menu"></i> AITECH
 			</div>
 			<figure class="full-width navLateral-body-tittle-menu">
 				<div>
@@ -92,9 +92,42 @@
 					</li>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
+						<a href="registro_SC.php" class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+							<i class="zmdi zmdi-accounts-alt"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								SEGUIMIENTO A CLIENTES
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a href="registro_SC.php" class="full-width">
+									<div class="navLateral-body-cl">
+									<i class="zmdi zmdi-border-color"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										REGISTRO DE NUEVO SEGUIMIENTO
+									</div>
+								</a>
+							</li>
+							<li class="full-width">
+								<a href="lista_SC.php" class="full-width">
+									<div class="navLateral-body-cl">
+									<i class="zmdi zmdi-file-text"></i>
+									</div>
+									<div class="navLateral-body-cr">
+										SEGUIMIENTOS REGISTRADOS
+									</div>
+								</a>
+							</li>
+						</ul>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
 						<a href="products.html" class="full-width">
 							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-washing-machine"></i>
+							<i class="zmdi zmdi-wrench"></i>
 							</div>
 							<div class="navLateral-body-cr">
 								CONFIGURACIÓN
@@ -114,16 +147,13 @@
 		<div class="full-width navBar">
 			<div class="full-width navBar-options">
 				<i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>	
-				<div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
+				<div class="mdl-tooltip" for="btn-menu">Ocultar/mostrar </div>
 				<nav class="navBar-options-list">
 					<ul class="list-unstyle">
-						<li class="btn-Notification" id="notifications">
-							<i class="zmdi zmdi-notifications"></i>
-							<div class="mdl-tooltip" for="notifications">Notifications</div>
-						</li>
+						
 						<li class="btn-exit" id="btn-exit">
 							<i class="zmdi zmdi-power"></i>
-							<div class="mdl-tooltip" for="btn-exit">LogOut</div>
+							<div class="mdl-tooltip" for="btn-exit">Salir</div>
 						</li>
 						<li class="text-condensedLight noLink" ><small><?php echo $usuario;?></small></li>
 						<li class="noLink">
