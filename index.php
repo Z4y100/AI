@@ -22,17 +22,17 @@ if (!empty($_SESSION['active'])) {
 	  
 	  $filas=mysqli_fetch_array($resultado);
 	  
-	  if($filas){
+	  if(isset($filas)){
 	  
-	  if($filas['Id_Rol']==1){ //administrador
+	  if($filas['Rol']==1){ //administrador
 		  header("location:Admin/home.php");
 	  
 	  }else
-	  if($filas['Id_Rol']==2){ //cliente
+	  if($filas['Rol']==2){ //cliente
 	  header("location:AC/home.php");
 	  }
 	  else
-	  if($filas['Id_Rol']==3){ //Master
+	  if($filas['Rol']==3){ //Master
 			  header("location:Master/home.php");
 			  }
 		  } else {
