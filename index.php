@@ -32,8 +32,19 @@ if (!empty($_SESSION['active'])) {
 		$_SESSION['id_proyecto'] = $dato['id_Proyecto'];
         $_SESSION['id_rol'] = $dato['id_rol'];
         $_SESSION['rol_name'] = $dato['nombre'];
+		
+      } 
+	  if($dato['id_Proyecto'==3]){
+		header('location: Master/home.php');
+	  }
+	  elseif($dato['id_Proyecto'==2]){
 		header('location: AC/home.php');
-      } else {
+
+	  }
+	  elseif($dato['id_Proyecto'==2]){
+		header('location: Admin/home.php');
+
+	  } else {
         $alert = '<div class="alert alert-danger" style="color: #FF0000;" role="alert">
               Usuario o Contraseña Incorrecta
             </div>';
