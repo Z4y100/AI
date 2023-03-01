@@ -148,7 +148,7 @@
 									</div>
 								</a>
 							</li>
-							<?php if ($_SESSION['rol'] == 1) { ?>
+							<?php if ($_SESSION['rol'] == 3) { ?>
 							<li class="full-width">
 								<a href="lista_SC.php" class="full-width">
 									<div class="navLateral-body-cl">
