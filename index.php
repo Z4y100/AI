@@ -30,11 +30,11 @@ if (!empty($_SESSION['active'])) {
         $_SESSION['fecha'] = $dato['fecha_creacion'];
         $_SESSION['nombre_proyecto'] = $dato['nombre_proyecto'];
 		$_SESSION['id_proyecto'] = $dato['id_Proyecto'];
-        $_SESSION['rol'] = $dato['id_rol'];
+        $_SESSION['id_rol'] = $dato['id_rol'];
         $_SESSION['rol_name'] = $dato['nombre'];
 		header('location: AC/home.php');
       } else {
-        $alert = '<div class="alert alert-danger" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center; role="alert">
+        $alert = '<div class="alert alert-danger" style="color: #FF0000;" role="alert">
               Usuario o Contraseña Incorrecta
             </div>';
         session_destroy();
