@@ -1,11 +1,39 @@
-<!-- 
-* Copyright 2018 Carlos Eduardo Alfaro Orellana
-  https://www.youtube.com/c/CarlosAlfaro007
--->
-<?php				
-	session_start();
-	$usuario= $_SESSION['usuario'];
-?>
+<?php 
+  include "../funciones/db.php";
+  if (!empty($_POST)) {
+    $alert = "";
+    if (empty($_POST['Nombre']) ||  empty($_POST['Telefono']) || empty($_POST['Ubicación'])
+	 ||empty($_POST['Tipo_proyecto'])  || empty($_POST['Procedencia']) || empty($_POST['Necesidad']) ) {
+      $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
+                Todo los campos son obligatorios
+              </div>';
+    } 
+	else 
+	{
+      $nombre = $_POST['Nombre_cliente'];
+      $telefono = $_POST['Telefono'];
+      $ubicacion = $_POST['Ubicacion'];
+      $tipo_proyecto = $_POST['Tipo_proyecto'];
+	  $procedencia = $_POST['Procedencia'];
+      $nececidad = $_POST['Necesidad'];
+      $cliente = $_SESSION['Id_Cliente'];
+
+      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Id_Cliente)
+	   values ('$nombre', '$telefono', '$ubicacion', '$tipo_proyecto','$procedencia', '$nececidad', '$cliente')");
+      if ($query_insert) {
+        $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
+                Cliente Registrado
+              </div>';
+      } else {
+        $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000;">
+                Error al registrar
+              </div>';
+      }
+    }
+  }
+  ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,185 +54,9 @@
 	<script src="js/main.js" ></script>
 </head>
 <body>
-	<!-- Notifications area -->
-	<section class="full-width container-notifications">
-		<div class="full-width container-notifications-bg btn-Notification"></div>
-	    <section class="NotificationArea">
-	        <div class="full-width text-center NotificationArea-title tittles">Notifications <i class="zmdi zmdi-close btn-Notification"></i></div>
-	        <a href="#" class="Notification" id="notifation-unread-1">
-	            <div class="Notification-icon"><i class="zmdi zmdi-accounts-alt bg-info"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle"></i>
-	                    <strong>Nuevo Regsitro de Clientes</strong> 
-	                    <br>
-	                    <small>Just Now</small>
-	                </p>
-	            </div>
-	        	<div class="mdl-tooltip mdl-tooltip--left" for="notifation-unread-1">Notification as UnRead</div> 
-	        </a>
-	        <a href="#" class="Notification" id="notifation-read-1">
-	            <div class="Notification-icon"><i class="zmdi zmdi-cloud-download bg-primary"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle-o"></i>
-	                    <strong>New Updates</strong> 
-	                    <br>
-	                    <small>30 Mins Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-1">Notification as Read</div>
-	        </a>
-	        <a href="#" class="Notification" id="notifation-unread-2">
-	            <div class="Notification-icon"><i class="zmdi zmdi-upload bg-success"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle"></i>
-	                    <strong>Archive uploaded</strong> 
-	                    <br>
-	                    <small>31 Mins Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-unread-2">Notification as UnRead</div>
-	        </a> 
-	        <a href="#" class="Notification" id="notifation-read-2">
-	            <div class="Notification-icon"><i class="zmdi zmdi-mail-send bg-danger"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle-o"></i>
-	                    <strong>New Mail</strong> 
-	                    <br>
-	                    <small>37 Mins Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-2">Notification as Read</div>
-	        </a>
-	        <a href="#" class="Notification" id="notifation-read-3">
-	            <div class="Notification-icon"><i class="zmdi zmdi-folder bg-primary"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle-o"></i>
-	                    <strong>Folder delete</strong> 
-	                    <br>
-	                    <small>1 hours Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-3">Notification as Read</div>
-	        </a>  
-	    </section>
-	</section>
-	<!-- navLateral -->
-	<section class="full-width navLateral">
-		<div class="full-width navLateral-bg btn-menu"></div>
-		<div class="full-width navLateral-body">
-			<div class="full-width navLateral-body-logo text-center tittles">
-				<i class="zmdi zmdi-close btn-menu"></i> Inventory 
-			</div>
-			<figure class="full-width navLateral-body-tittle-menu">
-				<div>
-					<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
-				</div>
-				<figcaption>
-					<span>
-						<?php
-						echo $usuario;
-						?><br>
-						<small>Admin</small>
-					</span>
-				</figcaption>
-			</figure>
-			<nav class="full-width">
-				<ul class="full-width list-unstyle menu-principal">
-					<li class="full-width">
-						<a href="home.html" class="full-width">
-							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-view-dashboard"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								INICIO
-							</div>
-						</a>
-					</li>
-					
-					<li class="full-width divider-menu-h"></li>
-					<li class="full-width">
-						<a href="#!" class="full-width btn-subMenu">
-							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-face"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								CLIENTES
-							</div>
-							<span class="zmdi zmdi-chevron-left"></span>
-						</a>
-						<ul class="full-width menu-principal sub-menu-options">
-							<li class="full-width">
-								<a href="registro_clientes.php" class="full-width">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-account"></i>
-									</div>
-									<div class="navLateral-body-cr">
-										REGISTRO DE CLIENTES
-									</div>
-								</a>
-							</li>
-							<li class="full-width">
-								<a href="clientes.php" class="full-width">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-accounts"></i>
-									</div>
-									<div class="navLateral-body-cr">
-										CLIENTES REGISTRADOS
-									</div>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="full-width divider-menu-h"></li>
-					<li class="full-width">
-						<a href="products.html" class="full-width">
-							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-washing-machine"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								CONFIGURACIÓN
-							</div>
-						</a>
-					</li>
-					
-						</ul>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</section>
+<?php include_once('header.php')?>
 	<!-- pageContent -->
-	<section class="full-width pageContent">
-		<!-- navBar -->
-		<div class="full-width navBar">
-			<div class="full-width navBar-options">
-				<i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>	
-				<div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
-				<nav class="navBar-options-list">
-					<ul class="list-unstyle">
-						<li class="btn-Notification" id="notifications">
-							<i class="zmdi zmdi-notifications"></i>
-							<div class="mdl-tooltip" for="notifications">Notifications</div>
-						</li>
-						<li class="btn-exit" id="btn-exit">
-							<i class="zmdi zmdi-power"></i>
-							<div class="mdl-tooltip" for="btn-exit">LogOut</div>
-						</li>
-						<li class="text-condensedLight noLink" ><small><?php echo $usuario; ?></small></li>
-						<li class="noLink">
-							<figure>
-								<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
-							</figure>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
+	
 		<section class="full-width header-well">
 			<div class="full-width header-well-icon">
 				<i class="zmdi zmdi-account"></i>
@@ -228,7 +80,7 @@
 								DATOS
 							</div>
 							<div class="full-width panel-content">
-								<form>
+								<form action="" method="post">
 									
 									    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -255,19 +107,27 @@
 										<div>
 											<label   for="proyectos">TIPO DE PROYECTO:</label>
 												<select class="mdl-list" id="proyectos" name="proyectoslist" form="proyectosform">
-													<option value="1">Domos</option>
-													<option value="2">Proyecto Ejecutivo</option>
-													<option value="3">Reality Capture</option>
-													<option value="4">Sin Asignación</option>
+													<option value="Domos">Domos</option>
+													<option value="Proyecto_Ejecutivo">Proyecto Ejecutivo</option>
+													<option value="Reality_Capture">Reality Capture</option>
+													<option value="Sin_Asignacion">Sin Asignación</option>
 												</select>
 											</div>
 
 										</div>
 										
+										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+												<input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="ProcedenciaCliente">
+												<label class="mdl-textfield__label" for="ProcedenciaCliente">DE DONDE VIENE</label>
+												<span class="mdl-textfield__error">Invalido solo ingresar letras.</span>
+											</div>
+									    </div>
 										<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="ProcedenciaCliente">
-												<label class="mdl-textfield__label" for="ProcedenciaCliente">DE DONDE VIENE</label>
+												<input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="NecesidadCliente">
+												<label class="mdl-textfield__label" for="NecesidadCliente">NECESIDAD</label>
+												<span class="mdl-textfield__error">Invalido solo ingrese letras</span>
 											</div>
 									    </div>
 										<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
