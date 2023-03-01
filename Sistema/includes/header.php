@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="../css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="../js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="../js/material.min.js" ></script>
@@ -24,10 +25,11 @@
 <body>
 	
 <!-- navLateral -->
+
 <section class="full-width navLateral">
 		<div class="full-width navLateral-bg btn-menu"></div>
 		<div class="full-width navLateral-body">
-			<div class="full-width navLateral-body-logo text-center tittles">
+			<div class="full-width navLateral-body-logo text-center tittles" style="background:#81c784;">
 				<i class="zmdi zmdi-close btn-menu"></i> AITECH
 			</div>
 			<figure class="full-width navLateral-body-tittle-menu">
@@ -39,7 +41,7 @@
 						<?php
 						echo $usuario;
 						?><br>
-						<small>Admin</small>
+						<small><?php echo $_SESSION['rol_name']; ?></small>
 					</span>
 				</figcaption>
 			</figure>
@@ -60,10 +62,10 @@
 					<li class="full-width">
 						<a href="#!" class="full-width btn-subMenu">
 							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-face"></i>
+							<i class="zmdi zmdi-account-circle"></i>
 							</div>
 							<div class="navLateral-body-cr">
-								CLIENTES
+								ATENCIÓN A CLIENTES
 							</div>
 							<span class="zmdi zmdi-chevron-left"></span>
 						</a>
@@ -71,10 +73,10 @@
 							<li class="full-width">
 								<a href="registro_clientes.php" class="full-width">
 									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-account"></i>
+									<i class="zmdi zmdi-accounts-add"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										REGISTRO DE CLIENTES
+										REGISTRO DE NUEVA ATENCIÓN 
 									</div>
 								</a>
 							</li>
@@ -84,7 +86,7 @@
 										<i class="zmdi zmdi-accounts"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										CLIENTES REGISTRADOS
+										ATENCIONES REGISTRADAS
 									</div>
 								</a>
 							</li>
@@ -92,9 +94,9 @@
 					</li>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
-						<a href="registro_SC.php" class="full-width btn-subMenu">
+						<a href="#!" class="full-width btn-subMenu">
 							<div class="navLateral-body-cl">
-							<i class="zmdi zmdi-accounts-alt"></i>
+							<i class="zmdi zmdi-accounts-outline"></i>
 							</div>
 							<div class="navLateral-body-cr">
 								SEGUIMIENTO A CLIENTES
@@ -108,7 +110,7 @@
 									<i class="zmdi zmdi-border-color"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										REGISTRO DE NUEVO SEGUIMIENTO
+									REGISTRO DE NUEVO SEGUIMIENTO
 									</div>
 								</a>
 							</li>
@@ -118,11 +120,48 @@
 									<i class="zmdi zmdi-file-text"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										SEGUIMIENTOS REGISTRADOS
+									SEGUIMIENTOS REGISTRADOS
 									</div>
 								</a>
 							</li>
 						</ul>
+					</li>
+					<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a href="#!" class="full-width btn-subMenu">
+							<div class="navLateral-body-cl">
+							<i class="zmdi zmdi-account"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								USUARIO
+							</div>
+							<span class="zmdi zmdi-chevron-left"></span>
+						</a>
+						<ul class="full-width menu-principal sub-menu-options">
+							<li class="full-width">
+								<a href="registro_SC.php" class="full-width">
+									<div class="navLateral-body-cl">
+									<i class="zmdi zmdi-account-add"></i>
+									</div>
+									<div class="navLateral-body-cr">
+									REGISTRO DE NUEVO USUARIO
+									</div>
+								</a>
+							</li>
+							<?php if ($_SESSION['rol'] == 1) { ?>
+							<li class="full-width">
+								<a href="lista_SC.php" class="full-width">
+									<div class="navLateral-body-cl">
+									<i class="zmdi zmdi-accounts-alt"></i>
+									</div>
+									<div class="navLateral-body-cr">
+									USUARIO REGISTRADOS
+									</div>
+								</a>
+							</li>
+							<?php } ?>
+						</ul>
+					</li>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="products.html" class="full-width">

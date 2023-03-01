@@ -27,7 +27,7 @@
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						<small>Clientes</small>
+						<small>Atención a Clientes</small>
 					</span>
 				</div>
 				<i class="zmdi zmdi-accounts tile-icon"></i>
@@ -35,7 +35,15 @@
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						<small>Atención a clientes</small>
+						<small>Usuarios</small>
+					</span>
+				</div>
+				<i class="zmdi zmdi-male-female tile-icon"></i>
+			</article>
+			<article class="full-width tile">
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						<small>Seguimiento a clientes</small>
 					</span>
 				</div>
 			

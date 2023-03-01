@@ -11,32 +11,30 @@ if (!empty($_SESSION['active'])) {
 </div>';
     } else {
       require_once "funciones/db.php";
-	  $usuario=$_POST['usuario'];
-	  $contraseña=$_POST['contraseña'];
+	  $usuario= mysqli_real_escape_string($conexion, $_POST['usuario']);
+	  $contraseña= mysqli_real_escape_string($conexion, $_POST['contraseña']);
 	  
-	  $_SESSION['usuario']=$usuario;
-	  
-	  
-	  $consulta="SELECT*FROM usuarios where usuario='$usuario' and contraseña='$contraseña'";
-	  $resultado=mysqli_query($conexion,$consulta);
-	  
-	  $filas=mysqli_fetch_array($resultado);
-	  
-	  if($filas){
-	  
-	  if($filas['Id_Rol']==1){ //administrador
-		  header("location:Admin/home.php");
-	  
-	  }else
-	  if($filas['Id_Rol']==2){ //cliente
-	  header("location:AC/home.php");
-	  }
-	  else
-	  if($filas['Id_Rol']==3){ //Master
-			  header("location:Master/home.php");
-			  }
-		  } else {
-        $alert = '<div class="alert alert-danger" style="color: #FF0000;" role="alert">
+	  $query = mysqli_query($conexion, "SELECT u.id_usuario,
+	  u.usuario,u.correo,u.fecha_creacion,
+	  r.id_rol,r.nombre FROM usuarios u 
+	  INNER JOIN roles r ON u.rol = r.id_rol  
+	   WHERE u.usuario = '$usuario' AND u.contraseña = '$contraseña'");
+      mysqli_close($conexion);
+      $resultado = mysqli_num_rows($query);
+      if ($resultado > 0) {
+        $dato = mysqli_fetch_array($query);
+        $_SESSION['active'] = true;
+        $_SESSION['id_usuario'] = $dato['id_usuario'];
+        $_SESSION['usuario'] = $dato['usuario'];
+        $_SESSION['correo'] = $dato['correo'];
+        $_SESSION['fecha'] = $dato['fecha_creacion'];
+        $_SESSION['nombre_proyecto'] = $dato['nombre_proyecto'];
+		$_SESSION['id_proyecto'] = $dato['id_Proyecto'];
+        $_SESSION['rol'] = $dato['id_rol'];
+        $_SESSION['rol_name'] = $dato['nombre'];
+		header('location: AC/home.php');
+      } else {
+        $alert = '<div class="alert alert-danger" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center; role="alert">
               Usuario o Contraseña Incorrecta
             </div>';
         session_destroy();
