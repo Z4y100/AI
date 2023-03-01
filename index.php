@@ -34,14 +34,14 @@ if (!empty($_SESSION['active'])) {
         $_SESSION['rol_name'] = $dato['nombre'];
 		
       } 
-	  if($dato['id_Proyecto'==3]){
+	  if($dato['id_rol']==3){
 		header('location: Master/home.php');
 	  }
-	  elseif($dato['id_Proyecto'==2]){
+	  elseif($dato['id_rol']==2){
 		header('location: AC/home.php');
 
 	  }
-	  elseif($dato['id_Proyecto'==2]){
+	  elseif($dato['id_rol']==1){
 		header('location: Admin/home.php');
 
 	  } else {
