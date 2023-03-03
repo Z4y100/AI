@@ -1,11 +1,3 @@
-<!-- 
-* Copyright 2018 Carlos Eduardo Alfaro Orellana
-  https://www.youtube.com/c/CarlosAlfaro007
--->
-<?php				
-	session_start();
-	$usuario= $_SESSION['usuario'];
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,185 +18,9 @@
 	<script src="js/main.js" ></script>
 </head>
 <body>
-	<!-- Notifications area -->
-	<section class="full-width container-notifications">
-		<div class="full-width container-notifications-bg btn-Notification"></div>
-	    <section class="NotificationArea">
-	        <div class="full-width text-center NotificationArea-title tittles">Notifications <i class="zmdi zmdi-close btn-Notification"></i></div>
-	        <a href="#" class="Notification" id="notifation-unread-1">
-	            <div class="Notification-icon"><i class="zmdi zmdi-accounts-alt bg-info"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle"></i>
-	                    <strong>Nuevo Regsitro de Clientes</strong> 
-	                    <br>
-	                    <small>Just Now</small>
-	                </p>
-	            </div>
-	        	<div class="mdl-tooltip mdl-tooltip--left" for="notifation-unread-1">Notification as UnRead</div> 
-	        </a>
-	        <a href="#" class="Notification" id="notifation-read-1">
-	            <div class="Notification-icon"><i class="zmdi zmdi-cloud-download bg-primary"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle-o"></i>
-	                    <strong>New Updates</strong> 
-	                    <br>
-	                    <small>30 Mins Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-1">Notification as Read</div>
-	        </a>
-	        <a href="#" class="Notification" id="notifation-unread-2">
-	            <div class="Notification-icon"><i class="zmdi zmdi-upload bg-success"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle"></i>
-	                    <strong>Archive uploaded</strong> 
-	                    <br>
-	                    <small>31 Mins Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-unread-2">Notification as UnRead</div>
-	        </a> 
-	        <a href="#" class="Notification" id="notifation-read-2">
-	            <div class="Notification-icon"><i class="zmdi zmdi-mail-send bg-danger"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle-o"></i>
-	                    <strong>New Mail</strong> 
-	                    <br>
-	                    <small>37 Mins Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-2">Notification as Read</div>
-	        </a>
-	        <a href="#" class="Notification" id="notifation-read-3">
-	            <div class="Notification-icon"><i class="zmdi zmdi-folder bg-primary"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle-o"></i>
-	                    <strong>Folder delete</strong> 
-	                    <br>
-	                    <small>1 hours Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-3">Notification as Read</div>
-	        </a>  
-	    </section>
-	</section>
-	<!-- navLateral -->
-	<section class="full-width navLateral">
-		<div class="full-width navLateral-bg btn-menu"></div>
-		<div class="full-width navLateral-body">
-			<div class="full-width navLateral-body-logo text-center tittles">
-				<i class="zmdi zmdi-close btn-menu"></i> Inventory 
-			</div>
-			<figure class="full-width navLateral-body-tittle-menu">
-				<div>
-					<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
-				</div>
-				<figcaption>
-					<span>
-						<?php
-						echo $usuario;
-						?><br>
-						<small>Admin</small>
-					</span>
-				</figcaption>
-			</figure>
-			<nav class="full-width">
-				<ul class="full-width list-unstyle menu-principal">
-					<li class="full-width">
-						<a href="home.php" class="full-width">
-							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-view-dashboard"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								INICIO
-							</div>
-						</a>
-					</li>
-					
-					<li class="full-width divider-menu-h"></li>
-					<li class="full-width">
-						<a href="#!" class="full-width btn-subMenu">
-							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-face"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								CLIENTES
-							</div>
-							<span class="zmdi zmdi-chevron-left"></span>
-						</a>
-						<ul class="full-width menu-principal sub-menu-options">
-							<li class="full-width">
-								<a href="registro_clientes.php" class="full-width">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-account"></i>
-									</div>
-									<div class="navLateral-body-cr">
-										REGISTRO DE CLIENTES
-									</div>
-								</a>
-							</li>
-							<li class="full-width">
-								<a href="clientes.php" class="full-width">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-accounts"></i>
-									</div>
-									<div class="navLateral-body-cr">
-										CLIENTES REGISTRADOS
-									</div>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="full-width divider-menu-h"></li>
-					<li class="full-width">
-						<a href="products.html" class="full-width">
-							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-washing-machine"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								CONFIGURACIÓN
-							</div>
-						</a>
-					</li>
-					
-						</ul>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</section>
+	<?php include_once('header.php')?>
 	<!-- pageContent -->
-	<section class="full-width pageContent">
-		<!-- navBar -->
-		<div class="full-width navBar">
-			<div class="full-width navBar-options">
-				<i class="zmdi zmdi-swap btn-menu" id="btn-menu"></i>	
-				<div class="mdl-tooltip" for="btn-menu">Hide / Show MENU</div>
-				<nav class="navBar-options-list">
-					<ul class="list-unstyle">
-						<li class="btn-Notification" id="notifications">
-							<i class="zmdi zmdi-notifications"></i>
-							<div class="mdl-tooltip" for="notifications">Notifications</div>
-						</li>
-						<li class="btn-exit" id="btn-exit">
-							<i class="zmdi zmdi-power"></i>
-							<div class="mdl-tooltip" for="btn-exit">LogOut</div>
-						</li>
-						<li class="text-condensedLight noLink" ><small><?php echo $usuario;?></small></li>
-						<li class="noLink">
-							<figure>
-								<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
-							</figure>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
+	
 		<section class="full-width header-well">
 			<div class="full-width header-well-icon">
 				<i class="zmdi zmdi-accounts"></i>
@@ -220,30 +36,73 @@
 			</div>
 			
 			<div class="mdl-tabs__panel is-active" id="tabListClient">
-				<div class="mdl-grid">
-					<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--8-col-desktop mdl-cell--2-offset-desktop">
-						<div class="full-width panel mdl-shadow--2dp">
+			<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--11-col-desktop mdl-cell--1-offset-desktop">
+						<div class="full-width panel mdl-shadow--4dp">
 							<div class="full-width panel-tittle bg-success text-center tittles">
 								Lista de  Clientes
 							</div>
-							<div class="full-width panel-content">
-								<form action="#">
-									<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-										<label class="mdl-button mdl-js-button mdl-button--icon" for="searchClient">
-											<i class="zmdi zmdi-search"></i>
-										</label>
-										<div class="mdl-textfield__expandable-holder">
-											<input class="mdl-textfield__input" type="text" id="searchClient">
-											<label class="mdl-textfield__label"></label>
-										</div>
-									</div>
+							<div class="auto-width panel-content">
+								<form action="busqueda_clientes.php" method="post">
+									<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
+									<input type="submit" class="btn_search" name="enviar" value="Buscar"><br>
+									
+
 								</form>
-								
+								<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+									<div class="table-responsive">
+									<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
+											<thead>
+												<tr>
+													<th class="mdl-data-table__cell--non-numeric">Id Cliente</th>
+													<th>Nombre</th>
+													<th>Teléfono</th>
+													<th>Ubicación</th>
+													<th></th>
+													<th>Tipo de Proyecto</th>
+													<th>Procedencia</th>
+													<th>Fecha Registro</th>
+													<th>Id Usuario</th>
+													<th>Seguimiento</th>
+												</tr>
+											</thead>
+										
+											<tbody>
+											
+											<?php
+											include "../funciones/db.php";
+
+											$consulta = mysqli_query($conexion, "SELECT * FROM clientes");
+											$resultado = mysqli_num_rows($consulta);
+											if ($resultado > 0) {
+												while ($data = mysqli_fetch_assoc($consulta)) { ?>
+													<tr>
+													<td class="mdl-data-table__cell--non-numeric"><?php echo $data['Id_Cliente']; ?></td>
+														<td><?php echo $data['Nombre']; ?></td>
+														<td><?php echo $data['Telefono']; ?></td>
+														<td><?php echo $data['Ubicacion']; ?></td>
+														<td></td>
+														<td><?php echo $data['Tipo_proyecto']; ?></td>
+														<td><?php echo $data['Procedencia']; ?></td>
+														<td><?php echo $data['Fecha_registro']; ?></td>
+														<td><?php echo $data['Id_Usuario']; ?></td>
+														<td><?php echo $data['Id_Seguimiento']; ?></td>
+															
+															
+													</tr>
+											<?php }
+											} ?>
+											
+
+									
+										</tbody>
+										</table>
+				</div>
 							</div>
 						</div>
-						
-					</div>
-				</div>
+			
+			</div>
+		</div>
 			</div>
 		</div>
 	</section>

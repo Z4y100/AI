@@ -1,10 +1,13 @@
-
+<?php				
+	session_start();
+	$usuario= $_SESSION['usuario'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home</title>
+	<title>INICIO</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/sweetalert2.css">
 	<link rel="stylesheet" href="css/material.min.css">
@@ -91,7 +94,7 @@
 		<div class="full-width navLateral-bg btn-menu"></div>
 		<div class="full-width navLateral-body">
 			<div class="full-width navLateral-body-logo text-center tittles">
-				<i class="zmdi zmdi-close btn-menu"></i> Inventory 
+				<i class="zmdi zmdi-close btn-menu"></i> AITECH 
 			</div>
 			<figure class="full-width navLateral-body-tittle-menu">
 				<div>
@@ -99,20 +102,22 @@
 				</div>
 				<figcaption>
 					<span>
-						Full Name Admin<br>
-						<small>Admin</small>
+					<?php
+						echo $usuario;
+						?><br>
+						<small><?php echo $_SESSION['rol_name']; ?></small>
 					</span>
 				</figcaption>
 			</figure>
 			<nav class="full-width">
 				<ul class="full-width list-unstyle menu-principal">
 					<li class="full-width">
-						<a href="home.html" class="full-width">
+						<a href="home.php" class="full-width">
 							<div class="navLateral-body-cl">
 								<i class="zmdi zmdi-view-dashboard"></i>
 							</div>
 							<div class="navLateral-body-cr">
-								HOME
+								INICIO
 							</div>
 						</a>
 					</li>
@@ -123,7 +128,7 @@
 								<i class="zmdi zmdi-case"></i>
 							</div>
 							<div class="navLateral-body-cr">
-								ADMINISTRATION
+								CLIENTES
 							</div>
 							<span class="zmdi zmdi-chevron-left"></span>
 						</a>
@@ -134,7 +139,7 @@
 										<i class="zmdi zmdi-balance"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										COMPANY
+										REGISTRADOS
 									</div>
 								</a>
 							</li>
@@ -144,7 +149,7 @@
 										<i class="zmdi zmdi-truck"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										PROVIDERS
+										SEGUIMIENTO
 									</div>
 								</a>
 							</li>
@@ -177,7 +182,7 @@
 								<i class="zmdi zmdi-face"></i>
 							</div>
 							<div class="navLateral-body-cr">
-								USERS
+								USUARIOS
 							</div>
 							<span class="zmdi zmdi-chevron-left"></span>
 						</a>
@@ -188,7 +193,7 @@
 										<i class="zmdi zmdi-account"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										ADMINISTRATORS
+										VER USUARIOS
 									</div>
 								</a>
 							</li>
@@ -198,45 +203,13 @@
 										<i class="zmdi zmdi-accounts"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										CLIENT
+										REGISTRAR USUARIO
 									</div>
 								</a>
 							</li>
 						</ul>
 					</li>
-					<li class="full-width divider-menu-h"></li>
-					<li class="full-width">
-						<a href="products.html" class="full-width">
-							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-washing-machine"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								PRODUCTS
-							</div>
-						</a>
-					</li>
-					<li class="full-width divider-menu-h"></li>
-					<li class="full-width">
-						<a href="sales.html" class="full-width">
-							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-shopping-cart"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								SALES
-							</div>
-						</a>
-					</li>
-					<li class="full-width divider-menu-h"></li>
-					<li class="full-width">
-						<a href="inventory.html" class="full-width">
-							<div class="navLateral-body-cl">
-								<i class="zmdi zmdi-store"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								INVENTORY
-							</div>
-						</a>
-					</li>
+										
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="#!" class="full-width btn-subMenu">
@@ -244,7 +217,7 @@
 								<i class="zmdi zmdi-wrench"></i>
 							</div>
 							<div class="navLateral-body-cr">
-								SETTINGS
+								AJUSTES
 							</div>
 							<span class="zmdi zmdi-chevron-left"></span>
 						</a>
@@ -259,16 +232,7 @@
 									</div>
 								</a>
 							</li>
-							<li class="full-width">
-								<a href="#!" class="full-width">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-widgets"></i>
-									</div>
-									<div class="navLateral-body-cr">
-										OPTION
-									</div>
-								</a>
-							</li>
+							
 						</ul>
 					</li>
 				</ul>
@@ -292,7 +256,9 @@
 							<i class="zmdi zmdi-power"></i>
 							<div class="mdl-tooltip" for="btn-exit">LogOut</div>
 						</li>
-						<li class="text-condensedLight noLink" ><small>User Name</small></li>
+						<li class="text-condensedLight noLink" ><small><?php
+						echo $usuario;
+						?><br></small></li>
 						<li class="noLink">
 							<figure>
 								<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
@@ -303,13 +269,13 @@
 			</div>
 		</div>
 		<section class="full-width text-center" style="padding: 40px 0;">
-			<h3 class="text-center tittles">RESPONSIVE TILES</h3>
+			<h3 class="text-center tittles">BIENVENIDO</h3>
 			<!-- Tiles -->
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						2<br>
-						<small>Administrators</small>
+						71<br>
+						<small>CLIENTES</small>
 					</span>
 				</div>
 				<i class="zmdi zmdi-account tile-icon"></i>
@@ -317,8 +283,8 @@
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						71<br>
-						<small>Clients</small>
+						5<br>
+						<small>USUARIOS</small>
 					</span>
 				</div>
 				<i class="zmdi zmdi-accounts tile-icon"></i>
@@ -327,93 +293,14 @@
 				<div class="tile-text">
 					<span class="text-condensedLight">
 						7<br>
-						<small>Providers</small>
+						<small>SEGUIMIENTO</small>
 					</span>
 				</div>
 				<i class="zmdi zmdi-truck tile-icon"></i>
 			</article>
-			<article class="full-width tile">
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						9<br>
-						<small>Categories</small>
-					</span>
-				</div>
-				<i class="zmdi zmdi-label tile-icon"></i>
-			</article>
-			<article class="full-width tile">
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						121<br>
-						<small>Products</small>
-					</span>
-				</div>
-				<i class="zmdi zmdi-washing-machine tile-icon"></i>
-			</article>
-			<article class="full-width tile">
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						47<br>
-						<small>Sales</small>
-					</span>
-				</div>
-				<i class="zmdi zmdi-shopping-cart tile-icon"></i>
-			</article>
+			
 		</section>
-		<section class="full-width" style="margin: 30px 0;">
-			<h3 class="text-center tittles">RESPONSIVE TIMELINE</h3>
-			<!-- TimeLine -->
-			<div id="timeline-c" class="timeline-c">
-				<div class="timeline-c-box">
-	                <div class="timeline-c-box-icon bg-info">
-	                    <i class="zmdi zmdi-twitter"></i>
-	                </div>
-	                <div class="timeline-c-box-content">
-	                    <h4 class="text-center text-condensedLight">Tittle timeline</h4>
-	                    <p class="text-center">
-	                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nobis rerum iure nostrum dolor. Quo totam possimus, ex, sapiente rerum vel maxime fugiat, ipsam blanditiis veniam, suscipit labore excepturi veritatis.
-	                    </p>
-	                    <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>05-04-2016</span>
-	                </div>
-	            </div>
-				<div class="timeline-c-box">
-	                <div class="timeline-c-box-icon bg-success">
-	                    <i class="zmdi zmdi-whatsapp"></i>
-	                </div>
-	                <div class="timeline-c-box-content">
-	                    <h4 class="text-center text-condensedLight">Tittle timeline</h4>
-	                    <p class="text-center">
-	                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nobis rerum iure nostrum dolor. Quo totam possimus, ex, sapiente rerum vel maxime fugiat, ipsam blanditiis veniam, suscipit labore excepturi veritatis.
-	                    </p>
-	                    <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>06-04-2016</span>
-	                </div>
-	            </div>
-	            <div class="timeline-c-box">
-	                <div class="timeline-c-box-icon bg-primary">
-	                    <i class="zmdi zmdi-facebook"></i>
-	                </div>
-	                <div class="timeline-c-box-content">
-	                    <h4 class="text-center text-condensedLight">Tittle timeline</h4>
-	                    <p class="text-center">
-	                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nobis rerum iure nostrum dolor. Quo totam possimus, ex, sapiente rerum vel maxime fugiat, ipsam blanditiis veniam, suscipit labore excepturi veritatis.
-	                    </p>
-	                    <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>07-04-2016</span>
-	                </div>
-	            </div>
-	            <div class="timeline-c-box">
-	                <div class="timeline-c-box-icon bg-danger">
-	                    <i class="zmdi zmdi-youtube"></i>
-	                </div>
-	                <div class="timeline-c-box-content">
-	                    <h4 class="text-center text-condensedLight">Tittle timeline</h4>
-	                    <p class="text-center">
-	                    	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nobis rerum iure nostrum dolor. Quo totam possimus, ex, sapiente rerum vel maxime fugiat, ipsam blanditiis veniam, suscipit labore excepturi veritatis.
-	                    </p>
-	                    <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>08-04-2016</span>
-	                </div>
-	            </div>
-			</div>
-		</section>
+		
 	</section>
 </body>
 </html>
