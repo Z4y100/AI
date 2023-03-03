@@ -32,24 +32,14 @@ if (!empty($_SESSION['active'])) {
 		$_SESSION['id_proyecto'] = $dato['id_Proyecto'];
         $_SESSION['id_rol'] = $dato['id_rol'];
         $_SESSION['rol_name'] = $dato['nombre'];
-		
-      } 
-	  if($dato['id_rol']==3){
-		header('location: Master/home.php');
-	  }
-	  elseif($dato['id_rol']==2){
 		header('location: AC/home.php');
-
-	  }
-	  elseif($dato['id_rol']==1){
-		header('location: Admin/home.php');
-
-	  } else {
-        $alert = '<div class="alert alert-danger" style="color: #FF0000;" role="alert">
-              Usuario o Contraseña Incorrecta
-            </div>';
+      } else {
+		$alert = '<div class="alert alert-danger" style="color: #FF0000;" role="alert">
+		Usuario o Contraseña Incorrecta
+	  </div>';
         session_destroy();
       }
+
     }
   }
 }

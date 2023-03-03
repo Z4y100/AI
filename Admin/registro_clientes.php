@@ -5,7 +5,7 @@
     if (empty($_POST['Nombre']) ||  empty($_POST['Telefono']) || empty($_POST['Ubicación'])
 	 ||empty($_POST['Tipo_proyecto'])  || empty($_POST['Procedencia']) || empty($_POST['Necesidad']) ) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
-                Todo los campos son obligatorios
+                Todos los campos son obligatorios
               </div>';
     } 
 	else 

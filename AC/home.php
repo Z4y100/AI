@@ -1,16 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home</title>
+	<title>Lista Atención a Clientes</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/sweetalert2.css">
 	<link rel="stylesheet" href="css/material.min.css">
 	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="../Sistema//css/style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="js/material.min.js" ></script>
@@ -18,6 +18,7 @@
 	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
 	<script src="js/main.js" ></script>
 </head>
+
 <body>
 <?php include_once "../Sistema/includes/header.php"; ?>
 <section class="full-width text-center" style="padding: 40px 0;">
@@ -32,6 +33,7 @@
 				</div>
 				<i class="zmdi zmdi-accounts tile-icon"></i>
 			</article>
+			<?php if ($_SESSION['id_rol'] == 3) { ?>
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
@@ -40,6 +42,7 @@
 				</div>
 				<i class="zmdi zmdi-male-female tile-icon"></i>
 			</article>
+			<?php } ?>
 			<article class="full-width tile">
 				<div class="tile-text">
 					<span class="text-condensedLight">
