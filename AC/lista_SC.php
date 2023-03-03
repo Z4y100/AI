@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,16 +29,23 @@
 				<h3>
 					SEGUIMIENTOS REGISTRADOS
 				</h3>
+				
 			</div>
 		</section>
 		<div class="full-width divider-menu-h"></div>
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
 				<div class="table-responsive">
-					<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive" >
+			<?php
+			
+				
+			if( $_SESSION['id_usuario']==6){
+			?>	
+					<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive" class="col-lg-12">
+					
 						<thead>
 							<tr>
-							<th style="text-align: center;">Id</th>
+							<th wi style="text-align: center; width:20%;">Id</th>
 							<th style="text-align: center;">Fecha de llegada</th>
 								<th style="text-align: center;" >Nombre</th>
 								<th style="text-align: center;">N° teléfono</th>
@@ -53,6 +61,7 @@
 								<th style="text-align: center;">Editar</th>
 								<th style="text-align: center;" >Nuevo  seguimiento</th>
 								<th style="text-align: center;">Generar estatus</th>
+								<th style="text-align: center;">Eliminar</th>
 							</tr>
 						</thead>
 					
@@ -61,10 +70,11 @@
                          require ("../funciones/db.php");
 						 $sql = $conexion ->query("SELECT * FROM seguimiento
 						 INNER JOIN clientes ON seguimiento.id_seguimiento = clientes.id_seguimiento 
-						 
 						  ");
 						 
-						 while($resultado = $sql->fetch_assoc()){
+						  $result = mysqli_num_rows($sql);
+						  if($result > 0 ){
+						 while($resultado = mysqli_fetch_assoc($sql)){
                          ?>
 						 <tr style="width: 100%;" >
 						 <td style="text-align: center;"><?php echo $resultado['Id_Seguimiento']; ?></td>
@@ -72,27 +82,41 @@
 									<td style="text-align: center;"><?php echo $resultado['Nombre']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Telefono']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Ubicacion']; ?></td>
-									<td style=" width: 10%;"><?php echo $resultado['Descripcion']; ?></td>
+									<td style="text-align: center;"><?php echo $resultado['Descripcion']; ?></td>
                                     <td></td>
                                     <td style="text-align: center;"><?php echo $resultado['Comunicacion']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Estatus_Cliente']; ?></td>
                                     <td style="text-align: center;"><?php echo $resultado['Cotizacion_Entrega']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Cerrado']; ?></td>
 								
-						       <td style="text-align: center;"> <a  class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
+						       <td style="text-align: center;"> 
+							   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
 							   </td>
-							   <td style="text-align: center;"> <a  class="boton azul"><i class="zmdi zmdi-plus"></i></i></a>
+							   <td  style="text-align: center;"> 
+							   <a href="registro_SC.php"  class="boton azul"><i class="zmdi zmdi-plus"></i></i></a>
 							   </td>
-							    
-	
-									<td style="text-align: center;"><a class="boton rojo"><i class="zmdi zmdi-file-text"></i></a></td>
+							   <td style="text-align: center;"> 
+							   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton morado"><i class="zmdi zmdi-file-text"></i></a>
+							   </td>
+							   <td style="text-align: center;"> 
+							   <a href="eliminar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton rojo"><i class="zmdi zmdi-file-text"></i></a>
+							   </td>
+							   <td  style="text-align: center;"> 
+							 
+							  
 						 </tr>		
                         <?php
 						 }
+						}
 						 ?>
 						
 					</tbody>
 					</table>
+					
+                 <?php }?>
+				 
+					
+				 
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,10 @@
 <?php				
 	session_start();
+	if (empty($_SESSION['active'])) {
+		header('location: ../');
+	}
 	$usuario= $_SESSION['usuario'];
+	
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -126,6 +130,7 @@
 							</li>
 						</ul>
 					</li>
+					<?php if ($_SESSION['id_rol'] == 3) { ?>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="#!" class="full-width btn-subMenu">
@@ -148,7 +153,7 @@
 									</div>
 								</a>
 							</li>
-							<?php if ($_SESSION['rol'] == 3) { ?>
+						
 							<li class="full-width">
 								<a href="lista_SC.php" class="full-width">
 									<div class="navLateral-body-cl">
@@ -159,9 +164,10 @@
 									</div>
 								</a>
 							</li>
-							<?php } ?>
+						
 						</ul>
 					</li>
+					<?php } ?>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="products.html" class="full-width">

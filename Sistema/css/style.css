@@ -57,7 +57,33 @@ background: #ff5242;
 .rojo:active{
 box-shadow: 0px 2px 0px 0px #C0392B;
 }
+
+
+.morado{
+background: #8c3ce7;
+box-shadow: 0px 5px 0px 0px #8c2bc0;
+}
+
+.morado:hover{
+background: #9a42ff;
+}
+
+.morado:active{
+box-shadow: 0px 2px 0px 0px #732bc0;
+}
+
+
+
+
 .text-center{
     text-align: center;
     align-content: center;
+}
+.columna-width{
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	width: 10px;
+	box-sizing: border-box;
+	height: 52dp 
 }
