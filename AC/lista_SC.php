@@ -65,7 +65,7 @@
 								<th style="text-align: center;">Editar</th>
 								<th style="text-align: center;" >Nuevo  seguimiento</th>
 								<th style="text-align: center;">Generar estatus</th>
-								<?php if ($_SESSION['id_rol'] == 3) { ?>	<th style="text-align: center;">Eliminar</th><?php } ?>
+								
 							</tr>
 						</thead>
 					
@@ -100,14 +100,12 @@
 							   <a href="registro_SC.php"  class="boton azul"><i class="zmdi zmdi-plus"></i></i></a>
 							   </td>
 							  
-							   <td>
-						<a  class="boton morado" cl="<?php echo $resultado['Id_Cliente'];  ?>" se="<?php echo $resultado['Id_Seguimiento']; ?>"><i class="zmdi zmdi-file-text"></i></a>
-										
-									</td>
-							   
-							   <?php if ($_SESSION['id_rol'] == 3) { ?><td  style="text-align: center;"> 
-							   <a href="eliminar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton rojo"><i class="zmdi zmdi-file-text"></i></a>
-							   </td><?php } ?>
+							   <td style="text-align: center;" >
+							   <a  href="pdf.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton morado "><i class="zmdi zmdi-file-text"></i></a>
+							  
+									</td >
+							  
+							  
 							   
 							 
 							  
