@@ -16,8 +16,9 @@ if (!empty($_SESSION['active'])) {
 	  
 	  $query = mysqli_query($conexion, "SELECT u.id_usuario,
 	  u.usuario,u.correo,u.fecha_creacion,
-	  r.id_rol,r.nombre FROM usuarios u 
+	  r.id_rol,r.nombre, t.id_proyecto,t.nombre_proyecto FROM usuarios u 
 	  INNER JOIN roles r ON u.rol = r.id_rol  
+	  INNER JOIN tipo_proyecto t ON u.tipo_proyecto = t.id_proyecto 
 	   WHERE u.usuario = '$usuario' AND u.contraseña = '$contraseña'");
       mysqli_close($conexion);
       $resultado = mysqli_num_rows($query);
@@ -36,15 +37,11 @@ if (!empty($_SESSION['active'])) {
 	if($dato['id_rol']==3){
 	  header('location: Master/home.php');
 	}
-	elseif($dato['id_rol']==2){
+	elseif($dato['id_rol']<=2){
 	  header('location: AC/home.php');
 
 	}
-	elseif($dato['id_rol']==1){
-	  header('location: Admin/home.php');
-
-
-	} else {
+	 else {
 		$alert = '<div class="alert alert-danger" style="color: #FF0000;" role="alert">
 		Usuario o Contraseña Incorrecta
 	  </div>';

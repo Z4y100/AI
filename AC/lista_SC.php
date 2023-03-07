@@ -43,7 +43,7 @@
 			<?php
 			
 				
-			if( $_SESSION['id_usuario']==6){
+			if( $_SESSION['id_usuario']<=4 || $_SESSION['id_proyecto']<=4){
 			?>	
 					<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive" class="col-lg-12">
 					

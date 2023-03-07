@@ -25,35 +25,54 @@
 			<h3 class="text-center tittles">BIENVENIDO</h3>
 			<!-- Tiles -->
 			
-			<article class="full-width tile">
+			<article  class="full-width tile">
+			<a href="lista_Cli.php" >
 				<div class="tile-text">
 					<span class="text-condensedLight">
 						<small>Atención a Clientes</small>
 					</span>
+					 
 				</div>
+				</a>
 				<i class="zmdi zmdi-accounts tile-icon"></i>
 			</article>
-			<?php if ($_SESSION['id_rol'] == 3) { ?>
+
 			<article class="full-width tile">
+			<a href="registro_Cli.php" >
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						<small>Usuarios</small>
+						<small>Registrar clientes</small>
 					</span>
 				</div>
-				<i class="zmdi zmdi-male-female tile-icon"></i>
+				<i class="zmdi zmdi-accounts-add tile-icon"></i>
+			</a>
+
+			<?php if ($_SESSION['id_rol'] == 1) { ?>
 			</article>
-			<?php } ?>
+			<br>
 			<article class="full-width tile">
+			<a href="lista_SC.php" >
 				<div class="tile-text">
 					<span class="text-condensedLight">
 						<small>Seguimiento a clientes</small>
 					</span>
 				</div>
 			
-				<i class="zmdi zmdi-accounts-outline tile-icon"></i>
+				<i class="zmdi zmdi-file-text tile-icon"></i>
+			</a>
+			</article>
+			<article class="full-width tile">
+			<a href="registro_SC.php" >
+				<div class="tile-text">
+					<span class="text-condensedLight">
+						<small>Registrar seguimientos </small>
+					</span>
+				</div>
+			
+				<i class="zmdi zmdi-border-color tile-icon"></i>
 
 				
-			</article>
+			</article> 	<?php } ?>
 		</section>
 		
 </body>

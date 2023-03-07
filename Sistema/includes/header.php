@@ -75,7 +75,7 @@
 						</a>
 						<ul class="full-width menu-principal sub-menu-options">
 							<li class="full-width">
-								<a href="registro_clientes.php" class="full-width">
+								<a href="registro_cli.php" class="full-width">
 									<div class="navLateral-body-cl">
 									<i class="zmdi zmdi-accounts-add"></i>
 									</div>
@@ -85,7 +85,7 @@
 								</a>
 							</li>
 							<li class="full-width">
-								<a href="clientes.php" class="full-width">
+								<a href="lista_cli.php" class="full-width">
 									<div class="navLateral-body-cl">
 										<i class="zmdi zmdi-accounts"></i>
 									</div>
@@ -96,6 +96,7 @@
 							</li>
 						</ul>
 					</li>
+					<?php if ($_SESSION['id_rol'] == 1) { ?>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="#!" class="full-width btn-subMenu">
@@ -109,7 +110,7 @@
 						</a>
 						<ul class="full-width menu-principal sub-menu-options">
 							<li class="full-width">
-								<a href="registro_SC.php" class="full-width">
+								<a href="../Admin/registro_clientes.php" class="full-width">
 									<div class="navLateral-body-cl">
 									<i class="zmdi zmdi-border-color"></i>
 									</div>
@@ -130,6 +131,7 @@
 							</li>
 						</ul>
 					</li>
+					<?php } ?>
 					<?php if ($_SESSION['id_rol'] == 3) { ?>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
@@ -170,7 +172,7 @@
 					<?php } ?>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
-						<a href="products.html" class="full-width">
+						<a href="configuracion.php" class="full-width">
 							<div class="navLateral-body-cl">
 							<i class="zmdi zmdi-wrench"></i>
 							</div>
