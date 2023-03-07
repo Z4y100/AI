@@ -91,7 +91,7 @@
 														<td><?php echo $data['Id_Usuario']; ?></td>
 														
 														<td>
-															<a href="editar.php?id=<?php echo $data['Id_Cliente'];?>"  class="btn btn-info">Editar</a>
+															<a href="editar_Cli.php?id=<?php echo $data['Id_Cliente'];?>"  class="btn btn-info">Editar</a>
 															
 														</td>
 															
