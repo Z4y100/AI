@@ -96,7 +96,7 @@
 							</li>
 						</ul>
 					</li>
-					<?php if ($_SESSION['id_rol'] == 1) { ?>
+					<?php if ($_SESSION['id_rol'] ==1) { ?>
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="#!" class="full-width btn-subMenu">
