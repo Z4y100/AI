@@ -82,7 +82,7 @@ if (empty($_REQUEST['id'])) {
 </head>
 <body>
 
-<?php include_once('header.php')?>
+<?php include_once "../Sistema/includes/header.php"; ?>
 
 	<!-- pageContent -->
 	
