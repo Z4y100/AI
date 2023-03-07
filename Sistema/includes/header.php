@@ -131,6 +131,7 @@
 							</li>
 						</ul>
 					</li>
+					
 					<?php } ?>
 					<?php if ($_SESSION['id_rol'] == 3) { ?>
 					<li class="full-width divider-menu-h"></li>
