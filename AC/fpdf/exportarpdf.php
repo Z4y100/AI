@@ -42,8 +42,8 @@ function Footer()
 }
 }
 require '../../funciones/db.php';
-$consulta="SELECT * FROM clientes";
-$resultado=mysqli_query($conexion,$consulta);
+$consulta=mysqli_query($conexion,"SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario");
+$resultado=mysqli_num_rows($consulta);
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
@@ -65,7 +65,7 @@ $pdf->Cell(20,8,utf8_decode('Usuario'),1,0,'C',true);
 $pdf->Ln();
 $pdf->SetFont('Arial','',9);
 $pdf->SetTextColor(0,0,0);
-while($row = $resultado->fetch_assoc())
+while($row = mysqli_fetch_assoc($consulta) )
 {
     $pdf->Cell(10,8,utf8_decode($row['Id_Cliente']),1,0,'C',0);
     $pdf->Cell(40,8,utf8_decode($row['Nombre']),1,0,'C',0);
@@ -73,7 +73,7 @@ while($row = $resultado->fetch_assoc())
     $pdf->Cell(40,8,utf8_decode($row['Ubicacion']),1,0,'C',0);
     $pdf->Cell(30,8,utf8_decode($row['Tipo_proyecto']),1,0,'C',0);
     $pdf->Cell(40,8,utf8_decode($row['Fecha_registro']),1,0,'C',0);
-    $pdf->Cell(20,8,utf8_decode($row['Id_Usuario']),1,0,'C',0);
+    $pdf->Cell(20,8,utf8_decode($row['Usuario']),1,0,'C',0);
     $pdf->Ln();
 
     
