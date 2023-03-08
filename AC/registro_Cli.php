@@ -17,6 +17,16 @@
         $usuario=$_POST['Id_Usuario'];
       
 
+		
+        $query = mysqli_query($conexion, "SELECT * FROM clientes where Telefono = '$telefono'");
+        $result = mysqli_fetch_array($query);
+
+        if ($result > 0) {
+            $alert = '<div class="alert alert-danger" role="alert">
+                        Este número de teléfono ya esta registrado
+                    </div>';
+        }else{
+
       $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario)
 	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario')");
       if ($query_insert) {
@@ -27,7 +37,7 @@
         $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000;">
                 Error al registrar 
               </div>';
-      }
+      }}
     }
   }
   ?>
