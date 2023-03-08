@@ -42,10 +42,10 @@
 							<div class="full-width panel-tittle bg-success text-center tittles">
 								Lista de  Clientes
 							</div>
-							<div class="auto-width panel-content">
-								<form action="busqueda_cli.php" method="post">
-									<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
-									<input type="submit" class="btn_search" name="enviar" value="Buscar"><br>
+							<div class="full-width panel-content">
+								<form action="busqueda_clientes.php" method="post">
+									<input type="text"  autofocus name="busqueda" id="busqueda" placeholder="Buscar">
+									<input type="submit" class="btn-search" name="enviar" value="Buscar"><br>
 									
 
 								</form>
@@ -61,9 +61,11 @@
 													<th></th>
 													<th>Tipo de Proyecto</th>
 													<th>Procedencia</th>
+													<th>Necesidad</th>
 													<th>Fecha Registro</th>
 													<th>Id Usuario</th>
-													<th>Seguimiento</th>
+													<th>Opciones</th>
+													
 												</tr>
 											</thead>
 										
@@ -84,9 +86,14 @@
 														<td></td>
 														<td><?php echo $data['Tipo_proyecto']; ?></td>
 														<td><?php echo $data['Procedencia']; ?></td>
+														<td><?php echo $data['Necesidad']; ?></td>
 														<td><?php echo $data['Fecha_registro']; ?></td>
 														<td><?php echo $data['Id_Usuario']; ?></td>
-														<td><?php echo $data['Id_Seguimiento']; ?></td>
+														
+														<td>
+															<a href="editar_Cli.php?id=<?php echo $data['Id_Cliente'];?>"  class="btn btn-info">Editar</a>
+															
+														</td>
 															
 															
 													</tr>
@@ -102,6 +109,12 @@
 						</div>
 			
 			</div>
+			<br>
+			<div class="col-12">
+            <center>
+                <input type="button" class="btn btn-dark" value="Descargar PDF" onclick="document.location.href='fpdf/exportarpdf.php';"/>
+            </center>
+        </div>
 		</div>
 			</div>
 		</div>

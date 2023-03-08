@@ -2,38 +2,35 @@
   include "../funciones/db.php";
   if (!empty($_POST)) {
     $alert = "";
-    if (empty($_POST['Nombre']) ||  empty($_POST['Telefono']) || empty($_POST['Ubicación'])
-	 ||empty($_POST['Tipo_proyecto'])  || empty($_POST['Procedencia']) || empty($_POST['Necesidad']) ) {
+    if (empty($_POST['Nombre'])  ||empty($_POST['Telefono'])  || empty($_POST['Ubicacion']) || empty($_POST['Tipo_proyecto']) || empty($_POST['Procedencia']) ||empty($_POST['Necesidad']) ||empty($_POST['Fecha_registro']) ||empty($_POST['Id_Usuario']) ) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
-    } 
-	else 
-	{
-      $nombre = $_POST['Nombre_cliente'];
-      $telefono = $_POST['Telefono'];
-      $ubicacion = $_POST['Ubicacion'];
-      $tipo_proyecto = $_POST['Tipo_proyecto'];
-	  $procedencia = $_POST['Procedencia'];
-      $nececidad = $_POST['Necesidad'];
-      $cliente = $_SESSION['Id_Cliente'];
+    } else {
+		$nombre=$_POST['Nombre'];
+        $telefono=$_POST['Telefono'];
+        $ubicacion=$_POST['Ubicacion'];
+        $proyecto=$_POST['Tipo_proyecto'];
+        $procedencia=$_POST['Procedencia'];
+        $necesidad=$_POST['Necesidad'];
+        $fecha=$_POST['Fecha_registro'];
+        $usuario=$_POST['Id_Usuario'];
+      
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Id_Cliente)
-	   values ('$nombre', '$telefono', '$ubicacion', '$tipo_proyecto','$procedencia', '$nececidad', '$cliente')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario)
+	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario')");
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Cliente Registrado
               </div>';
       } else {
         $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000;">
-                Error al registrar
+                Error al registrar 
               </div>';
       }
     }
   }
   ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -80,11 +77,12 @@
 								DATOS
 							</div>
 							<div class="full-width panel-content">
-								<form action="" method="post">
-									
+								<form action="" method="POST">
+						
+								<?php echo isset($alert) ? $alert : ''; ?>
 									    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="NombreCliente">
+												<input class="mdl-textfield__input" type="text"  name="Nombre" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="NombreCliente">
 												<label class="mdl-textfield__label" for="NombreCliente">NOMBRE</label>
 												<span class="mdl-textfield__error">Nombre Invalido</span>
 											</div>
@@ -92,56 +90,87 @@
 										
 										<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="tel" pattern="-?[0-9+()- ]*(\.[0-9]+)?" id="TelefonoCliente">
+												<input class="mdl-textfield__input" type="tel" name="Telefono" pattern="-?[0-9+()- ]*(\.[0-9]+)?" id="TelefonoCliente">
 												<label class="mdl-textfield__label" for="TelefonoCliente">NÚMERO DE TELÉFONO</label>
 												<span class="mdl-textfield__error">Número de teléfono invalido</span>
 											</div>
 										</div>
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="UbicacionCliente">
+												<input class="mdl-textfield__input" type="text" name="Ubicacion" id="UbicacionCliente">
 												<label class="mdl-textfield__label" for="UbicacionCliente">UBICACIÓN</label>
 											</div>
 									    </div>
-
 										<div>
-											<label   for="proyectos">TIPO DE PROYECTO:</label>
-												<select class="mdl-list" id="proyectos" name="proyectoslist" form="proyectosform">
-													<option value="Domos">Domos</option>
-													<option value="Proyecto_Ejecutivo">Proyecto Ejecutivo</option>
-													<option value="Reality_Capture">Reality Capture</option>
-													<option value="Sin_Asignacion">Sin Asignación</option>
-												</select>
-											</div>
 
+										<label>TIPO DE PROYECTO:</label>
+											<select id="proyecto" name="Tipo_proyecto" class="mdl-list">
+											<option value="">--Selecciona una opción--</option>
+											<?php 
+												include_once('..funciones/db.php');
+												
+												$sql='SELECT * FROM tipo_proyecto';
+												$query=mysqli_query($conexion,$sql);
+												while($row=mysqli_fetch_array($query)){
+													
+													$nombreproyecto=$row['Nombre_Proyecto'];
+												?>
+													<option value="<?php echo $nombreproyecto ?>"><?php echo $nombreproyecto ?></option>
+												<?php
+												}
+											
+           									 ?>
+            
+        
+											</select>
 										</div>
+										
 										
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="ProcedenciaCliente">
+												<input class="mdl-textfield__input" type="text"  name="Procedencia" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="ProcedenciaCliente">
 												<label class="mdl-textfield__label" for="ProcedenciaCliente">DE DONDE VIENE</label>
 												<span class="mdl-textfield__error">Invalido solo ingresar letras.</span>
 											</div>
 									    </div>
 										<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="NecesidadCliente">
+												<input class="mdl-textfield__input" type="text" name="Necesidad" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="NecesidadCliente">
 												<label class="mdl-textfield__label" for="NecesidadCliente">NECESIDAD</label>
 												<span class="mdl-textfield__error">Invalido solo ingrese letras</span>
 											</div>
 									    </div>
 										<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="datetime"  id="FechaRegistroCliente">
+												<input class="mdl-textfield__input" type="datetime" name="Fecha_registro" id="FechaRegistroCliente">
 												<label class="mdl-textfield__label" for="FechaRegistroCliente">FECHA DE REGISTRO</label>
 											</div>
 									    </div>
-											   
-											   
-									<p class="text-center">
-										<button class="button">GUARDAR</button>
-										<div class="mdl-tooltip" for="btn-addAdmin">Registrar</div>
-									</p>
+										<div>
+											<label   for="usuarios">CLIENTE DE:</label>
+												<select class="mdl-list" name="Id_Usuario">
+														<option value="">--Selecciona una opción--</option>
+														<?php 
+															include_once('..funciones/db.php');
+															
+															$sql='SELECT * FROM usuarios';
+															$query=mysqli_query($conexion,$sql);
+															while($row=mysqli_fetch_array($query)){
+																$id_usuario=$row['Id_Usuario'];
+																$nombreusuario=$row['Usuario'];
+															?>
+																<option value="<?php echo $id_usuario ?>"><?php echo $nombreusuario ?></option>
+															<?php
+															}
+											
+           												 ?>
+												</select>
+													
+										</div>
+										<p class="text-center">
+											<button class="button" name="btnGuardar">GUARDAR</button>
+											<div class="mdl-tooltip" for="btn-addAdmin">Registrar</div>
+										</p>
 								</form>
 							</div>
 						</div>

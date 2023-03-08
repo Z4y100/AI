@@ -10,15 +10,17 @@
 	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="js/material.min.js" ></script>
 	<script src="js/sweetalert2.min.js" ></script>
 	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
 	<script src="js/main.js" ></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<?php include_once "../Sistema/includes/header.php"; ?>
+	<?php include_once('header.php')?>
 	<!-- pageContent -->
 	
 		<section class="full-width header-well">
@@ -45,7 +47,7 @@
 							<div class="auto-width panel-content">
 								<form action="busqueda_clientes.php" method="post">
 									<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
-									<input type="submit" class="btn_search" name="enviar" value="Buscar"><br>
+									<input type="submit" class="btn-search" name="enviar" value="Buscar"><br>
 									
 
 								</form>
@@ -64,7 +66,7 @@
 													<td></td>
 													<th class="text-center">Fecha Registro</th>
 													<th>Id Usuario</th>
-													<th>Seguimiento</th>
+													<th>Opciones</th>
 												</tr>
 											</thead>
 										
@@ -72,7 +74,7 @@
                                             <?php
                                             $busqueda = $_POST['busqueda'];
                                             include "../funciones/db.php";
-                                            $consulta="SELECT * FROM clientes WHERE Tipo_proyecto like '$busqueda' '%' ";
+                                            $consulta="SELECT * FROM clientes WHERE Tipo_proyecto like '$busqueda' '%' OR Nombre like '$busqueda' '%' OR Procedencia like '$busqueda' '%' OR Ubicacion like '$busqueda' '%' ";
                                             $resultado= mysqli_query($conexion,$consulta);
                                             while($data = mysqli_fetch_row($resultado))
                                                                                 
@@ -89,7 +91,11 @@
                                                     <td><?php echo $data['6']; ?></td>
                                                     <td ><?php echo $data['7']; ?></td>
                                                     <td><?php echo $data['8']; ?></td>
-													<td><?php echo $data['9']; ?></td>
+													
+													<td>
+															<a href="editar_Cli.php?id=<?php echo $data['0'];?>" class="btn btn-info">Editar</a>
+															
+														</td>
                                                                                                         
                                                                                                         
                                                 </tr>
