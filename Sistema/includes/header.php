@@ -111,7 +111,7 @@
 						</a>
 						<ul class="full-width menu-principal sub-menu-options">
 							<li class="full-width">
-								<a href="../Admin/registro_clientes.php" class="full-width">
+								<a href="registro_SC.php" class="full-width">
 									<div class="navLateral-body-cl">
 									<i class="zmdi zmdi-border-color"></i>
 									</div>
