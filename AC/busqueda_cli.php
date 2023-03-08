@@ -57,15 +57,16 @@
 											<thead>
 												<tr>
 													<th class="mdl-data-table__cell--non-numeric">Id Cliente</th>
-													<th>Nombre</th>
-													<th>Teléfono</th>
-													<th>Ubicación</th>
+													<th class="text-center">Nombre</th>
+													<th class="text-center">Teléfono</th>
+													<th class="text-center">Ubicación</th>
 													<th></th>
-													<th>Tipo de Proyecto</th>
-													<th>Procedencia</th>
+													<th class="text-center">Tipo de Proyecto</th>
+													<th class="text-center">Procedencia</th>
 													<td></td>
 													<th class="text-center">Fecha Registro</th>
-													<th>Id Usuario</th>
+													<th class="text-center">Id Usuario</th>
+													<th class="text-center">Id Seguimiento</th>
 													<th>Opciones</th>
 												</tr>
 											</thead>
@@ -81,16 +82,17 @@
                                             {?>
                                                 <tr>
                                                     <td class="mdl-data-table__cell--non-numeric text-center"><?php echo $data['0']; ?></td>
-                                                    <td><?php echo $data['1']; ?></td>
-                                                    <td><?php echo $data['2']; ?></td>
-                                                    <td><?php echo $data['3']; ?></td>
+                                                    <td class="text-center"><?php echo $data['1']; ?></td>
+                                                    <td class="text-center"><?php echo $data['2']; ?></td>
+                                                    <td class="text-center"><?php echo $data['3']; ?></td>
                                                     <td></td>
-                                                    <td><?php echo $data['4']; ?></td>
-                                                    <td><?php echo $data['5']; ?></td>
+                                                    <td class="text-center"><?php echo $data['4']; ?></td>
+                                                    <td class="text-center"><?php echo $data['5']; ?></td>
 													
-                                                    <td><?php echo $data['6']; ?></td>
-                                                    <td ><?php echo $data['7']; ?></td>
-                                                    <td><?php echo $data['8']; ?></td>
+                                                    <td class="text-center"><?php echo $data['6']; ?></td>
+                                                    <td class="text-center"><?php echo $data['7']; ?></td>
+                                                    <td class="text-center"><?php echo $data['8']; ?></td>
+													<td class="text-center"><?php echo $data['9']; ?></td>
 													
 													<td>
 															<a href="editar_Cli.php?id=<?php echo $data['0'];?>" class="btn btn-info">Editar</a>
