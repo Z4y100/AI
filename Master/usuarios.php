@@ -1,4 +1,5 @@
-<?php				
+<?php
+require_once("../funciones/db.php");
 	session_start();
 	$usuario= $_SESSION['usuario'];
 ?>
@@ -188,7 +189,7 @@
 						</a>
 						<ul class="full-width menu-principal sub-menu-options">
 							<li class="full-width">
-								<a href="usuarios.php" class="full-width">
+								<a href="admin.html" class="full-width">
 									<div class="navLateral-body-cl">
 										<i class="zmdi zmdi-account"></i>
 									</div>
@@ -198,7 +199,7 @@
 								</a>
 							</li>
 							<li class="full-width">
-								<a href="Rusuario.php" class="full-width">
+								<a href="client.html" class="full-width">
 									<div class="navLateral-body-cl">
 										<i class="zmdi zmdi-accounts"></i>
 									</div>
@@ -271,34 +272,46 @@
 		<section class="full-width text-center" style="padding: 40px 0;">
 			<h3 class="text-center tittles">BIENVENIDO</h3>
 			<!-- Tiles -->
-			<article class="full-width tile">
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						71<br>
-						<small>CLIENTES</small>
-					</span>
-				</div>
-				<i class="zmdi zmdi-account tile-icon"></i>
-			</article>
-			<article class="full-width tile">
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						5<br>
-						<small>USUARIOS</small>
-					</span>
-				</div>
-				<i class="zmdi zmdi-accounts tile-icon"></i>
-			</article>
-			<article class="full-width tile">
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						7<br>
-						<small>SEGUIMIENTO</small>
-					</span>
-				</div>
-				<i class="zmdi zmdi-truck tile-icon"></i>
-			</article>
+			<article class="">
+				
 			
+
+			<table>
+                <tr>
+                    <th>Id</th>
+                    <th>Usuario</th>
+                    <th>Correo </th>
+                    <th>Contraseña </th>
+                    <th>Tipo_Proyecto </th>
+					<th>Rol </th>
+					<th>Fecha_Creacion </th>
+                </tr>
+
+                    <?php
+                    $sql="select usuarios.Id_Usuario,usuarios.Usuario, usuarios.Correo, usuarios.`Contraseña`, tipo_proyecto.Nombre_Proyecto, roles.Nombre, usuarios.Fecha_Creacion from usuarios inner join tipo_proyecto on usuarios.Tipo_Proyecto=tipo_proyecto.Id_Proyecto inner join roles on usuarios.Rol = roles.Id_Rol;";
+                    $result=mysqli_query($conexion,$sql);
+
+                    while($mostrar=mysqli_fetch_array($result)){
+                    ?>
+
+                <tr>
+                    <td><?php echo $mostrar['Id_Usuario'] ?></td>
+                    <td><?php echo $mostrar['Usuario'] ?></td>               
+                    <td><?php echo $mostrar['Correo'] ?></td>                  
+                    <td><?php echo $mostrar['Contraseña'] ?></td>
+					<td><?php echo $mostrar['Nombre_Proyecto'] ?></td>
+					<td><?php echo $mostrar['Nombre'] ?></td>
+					<td><?php echo $mostrar['Fecha_Creacion'] ?></td>
+                    <td><a href="editar.php?EDITAR_ID=<?php echo $mostrar['Id_Usuario']; ?>" class="salir" >Edita</a></td>
+                </tr>
+
+                <?php
+                    }
+                    ?>
+            </table>
+
+			</article>
+		
 		</section>
 		
 	</section>

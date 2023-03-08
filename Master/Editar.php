@@ -1,13 +1,19 @@
 <?php				
 	session_start();
 	$usuario= $_SESSION['usuario'];
+
+    require("../funciones/db.php");
+    $id = $_GET['EDITAR_ID'];
+    $sele = "SELECT * from usuarios  where id_usuario ='$id'";
+    $result = $conexion->query($sele);
+    $row = mysqli_fetch_assoc($result);  
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>INICIO</title>
+	<title>EDITAR USUARIOS</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/sweetalert2.css">
 	<link rel="stylesheet" href="css/material.min.css">
@@ -20,6 +26,18 @@
 	<script src="js/sweetalert2.min.js" ></script>
 	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
 	<script src="js/main.js" ></script>
+
+    <!-- Aqui empieza lo de editar usuarios -->
+       
+    <link rel="stylesheet" href="css/editar_usuario.css"/>
+    <script language="javascript" type="text/javascript">
+    function windowClose() {
+    window.open('','_parent','');
+    window.close();
+    }
+</script> 
+    <!-- Aqui termina lo de editar usuarios -->
+
 </head>
 <body>
 	<!-- Notifications area -->
@@ -269,35 +287,140 @@
 			</div>
 		</div>
 		<section class="full-width text-center" style="padding: 40px 0;">
-			<h3 class="text-center tittles">BIENVENIDO</h3>
+			
 			<!-- Tiles -->
-			<article class="full-width tile">
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						71<br>
-						<small>CLIENTES</small>
-					</span>
-				</div>
-				<i class="zmdi zmdi-account tile-icon"></i>
-			</article>
-			<article class="full-width tile">
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						5<br>
-						<small>USUARIOS</small>
-					</span>
-				</div>
-				<i class="zmdi zmdi-accounts tile-icon"></i>
-			</article>
-			<article class="full-width tile">
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						7<br>
-						<small>SEGUIMIENTO</small>
-					</span>
-				</div>
-				<i class="zmdi zmdi-truck tile-icon"></i>
-			</article>
+
+            <?php
+$status = "";
+if(isset($_POST["enviar"]))
+{
+$usuario= $_POST["Usuario"];
+$correo= $_POST["Correo"];
+$contraseña= $_POST["Contraseña"];
+$tipo_proyecto= $_POST["Tipo_Proyecto"];
+$rol= $_POST["Rol"];
+$fecha_creacion= $_POST["Fecha_Creacion"];
+$id= $_POST["Id_Usuario"];
+  
+$update = 'UPDATE usuarios SET
+
+Usuario=TRIM("'.$usuario.'"),
+
+Correo=TRIM("'.$correo.'"),
+      
+Contraseña=TRIM("'.$contraseña.'"),
+
+Tipo_Proyecto=TRIM("'.$tipo_proyecto.'"),
+
+Rol=TRIM("'.$rol.'"),
+
+Fecha_Creacion=TRIM("'.$fecha_creacion.'")
+      
+WHERE Id_Usuario=TRIM('.$id.')';
+  
+  
+if ($conexion->query($update) === TRUE) 
+{
+echo '<script type="text/javascript">'; 
+echo 'alert("EDICION CORRECTA. YA PUEDE CERRAR ESTA VENTANA ");'; 
+echo 'window.location = "javascript:history.back(1)";';
+echo '</script>';
+ 
+}
+else
+{
+ 
+echo '<script type="text/javascript">'; 
+echo 'alert("ERROR REVISAR SI FALTAN DATOS");'; 
+echo 'window.location = "javascript:history.back(1)";';
+echo '</script>';
+}
+ 
+}
+
+else {
+ 
+?> 
+  
+  
+<body id="main_body" >
+	
+	<img id="top" src="top.png" alt="">
+	<div id="form_container">
+	<h3><a>EDITAR USUARIO </a></h3>
+	<form id="form_18653" class="appnitro"  method="post" action="">
+	<div class="form_description">
+    <h4> MODIFIQUE LOS SIGUIENTES VALORES:</h4>
+	
+	</div>						
+	
+    <ul >
+      
+      
+    <input id="Id_Usuario" name="Id_Usuario"  class="element text small" type="hidden" maxlength="255" value="<?php echo $row['Id_Usuario'];?>"/> 
+		
+			
+	<li id="li_2" >
+	<label class="description" for="producto">Usuario: </label>
+	<div>
+	<input id="Usuario" name="Usuario" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Usuario'];?>"/> 
+	</div> 
+	</li>
+      
+    <li id="li_3" >
+	<label class="description" for="serie">Correo: </label>
+	<div>
+	<input id="Correo" name="Correo" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Correo'];?>"/> 
+	</div> 
+	</li>		
+
+
+	<li id="li_3" >
+	<label class="description" for="serie">Contraseña: </label>
+	<div>
+	<input id="Contraseña" name="Contraseña" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Contraseña'];?>"/> 
+	</div> 
+	</li>	
+
+
+	<li id="li_3" >
+	<label class="description" for="serie">Tipo de Proyecto: </label>
+	<div>
+	<input id="Tipo_Proyecto" name="Tipo_Proyecto" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Tipo_Proyecto'];?>"/> 
+	</div> 
+	</li>	
+
+
+	<li id="li_3" >
+	<label class="description" for="serie">Rol: </label>
+	<div>
+	<input id="Rol" name="Rol" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Rol'];?>"/> 
+	</div> 
+	</li>	
+
+
+    <li id="li_4" >
+	<label class="description" for="fechaing">Fecha de creacion: </label>
+	<div>
+	<input id="Fecha_Creacion" name="Fecha_Creacion" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Fecha_Creacion'];?>"/> 
+	</div> 
+	</li>	
+			
+	
+    <li class="buttons">
+	<input type="hidden" name="form_id" value="18653" />
+	<input id="saveForm" class="button_text" type="submit" name="enviar" value="Aceptar" />
+    <input class="button_text" type="submit" onclick="javascript: form.action='usuarios.php';" value="Regresar" />      
+                      
+	</ul>
+	</form>	
+		
+    <?php } ?>
+      
+	</div>
+	</body>
+
+    
 			
 		</section>
 		
