@@ -2,7 +2,7 @@
   include "../funciones/db.php";
   if (!empty($_POST)) {
     $alert = "";
-    if (empty($_POST['Nombre'])  ||empty($_POST['Telefono'])  || empty($_POST['Ubicacion']) || empty($_POST['Tipo_proyecto']) || empty($_POST['Procedencia']) ||empty($_POST['Necesidad']) ||empty($_POST['Fecha_registro']) ||empty($_POST['Id_Usuario']) ) {
+    if (empty($_POST['Nombre'])  ||empty($_POST['Telefono'])  || empty($_POST['Ubicacion']) || empty($_POST['Tipo_proyecto']) || empty($_POST['Procedencia']) ||empty($_POST['Necesidad']) ||empty($_POST['Fecha_registro']) ||empty($_POST['Id_Usuario']) ||empty($_POST['Id_Seguimiento']) ) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
@@ -15,6 +15,7 @@
         $necesidad=$_POST['Necesidad'];
         $fecha=$_POST['Fecha_registro'];
         $usuario=$_POST['Id_Usuario'];
+		$seguimiento=$_POST['Id_Seguimiento'];
       
 
 		
@@ -27,8 +28,8 @@
                     </div>';
         }else{
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario)
-	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario,Id_Seguimiento)
+	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario','$seguimiento')");
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Cliente Registrado
@@ -61,7 +62,7 @@
 	<script src="js/main.js" ></script>
 </head>
 <body>
-<?php include_once "../Sistema/includes/header.php"; ?>
+<?php include_once('header.php')?>
 	<!-- pageContent -->
 	
 		<section class="full-width header-well">
@@ -177,6 +178,29 @@
 												</select>
 													
 										</div>
+										<div>
+											<label   for="usuarios">ID SEGUIMIENTO:</label>
+												<select class="mdl-list" name="Id_Seguimiento">
+														<option value="">--Selecciona una opción--</option>
+														<option value="1">Pendiente</option>
+														<?php 
+															include_once('..funciones/db.php');
+															
+															$sql='SELECT * FROM seguimiento';
+															$query=mysqli_query($conexion,$sql);
+															while($row=mysqli_fetch_array($query)){
+																$id_seguimiento=$row['Id_Seguimiento'];
+																
+															?>
+																<option value="<?php echo $id_seguimiento ?>"><?php echo $id_seguimiento ?></option>
+															<?php
+															}
+											
+           												 ?>
+												</select>
+													
+										</div>
+										
 										<p class="text-center">
 											<button class="button" name="btnGuardar">GUARDAR</button>
 											<div class="mdl-tooltip" for="btn-addAdmin">Registrar</div>
