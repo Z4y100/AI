@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="js/material.min.js" ></script>
@@ -18,7 +19,7 @@
 	<script src="js/main.js" ></script>
 </head>
 <body>
-<?php include_once "../Sistema/includes/header.php"; ?>
+	<?php include_once('header.php')?>
 	<!-- pageContent -->
 	
 		<section class="full-width header-well">
@@ -53,17 +54,18 @@
 									<div class="table-responsive">
 									<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
 											<thead>
-												<tr>
+												<tr class="text-center">
 													<th class="mdl-data-table__cell--non-numeric">Id Cliente</th>
-													<th>Nombre</th>
-													<th>Teléfono</th>
-													<th>Ubicación</th>
+													<th class="text-center">Nombre</th>
+													<th class="text-center">Teléfono</th>
+													<th class="text-center">Ubicación</th>
 													<th></th>
 													<th>Tipo de Proyecto</th>
-													<th>Procedencia</th>
+													<th class="text-center">Procedencia</th>
 													<th>Necesidad</th>
 													<th>Fecha Registro</th>
 													<th>Id Usuario</th>
+													<th>Id Seguimiento</th>
 													<th>Opciones</th>
 													
 												</tr>
@@ -74,22 +76,22 @@
 											<?php
 											include "../funciones/db.php";
 
-											$consulta = mysqli_query($conexion, "SELECT * FROM clientes
-											INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario ");
+											$consulta = mysqli_query($conexion, "SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario ");
 											$resultado = mysqli_num_rows($consulta);
 											if ($resultado > 0) {
 												while ($data = mysqli_fetch_assoc($consulta)) { ?>
-													<tr>
-													<td class="mdl-data-table__cell--non-numeric"><?php echo $data['Id_Cliente']; ?></td>
-														<td><?php echo $data['Nombre']; ?></td>
+													<tr class="text-center">
+													<td class="mdl-data-table__cell--non-numeric text-center"><?php echo $data['Id_Cliente']; ?></td>
+														<td class="text-center"><?php echo $data['Nombre']; ?></td>
 														<td><?php echo $data['Telefono']; ?></td>
-														<td><?php echo $data['Ubicacion']; ?></td>
+														<td class="text-center"><?php echo $data['Ubicacion']; ?></td>
 														<td></td>
-														<td><?php echo $data['Tipo_proyecto']; ?></td>
-														<td><?php echo $data['Procedencia']; ?></td>
-														<td><?php echo $data['Necesidad']; ?></td>
-														<td><?php echo $data['Fecha_registro']; ?></td>
-														<td><?php echo $data['Usuario']; ?></td>
+														<td class="text-center"><?php echo $data['Tipo_proyecto']; ?></td>
+														<td class="text-center"><?php echo $data['Procedencia']; ?></td>
+														<td class="text-center"><?php echo $data['Necesidad']; ?></td>
+														<td class="text-center"><?php echo $data['Fecha_registro']; ?></td>
+														<td class="text-center"><?php echo $data['Usuario']; ?></td>
+														<td class="text-center"><?php echo $data['Id_Seguimiento']; ?></td>
 														
 														<td>
 															<a href="editar_Cli.php?id=<?php echo $data['Id_Cliente'];?>"  class="btn btn-info">Editar</a>
