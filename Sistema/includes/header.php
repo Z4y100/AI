@@ -39,7 +39,7 @@
 			</div>
 			<figure class="full-width navLateral-body-tittle-menu">
 				<div>
-					<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+					<img src="assets/img/avatar-aitech.png" alt="Avatar" class="img-responsive">
 				</div>
 				<figcaption>
 					<span>
@@ -207,7 +207,7 @@
 						<li class="text-condensedLight noLink" ><small><?php echo $usuario;?></small></li>
 						<li class="noLink">
 							<figure>
-								<img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+								<img src="assets/img/avatar-aitech.png" alt="Avatar" class="img-responsive">
 							</figure>
 						</li>
 					</ul>
