@@ -74,7 +74,8 @@
 											<?php
 											include "../funciones/db.php";
 
-											$consulta = mysqli_query($conexion, "SELECT * FROM clientes");
+											$consulta = mysqli_query($conexion, "SELECT * FROM clientes
+											INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario ");
 											$resultado = mysqli_num_rows($consulta);
 											if ($resultado > 0) {
 												while ($data = mysqli_fetch_assoc($consulta)) { ?>
@@ -88,7 +89,7 @@
 														<td><?php echo $data['Procedencia']; ?></td>
 														<td><?php echo $data['Necesidad']; ?></td>
 														<td><?php echo $data['Fecha_registro']; ?></td>
-														<td><?php echo $data['Id_Usuario']; ?></td>
+														<td><?php echo $data['Usuario']; ?></td>
 														
 														<td>
 															<a href="editar_Cli.php?id=<?php echo $data['Id_Cliente'];?>"  class="btn btn-info">Editar</a>
