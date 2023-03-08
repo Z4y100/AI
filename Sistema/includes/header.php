@@ -91,7 +91,7 @@
 										<i class="zmdi zmdi-accounts"></i>
 									</div>
 									<div class="navLateral-body-cr">
-										ATENCIONES REGISTRADA
+										ATENCIONES REGISTRADAS
 									</div>
 								</a>
 							</li>
