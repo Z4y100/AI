@@ -8,6 +8,7 @@
               </div>';
     } else {
 		$id_cliente=$_GET['id'];
+		$id_seguimiento = $_POST['Id_Seguimiento'];
 		$nombre=$_POST['Nombre'];
         $telefono=$_POST['Telefono'];
         $ubicacion=$_POST['Ubicacion'];
@@ -19,7 +20,8 @@
       
 
       $query_update = mysqli_query($conexion, "UPDATE clientes SET 
-      Nombre ='$nombre',
+	  Id_Seguimiento = '$id_seguimiento',    
+	    Nombre ='$nombre',
       Telefono = '$telefono', 
 	  Ubicacion = '$ubicacion', 
       Tipo_proyecto = '$proyecto', 
@@ -178,7 +180,28 @@ if (empty($_REQUEST['id'])) {
 												<label class="mdl-textfield__label" for="FechaRegistroCliente">FECHA DE REGISTRO</label>
 											</div>
 									    </div>
-										
+										<div class="form-group">
+               <label>Id Seguimeinto</label>
+               <?php
+                $query_seg = mysqli_query($conexion, "SELECT Id_Seguimiento, Comunicacion FROM seguimiento ORDER BY Id_Seguimiento ASC");
+                $resultado_seg = mysqli_num_rows($query_seg);
+                mysqli_close($conexion);
+                ?>
+
+               <select id="Id_Seguimiento" name="Id_Seguimiento" class="form-control">
+			   <option >--Selecciona una opcion--</option>
+                 <?php
+                  if ($resultado_seg > 0) {
+                    while ($seguimiento = mysqli_fetch_array($query_seg)) {
+                      // code...
+                  ?>
+                     <option value="<?php echo $seguimiento['Id_Seguimiento']; ?>"><?php echo $seguimiento['Id_Seguimiento']; ?></option>
+                 <?php
+                    }
+                  }
+                  ?>
+               </select>
+             </div>       
 										
 										<center>
 										<button class="button" name="btnGuardar">ACTUALIZAR</button>
