@@ -19,7 +19,7 @@
 	<script src="js/main.js" ></script>
 </head>
 <body>
-	<?php include_once('header.php')?>
+	<?php include_once "../Sistema/includes/header.php"; ?>
 	<!-- pageContent -->
 	
 		<section class="full-width header-well">
@@ -75,8 +75,8 @@
 											
 											<?php
 											include "../funciones/db.php";
-
-											$consulta = mysqli_query($conexion, "SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario ");
+											$usuario= $_SESSION['usuario'];
+											$consulta = mysqli_query($conexion, "SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'");
 											$resultado = mysqli_num_rows($consulta);
 											if ($resultado > 0) {
 												while ($data = mysqli_fetch_assoc($consulta)) { ?>
