@@ -73,9 +73,12 @@
 										
 											<tbody>
                                             <?php
+											$usuario= $_SESSION['usuario'];
                                             $busqueda = $_POST['busqueda'];
                                             include "../funciones/db.php";
-                                            $consulta="SELECT * FROM clientes WHERE Tipo_proyecto like '$busqueda' '%' OR Nombre like '$busqueda' '%' OR Procedencia like '$busqueda' '%' OR Ubicacion like '$busqueda' '%' ";
+                                            $consulta="SELECT * FROM clientes WHERE Tipo_proyecto like '$busqueda' '%' OR Nombre like '$busqueda' '%' OR Procedencia like '$busqueda' '%' OR Ubicacion like '$busqueda' '%' 
+											 WHERE Usuario = '$usuario'
+											";
                                             $resultado= mysqli_query($conexion,$consulta);
                                             while($data = mysqli_fetch_row($resultado))
                                                                                 

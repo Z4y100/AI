@@ -62,7 +62,7 @@
 	<script src="js/main.js" ></script>
 </head>
 <body>
-<?php include_once('header.php')?>
+<?php include_once "../Sistema/includes/header.php"; ?>
 	<!-- pageContent -->
 	
 		<section class="full-width header-well">

@@ -40,11 +40,7 @@
 		<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
 				<div class="table-responsive">
-			<?php
 			
-				
-			if( $_SESSION['id_usuario']<=4 || $_SESSION['id_proyecto']<=4){
-			?>	
 					<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive" class="col-lg-12">
 					
 						<thead>
@@ -117,8 +113,7 @@
 						
 					</tbody>
 					</table>
-					
-                 <?php }?>
+		
 				 
 					
 				 
