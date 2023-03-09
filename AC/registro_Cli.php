@@ -178,28 +178,13 @@
 												</select>
 													
 										</div>
-										<div>
-											<label   for="usuarios">ID SEGUIMIENTO:</label>
-												<select class="mdl-list" name="Id_Seguimiento">
-														<option value="">--Selecciona una opción--</option>
-														<option value="1">Pendiente</option>
-														<?php 
-															include_once('..funciones/db.php');
-															
-															$sql='SELECT * FROM seguimiento';
-															$query=mysqli_query($conexion,$sql);
-															while($row=mysqli_fetch_array($query)){
-																$id_seguimiento=$row['Id_Seguimiento'];
-																
-															?>
-																<option value="<?php echo $id_seguimiento ?>"><?php echo $id_seguimiento ?></option>
-															<?php
-															}
-											
-           												 ?>
-												</select>
-													
-										</div>
+                                                                                <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet">
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+												<input class="mdl-textfield__input" type="number" name="Id_Seguimiento" id="Id_Seguimiento">
+												<label class="mdl-textfield__label" for="Id_Seguimiento">ID DE SEGUIMIENTO: </label>
+											</div>
+									    </div>
+										
 										
 										<p class="text-center">
 											<button class="button" name="btnGuardar">GUARDAR</button>
