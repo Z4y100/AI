@@ -40,73 +40,7 @@
 
 </head>
 <body>
-	<!-- Notifications area -->
-	<section class="full-width container-notifications">
-		<div class="full-width container-notifications-bg btn-Notification"></div>
-	    <section class="NotificationArea">
-	        <div class="full-width text-center NotificationArea-title tittles">Notifications <i class="zmdi zmdi-close btn-Notification"></i></div>
-	        <a href="#" class="Notification" id="notifation-unread-1">
-	            <div class="Notification-icon"><i class="zmdi zmdi-accounts-alt bg-info"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle"></i>
-	                    <strong>New User Registration</strong> 
-	                    <br>
-	                    <small>Just Now</small>
-	                </p>
-	            </div>
-	        	<div class="mdl-tooltip mdl-tooltip--left" for="notifation-unread-1">Notification as UnRead</div> 
-	        </a>
-	        <a href="#" class="Notification" id="notifation-read-1">
-	            <div class="Notification-icon"><i class="zmdi zmdi-cloud-download bg-primary"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle-o"></i>
-	                    <strong>New Updates</strong> 
-	                    <br>
-	                    <small>30 Mins Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-1">Notification as Read</div>
-	        </a>
-	        <a href="#" class="Notification" id="notifation-unread-2">
-	            <div class="Notification-icon"><i class="zmdi zmdi-upload bg-success"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle"></i>
-	                    <strong>Archive uploaded</strong> 
-	                    <br>
-	                    <small>31 Mins Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-unread-2">Notification as UnRead</div>
-	        </a> 
-	        <a href="#" class="Notification" id="notifation-read-2">
-	            <div class="Notification-icon"><i class="zmdi zmdi-mail-send bg-danger"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle-o"></i>
-	                    <strong>New Mail</strong> 
-	                    <br>
-	                    <small>37 Mins Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-2">Notification as Read</div>
-	        </a>
-	        <a href="#" class="Notification" id="notifation-read-3">
-	            <div class="Notification-icon"><i class="zmdi zmdi-folder bg-primary"></i></div>
-	            <div class="Notification-text">
-	                <p>
-	                    <i class="zmdi zmdi-circle-o"></i>
-	                    <strong>Folder delete</strong> 
-	                    <br>
-	                    <small>1 hours Ago</small>
-	                </p>
-	            </div>
-	            <div class="mdl-tooltip mdl-tooltip--left" for="notifation-read-3">Notification as Read</div>
-	        </a>  
-	    </section>
-	</section>
+	
 	<!-- navLateral -->
 	<section class="full-width navLateral">
 		<div class="full-width navLateral-bg btn-menu"></div>
@@ -297,8 +231,8 @@ if(isset($_POST["enviar"]))
 $usuario= $_POST["Usuario"];
 $correo= $_POST["Correo"];
 $contraseña= $_POST["Contraseña"];
-$tipo_proyecto= $_POST["Tipo_Proyecto"];
-$rol= $_POST["Rol"];
+$tipo_proyecto= $_POST["Id_Proyecto"];
+$rol= $_POST["Id_Rol"];
 $fecha_creacion= $_POST["Fecha_Creacion"];
 $id= $_POST["Id_Usuario"];
   
@@ -375,31 +309,65 @@ else {
 	</li>		
 
 
-	<li id="li_3" >
+	<li id="li_4" >
 	<label class="description" for="serie">Contraseña: </label>
 	<div>
-	<input id="Contraseña" name="Contraseña" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Contraseña'];?>"/> 
+	<input id="Contraseña" name="Contraseña" class="element text medium" type="password" maxlength="255" value="<?php echo $row['Contraseña'];?>"/> 
 	</div> 
 	</li>	
 
 
-	<li id="li_3" >
-	<label class="description" for="serie">Tipo de Proyecto: </label>
-	<div>
-	<input id="Tipo_Proyecto" name="Tipo_Proyecto" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Tipo_Proyecto'];?>"/> 
-	</div> 
-	</li>	
+	<li id="li_5" >
+<div >
+                                        <label   for="serie">TIPO DE PROYECTO:</label>
+                                        <center><select class="mdl-list" name="Id_Proyecto">
+                                                    <option value="">--Selecciona una opción--</option>
+                                                    <?php 
+                                                        include_once('..funciones/db.php');
+                                                        
+                                                        $sql='SELECT * FROM tipo_proyecto';
+                                                        $query=mysqli_query($conexion,$sql);
+                                                        while($arreglo=mysqli_fetch_array($query)){
+                                                            $id_proyecto=$arreglo['Id_Proyecto'];
+                                                            $nombreproyecto=$arreglo['Nombre_Proyecto'];
+                                                        ?>
+                                                            <option value="<?php echo $id_proyecto ?>"><?php echo $nombreproyecto ?></option>
+                                                        <?php
+                                                        }
+                                        
+                                                        ?>
+                                            </select></center>
+                                                
+                                    </div>
+</li>	
 
 
-	<li id="li_3" >
-	<label class="description" for="serie">Rol: </label>
-	<div>
-	<input id="Rol" name="Rol" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Rol'];?>"/> 
-	</div> 
-	</li>	
+<li id="li_6" >
+
+                                        <label   for="usuarios">ROL:</label>
+                                        <center><select class="mdl-list" name="Id_Rol">
+                                                    <option value="">--Selecciona una opción--</option>
+                                                    <?php 
+                                                        include_once('..funciones/db.php');
+                                                        
+                                                        $sql='SELECT * FROM roles';
+                                                        $query=mysqli_query($conexion,$sql);
+                                                        while($arreglo=mysqli_fetch_array($query)){
+                                                            $id_rol=$arreglo['Id_Rol'];
+                                                            $nombrerol=$arreglo['Nombre'];
+                                                        ?>
+                                                            <option value="<?php echo $id_rol ?>"><?php echo $nombrerol ?></option>
+                                                        <?php
+                                                        }
+                                        
+                                                        ?>
+                                            </select></center>
+                                                
+                                    
+</li>	
 
 
-    <li id="li_4" >
+    <li id="li_7" >
 	<label class="description" for="fechaing">Fecha de creacion: </label>
 	<div>
 	<input id="Fecha_Creacion" name="Fecha_Creacion" class="element text medium" type="text" maxlength="255" value="<?php echo $row['Fecha_Creacion'];?>"/> 

@@ -1,5 +1,5 @@
-<?php
-require_once("../funciones/db.php");
+<?php		
+	require_once("../funciones/db.php");		
 	session_start();
 	$usuario= $_SESSION['usuario'];
 ?>
@@ -105,7 +105,7 @@ require_once("../funciones/db.php");
 						</a>
 						<ul class="full-width menu-principal sub-menu-options">
 							<li class="full-width">
-								<a href="admin.html" class="full-width">
+								<a href="usuarios.php" class="full-width">
 									<div class="navLateral-body-cl">
 										<i class="zmdi zmdi-account"></i>
 									</div>
@@ -186,8 +186,9 @@ require_once("../funciones/db.php");
 			</div>
 		</div>
 		<section class="full-width text-center" style="padding: 40px 0;">
-			<h3 class="text-center tittles">USUARIOS</h3>
+			<h3 class="text-center tittles">SEGUIMIENTO</h3>
 			<!-- Tiles -->
+			
 			<article class="">
 				
 			
@@ -195,33 +196,29 @@ require_once("../funciones/db.php");
 			<table>
                 <tr>
                     <th>Id</th>
-                    <th>Usuario</th>
-                    <th>Correo </th>
-                    <th>Contraseña </th>
-                    <th>Tipo_Proyecto </th>
-					<th>Rol </th>
-					<th>Fecha_Creacion </th>
-					<th> </th>
-					<th> </th>
+                    <th>Descripcion</th>
+                    <th>Comunicacion </th>
+                    <th>Estatus </th>
+                    <th>Cotizacion_Entrega </th>
+					<th>Cerrado </th>
+					<th>Id_Cliente </th>				
                 </tr>
 
                     <?php
-                    $sql="select usuarios.Id_Usuario,usuarios.Usuario, usuarios.Correo, usuarios.`Contraseña`, tipo_proyecto.Nombre_Proyecto, roles.Nombre, usuarios.Fecha_Creacion from usuarios inner join tipo_proyecto on usuarios.Tipo_Proyecto=tipo_proyecto.Id_Proyecto inner join roles on usuarios.Rol = roles.Id_Rol;";
+                    $sql="select * from seguimiento;";
                     $result=mysqli_query($conexion,$sql);
 
                     while($mostrar=mysqli_fetch_array($result)){
                     ?>
 
                 <tr>
-                    <td><?php echo $mostrar['Id_Usuario'] ?></td>
-                    <td><?php echo $mostrar['Usuario'] ?></td>               
-                    <td><?php echo $mostrar['Correo'] ?></td>                  
-                    <td><?php echo $mostrar['Contraseña'] ?></td>
-					<td><?php echo $mostrar['Nombre_Proyecto'] ?></td>
-					<td><?php echo $mostrar['Nombre'] ?></td>
-					<td><?php echo $mostrar['Fecha_Creacion'] ?></td>
-                    <td><a href="editar.php?EDITAR_ID=<?php echo $mostrar['Id_Usuario']; ?>" class="editaru" >Editar</a></td>
-					<td><a href="borrar.php?BORRAR_ID=<?php echo $mostrar['Id_Usuario']; ?>">Borrar</a></td>
+                    <td><?php echo $mostrar['Id_Seguimiento'] ?></td>
+                    <td><?php echo $mostrar['Descripcion'] ?></td>               
+                    <td><?php echo $mostrar['Comunicacion'] ?></td>                  
+                    <td><?php echo $mostrar['Estatus_Cliente'] ?></td>
+					<td><?php echo $mostrar['Cotizacion_Entrega'] ?></td>
+					<td><?php echo $mostrar['Cerrado'] ?></td>
+					<td><?php echo $mostrar['Id_Cliente'] ?></td>
                 </tr>
 
                 <?php
@@ -230,7 +227,6 @@ require_once("../funciones/db.php");
             </table>
 
 			</article>
-		
 		</section>
 		
 	</section>
