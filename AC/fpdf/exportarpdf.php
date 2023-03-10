@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (empty($_SESSION['active'])) {
+    header('location: ../');
+}
+$usuario= $_SESSION['usuario'];
 require('fpdf.php');
 
 class PDF extends FPDF
@@ -42,7 +47,7 @@ function Footer()
 }
 }
 require '../../funciones/db.php';
-$consulta=mysqli_query($conexion,"SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario");
+$consulta=mysqli_query($conexion,"SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'");
 $resultado=mysqli_num_rows($consulta);
 $pdf = new PDF();
 $pdf->AliasNbPages();
