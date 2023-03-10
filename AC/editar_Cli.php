@@ -206,7 +206,7 @@ if (empty($_REQUEST['id'])) {
 										<center>
 										<button class="button" name="btnGuardar">ACTUALIZAR</button>
 											<div class="mdl-tooltip" for="btn-addAdmin">Actualizar</div>
-										<input type="button" class="button" name="btnRegresar" value="REGRESAR" onclick="document.location.href='clientes.php';">
+										<input type="button" class="button" name="btnRegresar" value="REGRESAR" onclick="document.location.href='lista_Cli.php';">
 											
 										</center>
 										
