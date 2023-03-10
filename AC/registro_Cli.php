@@ -16,7 +16,7 @@
         $necesidad=$_POST['Necesidad'];
         $fecha=$_POST['Fecha_registro'];
         $usuario=$_POST['Id_Usuario'];
-		$seguimiento=$_POST['Id_Seguimiento'];
+		
       
 
 		
@@ -29,8 +29,8 @@
                     </div>';
         }else{
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Id_Seguimiento, Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario,Id_Seguimiento)
-	   values ('$id_seguimiento','$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario','$seguimiento')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Id_Seguimiento, Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario)
+	   values ('$id_seguimiento','$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario')");
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Cliente Registrado
