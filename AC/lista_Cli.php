@@ -46,12 +46,7 @@
 								Lista de  Clientes
 							</div>
 							<div class="full-width panel-content">
-								<form action="busqueda_clientes.php" method="post">
-									<input type="text"  autofocus name="busqueda" id="busqueda" placeholder="Buscar">
-									<input type="submit" class="btn-search" name="enviar" value="Buscar"><br>
-									
-
-								</form>
+							
 								<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
 									<div class="table-responsive">
 									<table id="tablax" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">

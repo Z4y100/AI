@@ -2,7 +2,7 @@
   include "../funciones/db.php";
   if (!empty($_POST)) {
     $alert = "";
-    if (empty($_POST['Nombre'])  ||empty($_POST['Telefono'])  || empty($_POST['Ubicacion']) || empty($_POST['Tipo_proyecto']) || empty($_POST['Procedencia']) ||empty($_POST['Necesidad']) ||empty($_POST['Fecha_registro']) ||empty($_POST['Id_Usuario']) ||empty($_POST['Id_Seguimiento']) ) {
+    if (empty($_POST['Nombre'])  ||empty($_POST['Telefono'])  || empty($_POST['Ubicacion']) || empty($_POST['Tipo_proyecto']) || empty($_POST['Procedencia']) ||empty($_POST['Necesidad']) ||empty($_POST['Fecha_registro']) ||empty($_POST['Id_Usuario']) ) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
@@ -29,8 +29,8 @@
                     </div>';
         }else{
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Id_Seguimiento, Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario)
-	   values ('$id_seguimiento','$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario,Id_Seguimiento)
+	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario','$id_seguimiento')");
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Cliente Registrado
