@@ -64,6 +64,7 @@ if (!empty($_SESSION['active'])) {
 	<link rel="stylesheet" href="Master/css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="Master/css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="Master/css/main.css">
+	<link rel="icon" href="sistema/assets/img/avatar-aitech.png"/>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="Master/js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="Master/js/material.min.js" ></script>
