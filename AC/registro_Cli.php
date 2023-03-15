@@ -2,12 +2,12 @@
   include "../funciones/db.php";
   if (!empty($_POST)) {
     $alert = "";
-    if (empty($_POST['Nombre'])  ||empty($_POST['Telefono'])  || empty($_POST['Ubicacion']) || empty($_POST['Tipo_proyecto']) || empty($_POST['Procedencia']) ||empty($_POST['Necesidad']) ||empty($_POST['Fecha_registro']) ||empty($_POST['Id_Usuario']) ) {
+    if (empty($_POST['Telefono'])  || empty($_POST['Ubicacion']) || empty($_POST['Tipo_proyecto']) || empty($_POST['Procedencia']) ||empty($_POST['Necesidad']) ||empty($_POST['Fecha_registro'])) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
     } else {
-		$id_seguimiento = $_POST['Id_Seguimiento'];
+
 		$nombre=$_POST['Nombre'];
         $telefono=$_POST['Telefono'];
         $ubicacion=$_POST['Ubicacion'];
@@ -15,7 +15,7 @@
         $procedencia=$_POST['Procedencia'];
         $necesidad=$_POST['Necesidad'];
         $fecha=$_POST['Fecha_registro'];
-        $usuario=$_POST['Id_Usuario'];
+		$usuario=$_POST['Id_Usuario'];
 		
       
 
@@ -29,8 +29,8 @@
                     </div>';
         }else{
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario,Id_Seguimiento)
-	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario','$id_seguimiento')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario)
+	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario')");
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Cliente Registrado
@@ -159,8 +159,8 @@
 												<label class="mdl-textfield__label" for="FechaRegistroCliente">FECHA DE REGISTRO</label>
 											</div>
 									    </div>
-										<div>
-											<label   for="usuarios">CLIENTE DE:</label>
+									<div>
+											<label   for="usuarios">¿Quién registró?</label>
 												<select class="mdl-list" name="Id_Usuario">
 														<option value="">--Selecciona una opción--</option>
 														<?php 
@@ -180,13 +180,7 @@
 												</select>
 													
 										</div>
-                                                                                <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="number" name="Id_Seguimiento" id="Id_Seguimiento">
-												<label class="mdl-textfield__label" for="Id_Seguimiento">ID DE SEGUIMIENTO: </label>
-											</div>
-									    </div>
-										
+                                                                               
 										
 										<p class="text-center">
 											<button class="button" name="btnGuardar">GUARDAR</button>

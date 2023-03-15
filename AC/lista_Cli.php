@@ -63,7 +63,7 @@
 													<th>Necesidad</th>
 													<th>Fecha Registro</th>
 													<th>Id Usuario</th>
-													<th>Id Seguimiento</th>
+													
 													<th>Opciones</th>
 													
 												</tr>
@@ -74,7 +74,7 @@
 											<?php
 											include "../funciones/db.php";
 											$usuario= $_SESSION['usuario'];
-											$consulta = mysqli_query($conexion, "SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario ");
+											$consulta = mysqli_query($conexion, "SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario");
 											$resultado = mysqli_num_rows($consulta);
 											if ($resultado > 0) {
 												while ($data = mysqli_fetch_assoc($consulta)) { ?>
@@ -89,7 +89,7 @@
 														<td class="text-center"><?php echo $data['Necesidad']; ?></td>
 														<td class="text-center"><?php echo $data['Fecha_registro']; ?></td>
 														<td class="text-center"><?php echo $data['Usuario']; ?></td>
-														<td class="text-center"><?php echo $data['Id_Seguimiento']; ?></td>
+													
 														
 														<td>
 															<a href="editar_Cli.php?id=<?php echo $data['Id_Cliente'];?>"  class="btn btn-info">Editar</a>
@@ -136,7 +136,7 @@
                 language: {
                     processing: "Tratamiento en curso...",
                     search: "Buscar&nbsp;:",
-                    lengthMenu: "Mostrar de _MENU_ items",
+                    lengthMenu: "Mostar de _MENU_ items",
                     info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
                     infoEmpty: "No existen datos.",
                     infoFiltered: "(filtrado de _MAX_ elementos en total)",

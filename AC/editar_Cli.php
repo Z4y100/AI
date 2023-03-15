@@ -8,7 +8,7 @@
               </div>';
     } else {
 		$id_cliente=$_GET['id'];
-		$id_seguimiento = $_POST['Id_Seguimiento'];
+		$id_usuario=$_POST['Id_Usuario'];
 		$nombre=$_POST['Nombre'];
         $telefono=$_POST['Telefono'];
         $ubicacion=$_POST['Ubicacion'];
@@ -20,7 +20,7 @@
       
 
       $query_update = mysqli_query($conexion, "UPDATE clientes SET 
-	  Id_Seguimiento = '$id_seguimiento',    
+	 Id_Usuario='$id_usuario',
 	    Nombre ='$nombre',
       Telefono = '$telefono', 
 	  Ubicacion = '$ubicacion', 
@@ -182,26 +182,25 @@ if (empty($_REQUEST['id'])) {
 											</div>
 									    </div>
 										<div class="form-group">
-               <label>Id Seguimeinto</label>
-               <?php
-                $query_seg = mysqli_query($conexion, "SELECT Id_Seguimiento, Comunicacion FROM seguimiento ORDER BY Id_Seguimiento ASC");
-                $resultado_seg = mysqli_num_rows($query_seg);
-                mysqli_close($conexion);
-                ?>
-
-               <select id="Id_Seguimiento" name="Id_Seguimiento" class="form-control">
-			   <option >--Selecciona una opcion--</option>
-                 <?php
-                  if ($resultado_seg > 0) {
-                    while ($seguimiento = mysqli_fetch_array($query_seg)) {
-                      // code...
-                  ?>
-                     <option value="<?php echo $seguimiento['Id_Seguimiento']; ?>"><?php echo $seguimiento['Id_Seguimiento']; ?></option>
-                 <?php
-                    }
-                  }
-                  ?>
-               </select>
+               <label>CLIENTE DE:</label>
+			   
+												<select class="mdl-list" name="Id_Usuario">
+														<option value="">--Selecciona una opción--</option>
+														<?php 
+															include_once('..funciones/db.php');
+															
+															$sql='SELECT * FROM usuarios';
+															$query=mysqli_query($conexion,$sql);
+															while($row=mysqli_fetch_array($query)){
+																$id_usuario=$row['Id_Usuario'];
+																$nombreusuario=$row['Usuario'];
+															?>
+																<option value="<?php echo $id_usuario ?>"><?php echo $nombreusuario ?></option>
+															<?php
+															}
+											
+           												 ?>
+												</select>
              </div>       
 										
 										<center>
