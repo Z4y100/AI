@@ -25,7 +25,7 @@
 <section class="full-width text-center" style="padding: 40px 0;">
 			<h3 class="text-center tittles">BIENVENIDO</h3>
 			<!-- Tiles -->
-			
+		<br><br>	
 			<article  class="full-width tile">
 			<a href="lista_Cli.php" >
 				<div class="tile-text">
@@ -37,7 +37,7 @@
 				</a>
 				<i class="zmdi zmdi-accounts tile-icon"></i>
 			</article>
-
+			<?php if ($_SESSION['id_rol'] ==2) { ?>
 			<article class="full-width tile">
 			<a href="registro_Cli.php" >
 				<div class="tile-text">
@@ -47,9 +47,9 @@
 				</div>
 				<i class="zmdi zmdi-accounts-add tile-icon"></i>
 			</a>
-
+			</article> 	<?php } ?>
 			<?php if ($_SESSION['id_rol'] == 1) { ?>
-			</article>
+		
 			<br>
 			<article class="full-width tile">
 			<a href="lista_SC.php" >

@@ -76,6 +76,7 @@
 							<span class="zmdi zmdi-chevron-left"></span>
 						</a>
 						<ul class="full-width menu-principal sub-menu-options">
+						<?php if ($_SESSION['id_rol'] ==2) { ?>
 							<li class="full-width">
 								<a href="registro_cli.php" class="full-width">
 									<div class="navLateral-body-cl">
@@ -86,6 +87,8 @@
 									</div>
 								</a>
 							</li>
+							
+					<?php } ?>
 							<li class="full-width">
 								<a href="lista_cli.php" class="full-width">
 									<div class="navLateral-body-cl">
