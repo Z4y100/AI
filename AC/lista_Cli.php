@@ -136,7 +136,7 @@
                 language: {
                     processing: "Tratamiento en curso...",
                     search: "Buscar&nbsp;:",
-                    lengthMenu: "Mostar de _MENU_ items",
+                    lengthMenu: "Mostrar de _MENU_ items",
                     info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
                     infoEmpty: "No existen datos.",
                     infoFiltered: "(filtrado de _MAX_ elementos en total)",
