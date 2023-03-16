@@ -8,7 +8,7 @@
               </div>';
     } else {
 		$id_cliente=$_GET['id'];
-
+		$id_usuario=$_POST['Id_Usuario'];
 		$nombre=$_POST['Nombre'];
         $telefono=$_POST['Telefono'];
         $ubicacion=$_POST['Ubicacion'];
@@ -20,7 +20,7 @@
       
 
       $query_update = mysqli_query($conexion, "UPDATE clientes SET 
-	
+	 Id_Usuario='$id_usuario',
 	    Nombre ='$nombre',
       Telefono = '$telefono', 
 	  Ubicacion = '$ubicacion', 
@@ -40,13 +40,13 @@
 // Validar seguimiento
 
 if (empty($_REQUEST['id'])) {
-    header("Location: lista_Cli.php");
+    header("Location: clientes.php");
   }
   $id_cliente = $_REQUEST['id'];
   $sql = mysqli_query($conexion, "SELECT * FROM clientes WHERE Id_Cliente = $id_cliente");
   $result_sql = mysqli_num_rows($sql);
   if ($result_sql == 0) {
-    header("Location: lista_Cli.php");
+    header("Location:clientes.php");
   } else {
     if ($data = mysqli_fetch_array($sql)) {
       $id_cliente = $data['Id_Cliente'];
@@ -181,7 +181,27 @@ if (empty($_REQUEST['id'])) {
 												<label class="mdl-textfield__label" for="FechaRegistroCliente">FECHA DE REGISTRO</label>
 											</div>
 									    </div>
-										     
+										<div class="form-group">
+               <label>CLIENTE DE:</label>
+			   
+												<select class="mdl-list" name="Id_Usuario">
+														<option value="">--Selecciona una opción--</option>
+														<?php 
+															include_once('..funciones/db.php');
+															
+															$sql='SELECT * FROM usuarios';
+															$query=mysqli_query($conexion,$sql);
+															while($row=mysqli_fetch_array($query)){
+																$id_usuario=$row['Id_Usuario'];
+																$nombreusuario=$row['Usuario'];
+															?>
+																<option value="<?php echo $id_usuario ?>"><?php echo $nombreusuario ?></option>
+															<?php
+															}
+											
+           												 ?>
+												</select>
+             </div>       
 										
 										<center>
 										<button class="button" name="btnGuardar">ACTUALIZAR</button>

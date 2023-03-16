@@ -65,7 +65,9 @@
 													<th  class="text-center">Fecha Registro</th>
 													<th  class="text-center">Usuario</th>
 													<th  class="text-center">Editar</th>
-													<th  class="text-center">Agregar segumiento</th>
+												
+													<?php if ($_SESSION['id_rol'] ==1) { ?>
+															<th  class="text-center">Agregar segumiento</th> 	<?php } ?>
 													
 												</tr>
 											</thead>
@@ -75,8 +77,10 @@
 											<?php
 											include "../funciones/db.php";
 											
-											$consulta = mysqli_query($conexion, "SELECT * FROM clientes");
+											$consulta = mysqli_query($conexion, "SELECT * FROM clientes  INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario  ORDER BY clientes.Fecha_registro DESC
+											 " );
 											$resultado = mysqli_num_rows($consulta);
+											
 											if ($resultado > 0) {
 												while ($data = mysqli_fetch_assoc($consulta)) { ?>
 													<tr class="text-center">
@@ -89,27 +93,18 @@
 														<td class="text-center"><?php echo $data['Procedencia']; ?></td>
 														<td class="text-center"><?php echo $data['Necesidad']; ?></td>
 														<td class="text-center"><?php echo $data['Fecha_registro']; ?></td>
-														<?php
-											include "../funciones/db.php";
-											
-											$consulta = mysqli_query($conexion, "SELECT * FROM seguimiento
-											INNER JOIN usuarios ON seguimiento.id_usuario= usuarios.id_usuario ");
-											$resultado = mysqli_num_rows($consulta);
-											if ($resultado > 0) {
-												while ($data = mysqli_fetch_assoc($consulta)) { ?>
 														<td class="text-center"><?php echo $data['Usuario']; ?></td>
-													
-														<?php }
-											} ?>
 														<td style="text-align: center;">
 															<a href="editar_Cli.php?id=<?php echo $data['Id_Cliente'];?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
 															
 														</td>
+
+														<?php if ($_SESSION['id_rol'] ==1) { ?>
 														<td style="text-align: center;">
 															<a href="registro_SC.php?id=<?php echo $data['Id_Cliente'];?>"   class="boton azul"><i class="zmdi zmdi-plus"></i></i></a>
 															
 														</td>
-															
+														<?php } ?>
 															
 													</tr>
 											<?php }
