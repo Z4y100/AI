@@ -13,7 +13,7 @@
 		
 		$sql = mysqli_query($conexion, "SELECT * FROM seguimiento 
 		INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente 
-		INNER JOIN estatus_cliente ON seguimiento.id_estatus = estatus_cliente.id_estatus 
+		INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus
 		WHERE seguimiento.id_seguimiento = $id_seguimiento;
 		");
 		$result_sql = mysqli_num_rows($sql);
@@ -78,12 +78,12 @@
       $this->SetTextColor(255, 255, 255); //colorTexto
       $this->SetDrawColor(163, 163, 163); //colorBorde
       $this->SetFont('Arial', 'B', 8);
-	  $this->Cell(25, 10, utf8_decode('FECHA'), 1, 0, 'C', 1);
+
       $this->Cell(25, 10, utf8_decode('NOMBRE'), 1, 0, 'C', 1);
       $this->Cell(25, 10, utf8_decode('TELEFONO'), 1, 0, 'C', 1);
-      $this->Cell(40, 10, utf8_decode('UBICACION'), 1, 0, 'C', 1);
+      $this->Cell(30, 10, utf8_decode('UBICACION'), 1, 0, 'C', 1);
       $this->Cell(40, 10, utf8_decode('TIPO DE PROYECTO'), 1, 0, 'C', 1);
-      $this->Cell(40, 10, utf8_decode('ESTATUS DEL PROYECTO'), 1, 1, 'C', 1);
+      $this->Cell(75, 10, utf8_decode('ESTATUS DEL PROYECTO'), 1, 1, 'C', 1);
 			
 			}
 		 
@@ -109,14 +109,14 @@ $pdf->AliasNbPages(); //muestra la pagina / y total de paginas
 
 		
 if ($data = mysqli_fetch_array($sql)) {
-	$pdf->Cell(25, 5, utf8_decode($data['Fecha_registro']), 0, 0, 'C');
+
 	$pdf->Cell(25, 5, utf8_decode($data['Nombre']), 0, 0, 'C');
 
 	$pdf->Cell(25, 5, utf8_decode($data['Telefono']), 0, 0, 'C');
-	$pdf->Cell(40, 5, utf8_decode($data['Ubicacion']), 0, 0, 'C');
+	$pdf->Cell(30, 5, utf8_decode($data['Ubicacion']), 0, 0, 'C');
 
 	$pdf->Cell(40, 5, utf8_decode($data['Tipo_proyecto']), 0, 0, 'C');
-	$pdf->Cell(40, 5, utf8_decode($data['Nombre_Estatus']), 0, 0, 'C');
+	$pdf->Cell(75, 5, utf8_decode($data['Nombre_Estatus']), 0, 0, 'C');
   }
 
   

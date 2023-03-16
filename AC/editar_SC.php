@@ -3,7 +3,7 @@
   if (!empty($_POST)) {
     $alert = "";
     if ( empty($_POST['Descripcion']) || empty($_POST['Comunicacion']) 
-    || empty($_POST['Id_Estatus'])
+    || empty($_POST['Estatus_Cliente'])
      || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
@@ -13,14 +13,14 @@
 	 
       $descripcion = $_POST['Descripcion'];
 	  $comunicacion = $_POST['Comunicacion'];
-      $estatus_cliente = $_POST['Id_Estatus'];
+      $estatus_cliente = $_POST['Estatus_Cliente'];
 	  $cotizacion_entrega = $_POST['Cotizacion_Entrega'];
       $cerrado = $_POST['Cerrado'];
       
 
       $query_update = mysqli_query($conexion, "UPDATE seguimiento SET 
       Descripcion ='$descripcion',
-      Comunicacion = '$comunicacion', Id_Estatus = '$estatus_cliente', 
+      Comunicacion = '$comunicacion', Estatus_Cliente = '$estatus_cliente', 
       Cotizacion_Entrega = '$cotizacion_entrega',
       Cerrado ='$cerrado' WHERE Id_Seguimiento = $id_seguimiento");
       
@@ -45,7 +45,7 @@ if (empty($_REQUEST['id'])) {
       $id_seguimiento = $data['Id_Seguimiento'];
       $descripcion = $data['Descripcion'];
       $comunicacion = $data['Comunicacion'];
-      $estatus_cliente = $data['Id_Estatus'];
+      $estatus_cliente = $data['Estatus_Cliente'];
       $cotizacion_entrega = $data['Cotizacion_Entrega'];
       $cerrado = $data['Cerrado'];
     }
@@ -118,27 +118,32 @@ if (empty($_REQUEST['id'])) {
 												<label class="mdl-textfield__label" >Comunicación</label>
 											</div>
 									    </div>
+										
+										
 										<div>
-											<label   for="usuarios">Estatus cliente</label>
-												<select class="mdl-list" name="Id_Estatus">
-														<option value="">--Selecciona una opción--</option>
-														<?php 
-															include_once('..funciones/db.php');
-															
-															$sql='SELECT * FROM estatus_cliente';
-															$query=mysqli_query($conexion,$sql);
-															while($row=mysqli_fetch_array($query)){
-																$id_estatus=$row['Id_Estatus'];
-																$nombreE=$row['Nombre_Estatus'];
-															?>
-																<option value="<?php echo $id_estatus ?>"><?php echo $nombreE ?></option>
-															<?php
-															}
-											
-           												 ?>
-												</select>
+
+										<label>TIPO DE PROYECTO:</label>
+											<select id="estatus" name="Estatus_Cliente" id="Estatus_Cliente" value="<?php echo $estatus_cliente; ?>" class="mdl-list">
+											<option value="<?php echo $estatus_cliente; ?>"><?php echo$estatus_cliente; ?></option>
+											<?php 
+												include_once('..funciones/db.php');
+												
+												$sql='SELECT * FROM estatus_cliente';
+												$query=mysqli_query($conexion,$sql);
+												while($row=mysqli_fetch_array($query)){
 													
+													$nombreproyecto=$row['Nombre_Estatus'];
+												?>
+													<option value="<?php echo $nombreproyecto ?>"><?php echo $nombreproyecto ?></option>
+												<?php
+												}
+											
+           									 ?>
+            
+        
+											</select>
 										</div>
+										
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 												<input class="mdl-textfield__input" type="text"  id="Cotizacion_Entrega" name="Cotizacion_Entrega" value="<?php echo $cotizacion_entrega; ?>">

@@ -70,7 +70,7 @@
                          require ("../funciones/db.php");
 						 $sql = $conexion ->query("SELECT * FROM seguimiento 
 						 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  
-						 INNER JOIN estatus_cliente ON seguimiento.id_estatus = estatus_cliente.id_estatus ORDER BY clientes.Fecha_registro DESC
+						 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus ORDER BY clientes.Fecha_registro DESC
 						  ");
 						 
 						  $result = mysqli_num_rows($sql);

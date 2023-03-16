@@ -2,7 +2,7 @@
   include "../funciones/db.php";
   if (!empty($_POST)) {
     $alert = "";
-    if (empty($_POST['Descripcion'])  || empty($_POST['Comunicacion']) || empty($_POST['Id_Estatus']) || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ) {
+    if (empty($_POST['Descripcion'])  || empty($_POST['Comunicacion']) || empty($_POST['Estatus_Cliente']) || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
@@ -11,14 +11,14 @@
 	
       $descripcion = $_POST['Descripcion'];
 	  $comunicacion = $_POST['Comunicacion'];
-      $id_estatus = $_POST['Id_Estatus'];
+      $estatus = $_POST['Estatus_Cliente'];
 	  $cotizacion_entrega = $_POST['Cotizacion_Entrega'];
       $cerrado = $_POST['Cerrado'];
       $usuario=$_POST['Id_Usuario'];
 		
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO seguimiento(Id_Cliente,Descripcion,Comunicacion,Id_Estatus,Cotizacion_Entrega,Cerrado,Id_Usuario) 
-	   values ('$id_cliente','$descripcion','$comunicacion', '$id_estatus', '$cotizacion_entrega', '$cerrado','$usuario')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO seguimiento(Id_Cliente,Descripcion,Comunicacion,Estatus_Cliente,Cotizacion_Entrega,Cerrado,Id_Usuario) 
+	   values ('$id_cliente','$descripcion','$comunicacion', '$estatus', '$cotizacion_entrega', '$cerrado','$usuario')");
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Seguimiento Registrado
@@ -84,6 +84,11 @@
                                 
 
 								<?php echo isset($alert) ? $alert : ''; ?>
+
+
+
+
+								
 								<div>
 											<label   for="usuarios">¿Quién registra?</label>
 												<select class="mdl-list" name="Id_Usuario">
@@ -121,8 +126,8 @@
 										
 
 										<div>
-											<label   for="usuarios">Estatus cliente</label>
-												<select class="mdl-list" name="Id_Estatus">
+											<label   >Estatus cliente</label>
+												<select class="mdl-list" name="Estatus_Cliente" id="estatus">
 														<option value="">--Selecciona una opción--</option>
 														<?php 
 															include_once('..funciones/db.php');
@@ -130,10 +135,10 @@
 															$sql='SELECT * FROM estatus_cliente';
 															$query=mysqli_query($conexion,$sql);
 															while($row=mysqli_fetch_array($query)){
-																$id_estatus=$row['Id_Estatus'];
-																$nombreE=$row['Nombre_Estatus'];
+																$Nombre_Estatus=$row['Nombre_Estatus'];
+																
 															?>
-																<option value="<?php echo $id_estatus ?>"><?php echo $nombreE ?></option>
+																<option value="<?php echo $Nombre_Estatus ?>"><?php echo $Nombre_Estatus ?></option>
 															<?php
 															}
 											

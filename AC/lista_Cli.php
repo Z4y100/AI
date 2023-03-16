@@ -77,7 +77,7 @@
 											<?php
 											include "../funciones/db.php";
 											
-											$consulta = mysqli_query($conexion, "SELECT * FROM clientes  INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario  ORDER BY clientes.Fecha_registro DESC
+											$consulta = mysqli_query($conexion, "SELECT * FROM clientes  INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario  ORDER BY clientes.Fecha_registro ASC
 											 " );
 											$resultado = mysqli_num_rows($consulta);
 											
