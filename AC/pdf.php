@@ -11,8 +11,9 @@
 	}else{
 		$id_seguimiento = $_REQUEST['id'];
 		
-		$sql = mysqli_query($conexion, "SELECT * FROM clientes cliente
-		INNER JOIN seguimiento seguimiento ON cliente.id_seguimiento = seguimiento.id_seguimiento 
+		$sql = mysqli_query($conexion, "SELECT * FROM seguimiento 
+		INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente 
+		INNER JOIN estatus_cliente ON seguimiento.id_estatus = estatus_cliente.id_estatus 
 		WHERE seguimiento.id_seguimiento = $id_seguimiento;
 		");
 		$result_sql = mysqli_num_rows($sql);
@@ -115,7 +116,7 @@ if ($data = mysqli_fetch_array($sql)) {
 	$pdf->Cell(40, 5, utf8_decode($data['Ubicacion']), 0, 0, 'C');
 
 	$pdf->Cell(40, 5, utf8_decode($data['Tipo_proyecto']), 0, 0, 'C');
-	$pdf->Cell(40, 5, utf8_decode($data['Estatus_Cliente']), 0, 0, 'C');
+	$pdf->Cell(40, 5, utf8_decode($data['Nombre_Estatus']), 0, 0, 'C');
   }
 
   
