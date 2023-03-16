@@ -62,18 +62,7 @@
 				<i class="zmdi zmdi-file-text tile-icon"></i>
 			</a>
 			</article>
-			<article class="full-width tile">
-			<a href="registro_SC.php" >
-				<div class="tile-text">
-					<span class="text-condensedLight">
-						<small>Registrar seguimientos </small>
-					</span>
-				</div>
-			
-				<i class="zmdi zmdi-border-color tile-icon"></i>
-
-				
-			</article> 	<?php } ?>
+				<?php } ?>
 		</section>
 		
 </body>

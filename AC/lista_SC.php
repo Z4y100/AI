@@ -60,7 +60,7 @@
                                <th style="text-align: center;">Cerrado</th>
                                
 								<th style="text-align: center;">Editar</th>
-								<th style="text-align: center;" >Nuevo  seguimiento</th>
+						
 								<th style="text-align: center;">Generar estatus</th>
 								
 							</tr>
@@ -69,8 +69,9 @@
                         <tbody>
 						<?php
                          require ("../funciones/db.php");
-						 $sql = $conexion ->query("SELECT * FROM seguimiento
-						 INNER JOIN clientes ON seguimiento.id_seguimiento = clientes.id_seguimiento 
+						 $sql = $conexion ->query("SELECT * FROM seguimiento 
+						 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente 
+						 INNER JOIN estatus_cliente ON seguimiento.id_estatus = estatus_cliente.id_estatus 
 						  ");
 						 
 						  $result = mysqli_num_rows($sql);
@@ -86,15 +87,12 @@
 									<td style="text-align: center;"><?php echo $resultado['Descripcion']; ?></td>
                                     <td></td>
                                     <td style="text-align: center;"><?php echo $resultado['Comunicacion']; ?></td>
-									<td style="text-align: center;"><?php echo $resultado['Estatus_Cliente']; ?></td>
+									<td style="text-align: center;"><?php echo $resultado['Nombre_Estatus']; ?></td>
                                     <td style="text-align: center;"><?php echo $resultado['Cotizacion_Entrega']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Cerrado']; ?></td>
 								
 						       <td style="text-align: center;"> 
 							   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
-							   </td>
-							   <td  style="text-align: center;"> 
-							   <a href="registro_SC.php"  class="boton azul"><i class="zmdi zmdi-plus"></i></i></a>
 							   </td>
 							  
 							   <td style="text-align: center;" >

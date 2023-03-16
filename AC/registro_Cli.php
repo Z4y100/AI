@@ -15,7 +15,6 @@
         $procedencia=$_POST['Procedencia'];
         $necesidad=$_POST['Necesidad'];
         $fecha=$_POST['Fecha_registro'];
-		$usuario=$_POST['Id_Usuario'];
 		
       
 
@@ -29,8 +28,8 @@
                     </div>';
         }else{
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario)
-	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro)
+	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha')");
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Cliente Registrado
@@ -159,27 +158,7 @@
 												<label class="mdl-textfield__label" for="FechaRegistroCliente">FECHA DE REGISTRO</label>
 											</div>
 									    </div>
-									<div>
-											<label   for="usuarios">¿Quién registró?</label>
-												<select class="mdl-list" name="Id_Usuario">
-														<option value="">--Selecciona una opción--</option>
-														<?php 
-															include_once('..funciones/db.php');
-															
-															$sql='SELECT * FROM usuarios';
-															$query=mysqli_query($conexion,$sql);
-															while($row=mysqli_fetch_array($query)){
-																$id_usuario=$row['Id_Usuario'];
-																$nombreusuario=$row['Usuario'];
-															?>
-																<option value="<?php echo $id_usuario ?>"><?php echo $nombreusuario ?></option>
-															<?php
-															}
-											
-           												 ?>
-												</select>
-													
-										</div>
+									
                                                                                
 										
 										<p class="text-center">

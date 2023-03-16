@@ -64,118 +64,52 @@
 						</a>
 					</li>
 					
-					<li class="full-width divider-menu-h"></li>
+					
+
+					<?php if ($_SESSION['id_rol'] ==2) { ?>
+						<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
-						<a href="#!" class="full-width btn-subMenu">
+						<a href="registro_cli.php"  class="full-width">
 							<div class="navLateral-body-cl">
-							<i class="zmdi zmdi-account-circle"></i>
+							<i class="zmdi zmdi-accounts-add"></i>
 							</div>
 							<div class="navLateral-body-cr">
-								ATENCIÓN A CLIENTES
+							REGISTRO DE NUEVA ATENCIÓN 
 							</div>
-							<span class="zmdi zmdi-chevron-left"></span>
 						</a>
-						<ul class="full-width menu-principal sub-menu-options">
-						<?php if ($_SESSION['id_rol'] ==2) { ?>
-							<li class="full-width">
-								<a href="registro_cli.php" class="full-width">
-									<div class="navLateral-body-cl">
-									<i class="zmdi zmdi-accounts-add"></i>
-									</div>
-									<div class="navLateral-body-cr">
-										REGISTRO DE NUEVA ATENCIÓN 
-									</div>
-								</a>
-							</li>
-							
-					<?php } ?>
-							<li class="full-width">
-								<a href="lista_cli.php" class="full-width">
-									<div class="navLateral-body-cl">
-										<i class="zmdi zmdi-accounts"></i>
-									</div>
-									<div class="navLateral-body-cr">
-										ATENCIONES REGISTRADAS
-									</div>
-								</a>
-							</li>
-						</ul>
 					</li>
-					<?php if ($_SESSION['id_rol'] ==1) { ?>
-					<li class="full-width divider-menu-h"></li>
+					<?php } ?>
+					<?php if ($_SESSION['id_rol'] <=2) { ?>
+						<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
-						<a href="#!" class="full-width btn-subMenu">
+						<a href="lista_Cli.php" class="full-width">
 							<div class="navLateral-body-cl">
-							<i class="zmdi zmdi-accounts-outline"></i>
+							<i class="zmdi zmdi-accounts"></i>
 							</div>
 							<div class="navLateral-body-cr">
-								SEGUIMIENTO A CLIENTES
+							ATENCIONES REGISTRADAS
 							</div>
-							<span class="zmdi zmdi-chevron-left"></span>
 						</a>
-						<ul class="full-width menu-principal sub-menu-options">
-							<li class="full-width">
-								<a href="registro_SC.php" class="full-width">
-									<div class="navLateral-body-cl">
-									<i class="zmdi zmdi-border-color"></i>
-									</div>
-									<div class="navLateral-body-cr">
-									REGISTRO DE NUEVO SEGUIMIENTO
-									</div>
-								</a>
-							</li>
-							<li class="full-width">
-								<a href="lista_SC.php" class="full-width">
-									<div class="navLateral-body-cl">
-									<i class="zmdi zmdi-file-text"></i>
-									</div>
-									<div class="navLateral-body-cr">
-									SEGUIMIENTOS REGISTRADOS
-									</div>
-								</a>
-							</li>
-						</ul>
+					</li>
+					<?php } ?>
+
+					<?php if ($_SESSION['id_rol'] ==1) { ?>
+						<li class="full-width divider-menu-h"></li>
+					<li class="full-width">
+						<a href="lista_SC.php" class="full-width">
+							<div class="navLateral-body-cl">
+							<i class="zmdi zmdi-file-text"></i>
+							</div>
+							<div class="navLateral-body-cr">
+								SEGUIMIENTOS REGISTRADOS
+							</div>
+						</a>
 					</li>
 					
 					<?php } ?>
-					<?php if ($_SESSION['id_rol'] == 3) { ?>
-					<li class="full-width divider-menu-h"></li>
-					<li class="full-width">
-						<a href="#!" class="full-width btn-subMenu">
-							<div class="navLateral-body-cl">
-							<i class="zmdi zmdi-account"></i>
-							</div>
-							<div class="navLateral-body-cr">
-								USUARIO
-							</div>
-							<span class="zmdi zmdi-chevron-left"></span>
-						</a>
-						<ul class="full-width menu-principal sub-menu-options">
-							<li class="full-width">
-								<a href="registro_SC.php" class="full-width">
-									<div class="navLateral-body-cl">
-									<i class="zmdi zmdi-account-add"></i>
-									</div>
-									<div class="navLateral-body-cr">
-									REGISTRO DE NUEVO USUARIO
-									</div>
-								</a>
-							</li>
-						
-							<li class="full-width">
-								<a href="lista_SC.php" class="full-width">
-									<div class="navLateral-body-cl">
-									<i class="zmdi zmdi-accounts-alt"></i>
-									</div>
-									<div class="navLateral-body-cr">
-									USUARIO REGISTRADOS
-									</div>
-								</a>
-							</li>
-						
-						</ul>
-					</li>
-					<?php } ?>
+					
+					
+				
 					<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="configuracion.php" class="full-width">

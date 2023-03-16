@@ -2,21 +2,23 @@
   include "../funciones/db.php";
   if (!empty($_POST)) {
     $alert = "";
-    if (empty($_POST['Id_Cliente'])  ||empty($_POST['Descripcion'])  || empty($_POST['Comunicacion']) || empty($_POST['Estatus_Cliente']) || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ) {
+    if (empty($_POST['Descripcion'])  || empty($_POST['Comunicacion']) || empty($_POST['Id_Estatus']) || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
     } else {
-		$id_cliente = $_POST['Id_Cliente'];
+		$id_cliente=$_GET['id'];
+	
       $descripcion = $_POST['Descripcion'];
 	  $comunicacion = $_POST['Comunicacion'];
-      $estatus_cliente = $_POST['Estatus_Cliente'];
+      $id_estatus = $_POST['Id_Estatus'];
 	  $cotizacion_entrega = $_POST['Cotizacion_Entrega'];
       $cerrado = $_POST['Cerrado'];
-      
+      $usuario=$_POST['Id_Usuario'];
+		
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO seguimiento(Id_Cliente,Descripcion,Comunicacion,Estatus_Cliente,Cotizacion_Entrega,Cerrado)
-	   values ('$id_cliente','$descripcion','$comunicacion', '$estatus_cliente', '$cotizacion_entrega', '$cerrado')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO seguimiento(Id_Cliente,Descripcion,Comunicacion,Id_Estatus,Cotizacion_Entrega,Cerrado,Id_Usuario) 
+	   values ('$id_cliente','$descripcion','$comunicacion', '$id_estatus', '$cotizacion_entrega', '$cerrado','$usuario')");
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Seguimiento Registrado
@@ -35,7 +37,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Lista Atención a Clientes</title>
+	<title>Registro Seguimiento</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/sweetalert2.css">
 	<link rel="stylesheet" href="css/material.min.css">
@@ -82,28 +84,28 @@
                                 
 
 								<?php echo isset($alert) ? $alert : ''; ?>
-								<div class="form-group">
-               <label>Id Cliente</label>
-               <?php
-                $query_cliente = mysqli_query($conexion, "SELECT Id_Cliente, Nombre FROM clientes ORDER BY Id_Cliente ASC");
-                $resultado_cliente = mysqli_num_rows($query_cliente);
-                mysqli_close($conexion);
-                ?>
-
-               <select id="Id_Cliente" name="Id_Cliente" class="form-control">
-			   <option >--Selecciona una opcion--</option>
-                 <?php
-                  if ($resultado_cliente > 0) {
-                    while ($cliente = mysqli_fetch_array($query_cliente)) {
-                      // code...
-                  ?>
-                     <option value="<?php echo $cliente['Id_Cliente']; ?>"><?php echo $cliente['Id_Cliente']; ?></option>
-                 <?php
-                    }
-                  }
-                  ?>
-               </select>
-             </div>       
+								<div>
+											<label   for="usuarios">¿Quién registra?</label>
+												<select class="mdl-list" name="Id_Usuario">
+														<option value="">--Selecciona una opción--</option>
+														<?php 
+															include_once('..funciones/db.php');
+															
+															$sql='SELECT * FROM usuarios';
+															$query=mysqli_query($conexion,$sql);
+															while($row=mysqli_fetch_array($query)){
+																$id_usuario=$row['Id_Usuario'];
+																$nombreusuario=$row['Usuario'];
+															?>
+																<option value="<?php echo $id_usuario ?>"><?php echo $nombreusuario ?></option>
+															<?php
+															}
+											
+           												 ?>
+												</select>
+													
+										</div>
+						  
                                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 												<input class="mdl-textfield__input" type="text"  id="Descripcion" name="Descripcion">
@@ -116,12 +118,29 @@
 												<label class="mdl-textfield__label" >Comunicación</label>
 											</div>
 									    </div>
-										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Estatus_Cliente" name="Estatus_Cliente">
-												<label class="mdl-textfield__label" >Estatus cliente</label>
-											</div>
-									    </div>
+										
+
+										<div>
+											<label   for="usuarios">Estatus cliente</label>
+												<select class="mdl-list" name="Id_Estatus">
+														<option value="">--Selecciona una opción--</option>
+														<?php 
+															include_once('..funciones/db.php');
+															
+															$sql='SELECT * FROM estatus_cliente';
+															$query=mysqli_query($conexion,$sql);
+															while($row=mysqli_fetch_array($query)){
+																$id_estatus=$row['Id_Estatus'];
+																$nombreE=$row['Nombre_Estatus'];
+															?>
+																<option value="<?php echo $id_estatus ?>"><?php echo $nombreE ?></option>
+															<?php
+															}
+											
+           												 ?>
+												</select>
+													
+										</div>
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 												<input class="mdl-textfield__input" type="text"  id="Cotizacion_Entrega" name="Cotizacion_Entrega">

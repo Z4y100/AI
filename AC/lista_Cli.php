@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="../Sistema//css/style.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="../Sistema/assets/img/avatar-aitech.png"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
@@ -58,13 +59,13 @@
 													<th class="text-center">Teléfono</th>
 													<th class="text-center">Ubicación</th>
 													<th></th>
-													<th>Tipo de Proyecto</th>
+													<th  class="text-center">Tipo de Proyecto</th>
 													<th class="text-center">Procedencia</th>
-													<th>Necesidad</th>
-													<th>Fecha Registro</th>
-													<th>Id Usuario</th>
-													
-													<th>Opciones</th>
+													<th  class="text-center">Necesidad</th>
+													<th  class="text-center">Fecha Registro</th>
+													<th  class="text-center">Usuario</th>
+													<th  class="text-center">Editar</th>
+													<th  class="text-center">Agregar segumiento</th>
 													
 												</tr>
 											</thead>
@@ -73,26 +74,39 @@
 											
 											<?php
 											include "../funciones/db.php";
-											$usuario= $_SESSION['usuario'];
-											$consulta = mysqli_query($conexion, "SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario");
+											
+											$consulta = mysqli_query($conexion, "SELECT * FROM clientes");
 											$resultado = mysqli_num_rows($consulta);
 											if ($resultado > 0) {
 												while ($data = mysqli_fetch_assoc($consulta)) { ?>
 													<tr class="text-center">
 													<td class="mdl-data-table__cell--non-numeric text-center"><?php echo $data['Id_Cliente']; ?></td>
 														<td class="text-center"><?php echo $data['Nombre']; ?></td>
-														<td><?php echo $data['Telefono']; ?></td>
+														<td  class="text-center"><?php echo $data['Telefono']; ?></td>
 														<td class="text-center"><?php echo $data['Ubicacion']; ?></td>
 														<td></td>
 														<td class="text-center"><?php echo $data['Tipo_proyecto']; ?></td>
 														<td class="text-center"><?php echo $data['Procedencia']; ?></td>
 														<td class="text-center"><?php echo $data['Necesidad']; ?></td>
 														<td class="text-center"><?php echo $data['Fecha_registro']; ?></td>
+														<?php
+											include "../funciones/db.php";
+											
+											$consulta = mysqli_query($conexion, "SELECT * FROM seguimiento
+											INNER JOIN usuarios ON seguimiento.id_usuario= usuarios.id_usuario ");
+											$resultado = mysqli_num_rows($consulta);
+											if ($resultado > 0) {
+												while ($data = mysqli_fetch_assoc($consulta)) { ?>
 														<td class="text-center"><?php echo $data['Usuario']; ?></td>
 													
-														
-														<td>
-															<a href="editar_Cli.php?id=<?php echo $data['Id_Cliente'];?>"  class="btn btn-info">Editar</a>
+														<?php }
+											} ?>
+														<td style="text-align: center;">
+															<a href="editar_Cli.php?id=<?php echo $data['Id_Cliente'];?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
+															
+														</td>
+														<td style="text-align: center;">
+															<a href="registro_SC.php?id=<?php echo $data['Id_Cliente'];?>"   class="boton azul"><i class="zmdi zmdi-plus"></i></i></a>
 															
 														</td>
 															
