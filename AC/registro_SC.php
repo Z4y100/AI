@@ -119,8 +119,9 @@
 									    </div>
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Comunicacion" name="Comunicacion">
+												<input class="mdl-textfield__input" type="text"  id="Comunicacion" pattern="^(Si|No|si|no|SI|NO)$" name="Comunicacion">
 												<label class="mdl-textfield__label" >Comunicación</label>
+												<span class="mdl-textfield__error">Se debe escribir "Si" o "No" en esta casilla </span>
 											</div>
 									    </div>
 										
@@ -148,14 +149,16 @@
 										</div>
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Cotizacion_Entrega" name="Cotizacion_Entrega">
+												<input class="mdl-textfield__input" type="text"  id="Cotizacion_Entrega" pattern="^(Si|No|si|no|SI|NO)$"  name="Cotizacion_Entrega">
 												<label class="mdl-textfield__label" >Cotización entregada</label>
+												<span class="mdl-textfield__error">Se debe escribir "Si" o "No" en esta casilla </span>
 											</div>
 									    </div>
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Cerrado" name="Cerrado">
+												<input class="mdl-textfield__input" type="text"  id="Cerrado" pattern="^(Si|No|si|no|SI|NO)$" name="Cerrado">
 												<label class="mdl-textfield__label" >Cerrado</label>
+												<span class="mdl-textfield__error">Se debe escribir "Si" o "No" en esta casilla </span>
 											</div>
 									    </div>
                                         

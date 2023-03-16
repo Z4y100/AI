@@ -93,21 +93,20 @@
 								<form action="" method="POST">
 						
 								<?php echo isset($alert) ? $alert : ''; ?>
-									    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
+									  
+										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  name="Nombre" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="NombreCliente">
-												<label class="mdl-textfield__label" for="NombreCliente">NOMBRE</label>
-												<span class="mdl-textfield__error">Nombre Invalido</span>
+												<input class="mdl-textfield__input" type="text"  name="Nombre" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="Nombre">
+												<label class="mdl-textfield__label" for="Nombre">NOMBRE</label>
+												<span class="mdl-textfield__error">Invalido solo ingresar letras.</span>
 											</div>
 									    </div>
-										
-										<div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="tel" name="Telefono" pattern="-?[0-9+()- ]*(\.[0-9]+)?" id="TelefonoCliente">
+									
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+												<input class="mdl-textfield__input" type="tel"  pattern="^[-+()/\s\d]+$" name="Telefono" id="TelefonoCliente">
 												<label class="mdl-textfield__label" for="TelefonoCliente">NÚMERO DE TELÉFONO</label>
 												<span class="mdl-textfield__error">Número de teléfono invalido</span>
 											</div>
-										</div>
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 												<input class="mdl-textfield__input" type="text" name="Ubicacion" id="UbicacionCliente">
@@ -155,8 +154,9 @@
 									    </div>
 										<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="datetime" name="Fecha_registro" id="FechaRegistroCliente">
-												<label class="mdl-textfield__label" for="FechaRegistroCliente">FECHA DE REGISTRO</label>
+											<label for="FechaRegistroCliente">FECHA DE REGISTRO</label>
+												<input class="mdl-textfield__input" type="date" name="Fecha_registro" id="FechaRegistroCliente">
+										
 											</div>
 									    </div>
 									<div>
