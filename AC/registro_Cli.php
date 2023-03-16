@@ -102,8 +102,9 @@
 											</div>
 									    </div>
 									
+										
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="tel"  pattern="^[-+()/\s\d]+$" name="Telefono" id="TelefonoCliente">
+												<input class="mdl-textfield__input" type="tel" pattern="^[-+()/\s\d]{10,}$" name="Telefono"  id="TelefonoCliente">
 												<label class="mdl-textfield__label" for="TelefonoCliente">NÚMERO DE TELÉFONO</label>
 												<span class="mdl-textfield__error">Número de teléfono invalido</span>
 											</div>
