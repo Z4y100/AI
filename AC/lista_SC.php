@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Lista Atención a Clientes</title>
+	<title>Lista Seguimientos</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/sweetalert2.css">
 	<link rel="stylesheet" href="css/material.min.css">
@@ -45,7 +45,7 @@
 					
 						<thead>
 							<tr>
-							<th wi style="text-align: center; width:20%;">Id</th>
+						
 							<th style="text-align: center;">Fecha de llegada</th>
 								<th style="text-align: center;" >Nombre</th>
 								<th style="text-align: center;">N° teléfono</th>
@@ -70,7 +70,8 @@
                          require ("../funciones/db.php");
 						 $sql = $conexion ->query("SELECT * FROM seguimiento 
 						 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  
-						 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus ORDER BY clientes.Fecha_registro DESC
+						 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus 
+						 INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'
 						  ");
 						 
 						  $result = mysqli_num_rows($sql);
@@ -78,7 +79,7 @@
 						 while($resultado = mysqli_fetch_assoc($sql)){
                          ?>
 						 <tr style="width: 100%;" >
-						 <td style="text-align: center;"><?php echo $resultado['Id_Seguimiento']; ?></td>
+					
                          <td style="text-align: center;"><?php echo $resultado['Fecha_registro']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Nombre']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Telefono']; ?></td>
@@ -157,6 +158,7 @@
                 },
                 
                 lengthMenu: [ [10, 25, -1], [10, 25, "Todos"] ],
+				order: [[1, 'desc']] // Ordenar por la primera
             });
         });
     </script>

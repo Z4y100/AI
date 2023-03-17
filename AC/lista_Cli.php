@@ -54,7 +54,7 @@
 									<table id="tablax" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
 											<thead>
 												<tr class="text-center">
-													<th class="mdl-data-table__cell--non-numeric">Id Cliente</th>
+													
 													<th class="text-center">Nombre</th>
 													<th class="text-center">Teléfono</th>
 													<th class="text-center">Ubicación</th>
@@ -84,7 +84,7 @@
 											if ($resultado > 0) {
 												while ($data = mysqli_fetch_assoc($consulta)) { ?>
 													<tr class="text-center">
-													<td class="mdl-data-table__cell--non-numeric text-center"><?php echo $data['Id_Cliente']; ?></td>
+												
 														<td class="text-center"><?php echo $data['Nombre']; ?></td>
 														<td  class="text-center"><?php echo $data['Telefono']; ?></td>
 														<td class="text-center"><?php echo $data['Ubicacion']; ?></td>
@@ -166,6 +166,7 @@
                 },
                 
                 lengthMenu: [ [10, 25, -1], [10, 25, "Todos"] ],
+				order: [[1, 'desc']] // Ordenar por la primera
             });
         });
     </script>
