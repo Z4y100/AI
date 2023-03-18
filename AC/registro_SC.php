@@ -90,7 +90,7 @@
 
 								
 								<div>
-											<label   for="usuarios">¿Quién registra?</label>
+											<label   for="usuarios">¿QUIÉN REGISTRA?</label>
 												<select class="mdl-list" name="Id_Usuario">
 														<option value="">--Selecciona una opción--</option>
 														<?php 
@@ -114,20 +114,43 @@
                                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 												<input class="mdl-textfield__input" type="text"  id="Descripcion" name="Descripcion">
-												<label class="mdl-textfield__label" >Descripción</label>
+												<label class="mdl-textfield__label" >DESCRIPCIÓN</label>
 											</div>
 									    </div>
-										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Comunicacion" pattern="^(Si|No|si|no|SI|NO)$" name="Comunicacion">
-												<label class="mdl-textfield__label" >Comunicación</label>
-												<span class="mdl-textfield__error">Se debe escribir "Si" o "No" en esta casilla </span>
-											</div>
-									    </div>
+
+
+
+										
+								<div>	
+								<label   >COMUNICACIÓN</label>
+										<select class="mdl-list" name="Comunicacion" id="Comunicacion">
+    									<option value="">--Selecciona una opción--</option>
+										<?php 
+										include_once('..funciones/db.php');
+										
+										$sql = 'SELECT * FROM seguimiento';
+										$query = mysqli_query($conexion, $sql);
+										
+										$mostrado = false; // variable para indicar si ya se han mostrado las opciones
+										
+										while ($row = mysqli_fetch_array($query)) {
+											$comunicacion = $row['Comunicacion'];
+											
+											// mostrar opciones solo una vez
+											if (!$mostrado) {
+											echo '<option value="'.$comunicacion.'">SI</option>';
+											echo '<option value="'.$comunicacion.'">NO</option>';
+											$mostrado = true;
+											}
+										}
+										?>
+									</select>
+								</div>
+									<br>	
 										
 
 										<div>
-											<label   >Estatus cliente</label>
+											<label   >ESTATUS CLIENTE</label>
 												<select class="mdl-list" name="Estatus_Cliente" id="estatus">
 														<option value="">--Selecciona una opción--</option>
 														<?php 
@@ -147,21 +170,59 @@
 												</select>
 													
 										</div>
-										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Cotizacion_Entrega" pattern="^(Si|No|si|no|SI|NO)$"  name="Cotizacion_Entrega">
-												<label class="mdl-textfield__label" >Cotización entregada</label>
-												<span class="mdl-textfield__error">Se debe escribir "Si" o "No" en esta casilla </span>
-											</div>
-									    </div>
-										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Cerrado" pattern="^(Si|No|si|no|SI|NO)$" name="Cerrado">
-												<label class="mdl-textfield__label" >Cerrado</label>
-												<span class="mdl-textfield__error">Se debe escribir "Si" o "No" en esta casilla </span>
-											</div>
-									    </div>
-                                        
+										<br>
+								<div>	
+								<label   >COTIZACIÓN ENTREGADA</label>
+										<select class="mdl-list" name="Cotizacion_Entrega" id="Cotizacion_Entrega">
+    									<option value="">--Selecciona una opción--</option>
+										<?php 
+										include_once('..funciones/db.php');
+										
+										$sql = 'SELECT * FROM seguimiento';
+										$query = mysqli_query($conexion, $sql);
+										
+										$mostrado = false; // variable para indicar si ya se han mostrado las opciones
+										
+										while ($row = mysqli_fetch_array($query)) {
+											$cotizacion_entrega = $row['Cotizacion_Entrega'];
+											
+											// mostrar opciones solo una vez
+											if (!$mostrado) {
+											echo '<option value="'.$cotizacion_entrega.'">SI</option>';
+											echo '<option value="'.$cotizacion_entrega.'">NO</option>';
+											$mostrado = true;
+											}
+										}
+										?>
+									</select>
+								</div>
+											<br>
+								<div>	
+								<label   >CERRADO</label>
+										<select class="mdl-list" name="Cerrado" id="Cerrado">
+    									<option value="">--Selecciona una opción--</option>
+										<?php 
+										include_once('..funciones/db.php');
+										
+										$sql = 'SELECT * FROM seguimiento';
+										$query = mysqli_query($conexion, $sql);
+										
+										$mostrado = false; // variable para indicar si ya se han mostrado las opciones
+										
+										while ($row = mysqli_fetch_array($query)) {
+											$cerrado = $row['Cerrado'];
+											
+											// mostrar opciones solo una vez
+											if (!$mostrado) {
+											echo '<option value="'.$cerrado.'">SI</option>';
+											echo '<option value="'.$cerrado.'">NO</option>';
+											$mostrado = true;
+											}
+										}
+										?>
+									</select>
+								</div>
+										
 
 										
 										</div>
