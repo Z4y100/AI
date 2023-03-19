@@ -201,7 +201,7 @@
 								<label   >CERRADO</label>
 										<select class="mdl-list" name="Cerrado" id="Cerrado">
     									<option value="">--Selecciona una opción--</option>
-										<?php 
+										<?php   
 										include_once('..funciones/db.php');
 										
 										$sql = 'SELECT * FROM seguimiento';
