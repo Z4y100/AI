@@ -57,7 +57,8 @@
                                 <th style="text-align: center;">Estatus cliente</th>
                                <th style="text-align: center;">Cotización entregada</th>
                                <th style="text-align: center;">Cerrado</th>
-                               
+                               <th style="text-align: center;">Notas</th>
+
 								<th style="text-align: center;">Editar</th>
 						
 								<th style="text-align: center;">Generar estatus</th>
@@ -90,7 +91,8 @@
 									<td style="text-align: center;"><?php echo $resultado['Nombre_Estatus']; ?></td>
                                     <td style="text-align: center;"><?php echo $resultado['Cotizacion_Entrega']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Cerrado']; ?></td>
-								
+				    <td style="text-align: center;"><?php echo $resultado['Notas']; ?></td>
+
 						       <td style="text-align: center;"> 
 							   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
 							   </td>
