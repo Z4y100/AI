@@ -4,7 +4,7 @@
     $alert = "";
     if ( empty($_POST['Descripcion']) || empty($_POST['Comunicacion']) 
     || empty($_POST['Estatus_Cliente'])
-     || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ) {
+     || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ||empty($_POST['Notas']) ) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
@@ -16,13 +16,13 @@
       $estatus_cliente = $_POST['Estatus_Cliente'];
 	  $cotizacion_entrega = $_POST['Cotizacion_Entrega'];
       $cerrado = $_POST['Cerrado'];
-      
+      $notas = $_POST['Notas'];
 
       $query_update = mysqli_query($conexion, "UPDATE seguimiento SET 
       Descripcion ='$descripcion',
       Comunicacion = '$comunicacion', Estatus_Cliente = '$estatus_cliente', 
       Cotizacion_Entrega = '$cotizacion_entrega',
-      Cerrado ='$cerrado' WHERE Id_Seguimiento = $id_seguimiento");
+      Cerrado ='$cerrado', Notas = '$notas' WHERE Id_Seguimiento = $id_seguimiento");
       
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Seguimiento Modificado
@@ -48,6 +48,7 @@ if (empty($_REQUEST['id'])) {
       $estatus_cliente = $data['Estatus_Cliente'];
       $cotizacion_entrega = $data['Cotizacion_Entrega'];
       $cerrado = $data['Cerrado'];
+	  $notas = $data['Notas'];
     }
   }
   
@@ -112,14 +113,15 @@ if (empty($_REQUEST['id'])) {
 												<label class="mdl-textfield__label" >Descripción</label>
 											</div>
 									    </div>
-										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Comunicacion" name="Comunicacion" pattern="^(Si|No|si|no|SI|NO)$"  value="<?php echo $comunicacion; ?>" >
-												<label class="mdl-textfield__label" >Comunicación</label>
-												<span class="mdl-textfield__error">Se debe escribir "Si" o "No" en esta casilla </span>
-											</div>
-									    </div>
-										
+										<div>
+											<label>COMUNICACIÓN</label>
+											<select name="Comunicacion" id="Comunicacion" class="mdl-list">
+												<option value="<?php echo $comunicacion; ?>"><?php echo $comunicacion?></option>
+												<option value="SI">SI</option>
+												<option value="NO">NO</option>
+											</select>
+										</div>
+										<br>
 										
 										<div>
 
@@ -144,22 +146,30 @@ if (empty($_REQUEST['id'])) {
         
 											</select>
 										</div>
-										
-										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
+										<br>
+										<div>
+											<label>COTIZACIÓN ENTREGADA</label>
+											<select name="Cotizacion_Entrega" id="Cotizacion_Entrega" class="mdl-list">
+												<option value="<?php echo $cotizacion_entrega; ?>"><?php echo $cotizacion_entrega?></option>
+												<option value="SI">SI</option>
+												<option value="NO">NO</option>
+											</select>
+										</div>
+										<br>
+										<div>
+											<label>CERRADO</label>
+											<select name="Cerrado" id="Cerrado" class="mdl-list">
+												<option value="<?php echo $cerrado; ?>"><?php echo $cerrado?></option>
+												<option value="SI">SI</option>
+												<option value="NO">NO</option>
+											</select>
+										</div>
+                                        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Cotizacion_Entrega" pattern="^(Si|No|si|no|SI|NO)$"  name="Cotizacion_Entrega" value="<?php echo $cotizacion_entrega; ?>">
-												<label class="mdl-textfield__label" >Cotización entregada</label>
-												<span class="mdl-textfield__error">Se debe escribir "Si" o "No" en esta casilla </span>
+												<input class="mdl-textfield__input" type="text"  id="Notas" name="Notas" value="<?php echo $notas; ?>">
+												<label class="mdl-textfield__label" >Notas</label>
 											</div>
 									    </div>
-										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text"  id="Cerrado" pattern="^(Si|No|si|no|SI|NO)$"  name="Cerrado" value="<?php echo $cerrado; ?>">
-												<label class="mdl-textfield__label" >Cerrado</label>
-												<span class="mdl-textfield__error">Se debe escribir "Si" o "No" en esta casilla </span>
-											</div>
-									    </div>
-                                        
 
 										
 										</div>
