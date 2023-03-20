@@ -66,7 +66,7 @@
 					
 					
 
-					<?php if ($_SESSION['id_rol'] ==2) { ?>
+					<?php if ($_SESSION['id_rol'] ==2) { ?><!--  Privilegios de atención a clientes-->
 						<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="registro_cli.php"  class="full-width">
@@ -79,7 +79,7 @@
 						</a>
 					</li>
 					<?php } ?>
-					<?php if ($_SESSION['id_rol'] <=2) { ?>
+					<?php if ($_SESSION['id_rol'] <=2) { ?><!--  Privilegios de atención a clientes-->
 						<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="lista_Cli.php" class="full-width">
@@ -93,7 +93,7 @@
 					</li>
 					<?php } ?>
 
-					<?php if ($_SESSION['id_rol'] ==1) { ?>
+					<?php if ($_SESSION['id_rol'] ==1) { ?><!--  Privilegios de Administradores-->
 						<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="lista_SC.php" class="full-width">

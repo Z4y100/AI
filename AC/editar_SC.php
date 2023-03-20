@@ -4,7 +4,7 @@
     $alert = "";
     if ( empty($_POST['Descripcion']) || empty($_POST['Comunicacion']) 
     || empty($_POST['Estatus_Cliente'])
-     || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ||empty($_POST['Notas']) ) {
+     || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ||empty($_POST['Notas']) ) {/** 	Son los campos que forzosamente deben estar llenos */
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
@@ -22,7 +22,7 @@
       Descripcion ='$descripcion',
       Comunicacion = '$comunicacion', Estatus_Cliente = '$estatus_cliente', 
       Cotizacion_Entrega = '$cotizacion_entrega',
-      Cerrado ='$cerrado', Notas = '$notas' WHERE Id_Seguimiento = $id_seguimiento");
+      Cerrado ='$cerrado', Notas = '$notas' WHERE Id_Seguimiento = $id_seguimiento");/** Son los campos que se pueden actualizar */
       
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Seguimiento Modificado
@@ -77,7 +77,7 @@ if (empty($_REQUEST['id'])) {
 	<script src="js/main.js" ></script>
 </head>
 <body>
-<?php include_once "../Sistema/includes/header.php"; ?>
+<?php include_once "../Sistema/includes/header.php"; ?> <!--  ver el menú -->
 		<section class="full-width header-well">
 			<div class="full-width header-well-icon">
 			
@@ -104,7 +104,7 @@ if (empty($_REQUEST['id'])) {
 								<form  method="post" action="">
                                 
 
-                                <?php echo isset($alert) ? $alert : ''; ?>
+                                <?php echo isset($alert) ? $alert : ''; ?> <!-- Ayuda a ver las validaciones -->
 
                                         
                                         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
@@ -135,9 +135,9 @@ if (empty($_REQUEST['id'])) {
 												$query=mysqli_query($conexion,$sql);
 												while($row=mysqli_fetch_array($query)){
 													
-													$nombreproyecto=$row['Nombre_Estatus'];
+													$nombreE=$row['Nombre_Estatus'];
 												?>
-													<option value="<?php echo $nombreproyecto ?>"><?php echo $nombreproyecto ?></option>
+													<option value="<?php echo $nombreE ?>"><?php echo $nombreE ?></option><!-- Muestra todos los datos disponibles-->
 												<?php
 												}
 											

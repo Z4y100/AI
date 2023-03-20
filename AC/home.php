@@ -21,7 +21,7 @@
 </head>
 
 <body>
-<?php include_once "../Sistema/includes/header.php"; ?>
+<?php include_once "../Sistema/includes/header.php"; ?><!--  ver el menú -->
 <section class="full-width text-center" style="padding: 40px 0;">
 			<h3 class="text-center tittles">BIENVENIDO</h3>
 			<!-- Tiles -->
@@ -37,7 +37,7 @@
 				</a>
 				<i class="zmdi zmdi-accounts tile-icon"></i>
 			</article>
-			<?php if ($_SESSION['id_rol'] ==2) { ?>
+			<?php if ($_SESSION['id_rol'] ==2) { ?><!-- Solo los usuarios de Atención a clientes podrán ver la parte de registrar clientes, es decir, se le asignan privilegios-->
 			<article class="full-width tile">
 			<a href="registro_Cli.php" >
 				<div class="tile-text">
@@ -48,7 +48,7 @@
 				<i class="zmdi zmdi-accounts-add tile-icon"></i>
 			</a>
 			</article> 	<?php } ?>
-			<?php if ($_SESSION['id_rol'] == 1) { ?>
+			<?php if ($_SESSION['id_rol'] == 1) { ?> <!-- Solo los Administradores podrán ver la parte de Seguimiento a clientes, es decir, se le asignan privilegios-->
 		
 			<br>
 			<article class="full-width tile">

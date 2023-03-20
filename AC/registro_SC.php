@@ -2,32 +2,32 @@
   include "../funciones/db.php";
   if (!empty($_POST)) {
     $alert = "";
-    if (empty($_POST['Descripcion'])  || empty($_POST['Comunicacion']) || empty($_POST['Estatus_Cliente']) || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ) {
+    if (empty($_POST['Descripcion'])  || empty($_POST['Comunicacion']) || empty($_POST['Estatus_Cliente']) || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ) {/* Se ponen los datos que deben ser ingresados*/ 
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
-                Todos los campos son obligatorios
-              </div>';
+                Todos los campos son obligatorios 
+              </div>'; /*Es una alerta en caso de que no sean ingresados los datos anteriores*/ 
     } else {
-		$id_cliente=$_GET['id'];
-	
+		$id_cliente=$_GET['id']; /* Este ID se obtiene de clientes o Atención a clientes, para que obtenga los datos del cliente el seguimiento y puedan ser mostrados en lista de seguimientos*/
+	 
       $descripcion = $_POST['Descripcion'];
 	  $comunicacion = $_POST['Comunicacion'];
       $estatus = $_POST['Estatus_Cliente'];
 	  $cotizacion_entrega = $_POST['Cotizacion_Entrega'];
       $cerrado = $_POST['Cerrado'];
 	    $notas = $_POST['Notas'];
-      $usuario=$_POST['Id_Usuario'];
+      $usuario=$_POST['Id_Usuario'];  /*Se necesita el ID del usuario para que en la tabla  de lista de seguimientos, solo pueda ver sus seguimientos de los clientes que eligió*/
 		
 
       $query_insert = mysqli_query($conexion, "INSERT INTO seguimiento(Id_Cliente,Descripcion,Comunicacion,Estatus_Cliente,Cotizacion_Entrega,Cerrado,Notas,Id_Usuario) 
-	   values ('$id_cliente','$descripcion','$comunicacion', '$estatus', '$cotizacion_entrega', '$cerrado','$notas','$usuario')");
+	   values ('$id_cliente','$descripcion','$comunicacion', '$estatus', '$cotizacion_entrega', '$cerrado','$notas','$usuario')"); /*Se agrega la información a la base de datos*/
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Seguimiento Registrado
-              </div>';
+              </div>';/*Informa al usuario que la acción se realizo con éxito*/
       } else {
         $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000;">
                 Error al registrar el seguimiento
-              </div>';
+              </div>'; /*En caso de haber una falla en el ingreso de datos, se le mostrará al usuario un error*/
       }
     }
   }
@@ -56,7 +56,7 @@
 </head>
 
 <body>
-<?php include_once "../Sistema/includes/header.php"; ?>
+<?php include_once "../Sistema/includes/header.php"; ?> <!--  ver el menú -->
 		<section class="full-width header-well">
 			<div class="full-width header-well-icon">
 			
@@ -84,7 +84,7 @@
 								<form  method="post" action="">
                                 
 
-								<?php echo isset($alert) ? $alert : ''; ?>
+								<?php echo isset($alert) ? $alert : ''; ?> <!-- Ayuda a ver las validaciones -->
 
 
 
@@ -103,7 +103,7 @@
 																$id_usuario=$row['Id_Usuario'];
 																$nombreusuario=$row['Usuario'];
 															?>
-																<option value="<?php echo $id_usuario ?>"><?php echo $nombreusuario ?></option>
+																<option value="<?php echo $id_usuario ?>"><?php echo $nombreusuario ?></option><!-- Muestra todos los datos disponibles-->
 															<?php
 															}
 											
@@ -163,7 +163,7 @@
 																$Nombre_Estatus=$row['Nombre_Estatus'];
 																
 															?>
-																<option value="<?php echo $Nombre_Estatus ?>"><?php echo $Nombre_Estatus ?></option>
+																<option value="<?php echo $Nombre_Estatus ?>"><?php echo $Nombre_Estatus ?></option> <!-- Muestra todos los datos disponibles-->
 															<?php
 															}
 											

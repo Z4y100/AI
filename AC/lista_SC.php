@@ -21,7 +21,7 @@
 </head>
 <body>
 <body>
-<?php include_once "../Sistema/includes/header.php"; ?>
+<?php include_once "../Sistema/includes/header.php"; ?><!--  ver el menú -->
 		<section class="full-width header-well">
 			<div class="full-width header-well-icon">
 			
@@ -69,10 +69,10 @@
                         <tbody>
 						<?php
                          require ("../funciones/db.php");
-						 $sql = $conexion ->query("SELECT * FROM seguimiento 
-						 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  
-						 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus 
-						 INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'
+						 $sql = $conexion ->query("SELECT * FROM seguimiento /** Trae todos los datos de la tabña seguimientos */
+						 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  /**Se combinan los registros de la tabla clientes con la de seguimiento mediante el ID*/
+						 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus   /**Se combinan los registros de la tabla estatus cliente con la de seguimiento mediante el nombre del status*/
+						 INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'  /**Se combinan los registros de la tabla usuarios con la de seguimiento mediante el ID*/
 						  ");
 						 
 						  $result = mysqli_num_rows($sql);
@@ -94,11 +94,11 @@
 				    <td style="text-align: center;"><?php echo $resultado['Notas']; ?></td>
 
 						       <td style="text-align: center;"> 
-							   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
+							   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a><!-- De acuerdo al ID de seguimiento nos mandará a la parte de editar y mostrará los datos que se ven recientemente-->
 							   </td>
 							  
 							   <td style="text-align: center;" >
-							   <a  href="pdf.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton morado "><i class="zmdi zmdi-file-text"></i></a>
+							   <a  href="pdf.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton morado "><i class="zmdi zmdi-file-text"></i></a><!--De acuerdo al ID de seguimiento nos mostrará la información del cliente y el estatus del proyecto o cliente-->
 							  
 									</td >
 							  
