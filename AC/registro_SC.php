@@ -14,11 +14,12 @@
       $estatus = $_POST['Estatus_Cliente'];
 	  $cotizacion_entrega = $_POST['Cotizacion_Entrega'];
       $cerrado = $_POST['Cerrado'];
+	    $notas = $_POST['Notas'];
       $usuario=$_POST['Id_Usuario'];
 		
 
-      $query_insert = mysqli_query($conexion, "INSERT INTO seguimiento(Id_Cliente,Descripcion,Comunicacion,Estatus_Cliente,Cotizacion_Entrega,Cerrado,Id_Usuario) 
-	   values ('$id_cliente','$descripcion','$comunicacion', '$estatus', '$cotizacion_entrega', '$cerrado','$usuario')");
+      $query_insert = mysqli_query($conexion, "INSERT INTO seguimiento(Id_Cliente,Descripcion,Comunicacion,Estatus_Cliente,Cotizacion_Entrega,Cerrado,Notas,Id_Usuario) 
+	   values ('$id_cliente','$descripcion','$comunicacion', '$estatus', '$cotizacion_entrega', '$cerrado','$notas','$usuario')");
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Seguimiento Registrado
@@ -222,7 +223,13 @@
 										?>
 									</select>
 								</div>
-										
+										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+												<input class="mdl-textfield__input" type="text"  id="Notas" name="Notas">
+												<label class="mdl-textfield__label" >Notas</label>
+											</div>
+									    </div>
+
 
 										
 										</div>
