@@ -53,7 +53,7 @@
 									<div class="table-responsive">
 									<table id="tablax" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive">
 											<thead>
-												<tr class="text-center">
+												<tr class="text-center-header">
 													
 													<th class="text-center">Nombre</th>
 													<th class="text-center">Teléfono</th>
@@ -91,7 +91,7 @@
 														<td></td>
 														<td class="text-center"><?php echo $data['Tipo_proyecto']; ?></td>
 														<td class="text-center"><?php echo $data['Procedencia']; ?></td>
-														<td class="text-center"><?php echo $data['Necesidad']; ?></td>
+														<td class="text-center text-gran-body"><?php echo $data['Necesidad']; ?></td><!-- tiene un estilo diferente porque contiene mucho texto-->
 														<td class="text-center"><?php echo $data['Fecha_registro']; ?></td>
 														<td class="text-center"><?php echo $data['Usuario']; ?></td>
 														<td style="text-align: center;">

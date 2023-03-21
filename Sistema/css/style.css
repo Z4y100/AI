@@ -75,10 +75,14 @@ box-shadow: 0px 2px 0px 0px #732bc0;
 
 
 
-.text-center{
-    text-align: center;
-    align-content: center;
+.text-gran-body{
+	white-space: normal;
+	min-width: 300px; max-width: 400px;
+
+	text-align: center;
+	align-content: center;
 }
+
 .columna-width{
 	margin: 0;
 	padding: 0;

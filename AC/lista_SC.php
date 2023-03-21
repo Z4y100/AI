@@ -85,13 +85,13 @@
 									<td style="text-align: center;"><?php echo $resultado['Nombre']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Telefono']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Ubicacion']; ?></td>
-									<td style="text-align: center;"><?php echo $resultado['Descripcion']; ?></td>
+									<td style="text-align: center;" class="text-gran-body"><?php echo $resultado['Descripcion']; ?></td><!-- tiene un estilo diferente porque contiene mucho texto-->
                                     <td></td>
                                     <td style="text-align: center;"><?php echo $resultado['Comunicacion']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Nombre_Estatus']; ?></td>
                                     <td style="text-align: center;"><?php echo $resultado['Cotizacion_Entrega']; ?></td>
 									<td style="text-align: center;"><?php echo $resultado['Cerrado']; ?></td>
-				    <td style="text-align: center;"><?php echo $resultado['Notas']; ?></td>
+				    <td style="text-align: center;" class="text-gran-body"><?php echo $resultado['Notas']; ?></td><!-- tiene un estilo diferente porque contiene mucho texto-->
 
 						       <td style="text-align: center;"> 
 							   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a><!-- De acuerdo al ID de seguimiento nos mandará a la parte de editar y mostrará los datos que se ven recientemente-->
@@ -160,7 +160,8 @@
                 },
                 
                 lengthMenu: [ [10, 25, -1], [10, 25, "Todos"] ],
-				order: [[1, 'desc']] // Ordenar por la primera
+				order: [[1, 'desc']] // Ordenar por la primera.
+				
             });
         });
     </script>
