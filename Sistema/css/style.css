@@ -75,13 +75,15 @@ box-shadow: 0px 2px 0px 0px #732bc0;
 
 
 
-.text-gran-body{
+.text-gran-body{/*Estilo para textos muy largos para una tabla*/
 	white-space: normal;
 	min-width: 300px; max-width: 400px;
-
+	word-wrap: break-word;
 	text-align: center;
 	align-content: center;
+	overflow: hidden;
 }
+
 
 .columna-width{
 	margin: 0;

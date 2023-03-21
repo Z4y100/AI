@@ -94,13 +94,13 @@
 														<td class="text-center text-gran-body"><?php echo $data['Necesidad']; ?></td><!-- tiene un estilo diferente porque contiene mucho texto-->
 														<td class="text-center"><?php echo $data['Fecha_registro']; ?></td>
 														<td class="text-center"><?php echo $data['Usuario']; ?></td>
-														<td style="text-align: center;">
+														<td class="text-center ">
 															<a href="editar_Cli.php?id=<?php echo $data['Id_Cliente'];?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
 															
 														</td>
 
 														<?php if ($_SESSION['id_rol'] ==1) { ?>
-														<td style="text-align: center;">
+														<td class="text-center ">
 															<a href="registro_SC.php?id=<?php echo $data['Id_Cliente'];?>"   class="boton azul"><i class="zmdi zmdi-plus"></i></i></a>
 															
 														</td>
