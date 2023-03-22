@@ -60,17 +60,16 @@ if (empty($_REQUEST['id'])) {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Lista Atención a Clientes</title>
+	<title>Editar Clientes</title>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/sweetalert2.css">
 	<link rel="stylesheet" href="css/material.min.css">
 	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="../Sistema//css/style.css">
+	<link rel="stylesheet" href="../Sistema/css/main.css">
+	<link rel="icon" href="../Sistema/assets/img/avatar-aitech.png"/>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-	<link rel="icon" href="../Sistema/assets/img/avatar-aitech.png"/>
 	<script src="js/material.min.js" ></script>
 	<script src="js/sweetalert2.min.js" ></script>
 	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
@@ -176,8 +175,12 @@ if (empty($_REQUEST['id'])) {
 									   
 									<p class="text-center">
 									
-										<input style="color: #FFFFFF;"  type="submit" value="Actualizar Seguimiento" class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--colored bg-primary">
-										<div class="mdl-tooltip" >Actualizar</div>
+											<center>
+										<button class="button" name="btnGuardar">ACTUALIZAR</button>
+											<div class="mdl-tooltip" for="btn-addAdmin">Actualizar</div>
+										<input type="button" class="button" name="btnRegresar" value="REGRESAR" onclick="document.location.href='lista_SC.php';">
+											
+										</center>
 									</p>
 
 

@@ -30,7 +30,7 @@
 			<a href="lista_Cli.php" >
 				<div class="tile-text">
 					<span class="text-condensedLight">
-						<small>Atención a Clientes</small>
+						<small>Atención a clientes</small>
 					</span>
 					 
 				</div>
