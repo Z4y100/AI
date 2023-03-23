@@ -183,7 +183,7 @@ if (empty($_REQUEST['id'])) {
 											</div>
 									    </div>
 
-										<?php if ($_SESSION['id_rol'] ==1) { ?>
+										
 										<div class="form-group">
 
 
@@ -209,7 +209,7 @@ if (empty($_REQUEST['id'])) {
            												 ?>
 												</select>
              </div>       
-			 <?php } ?>
+			 
 										<center>
 										<button class="button" name="btnGuardar">ACTUALIZAR</button>
 											<div class="mdl-tooltip" for="btn-addAdmin">Actualizar</div>
