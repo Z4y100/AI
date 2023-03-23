@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="../Sistema//css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="js/material.min.js" ></script>
@@ -21,107 +23,109 @@
 </head>
 <body>
 <body>
-<?php include_once "../Sistema/includes/header.php"; ?><!--  ver el menú -->
-		<section class="full-width header-well">
+<?php include_once "../Sistema/includes/header.php"; ?>
+<section class="full-width header-well">
 			<div class="full-width header-well-icon">
-			
+				<i class="zmdi zmdi-accounts"></i>
 			</div>
 			<div class="full-width header-well-text">
-				<h3>
-					SEGUIMIENTOS REGISTRADOS
-
-					
-				</h3>
-				
+				<p class="text-condensedLight">
+					SEGUIMIENTOS
 			</div>
 		</section>
-		<div class="full-width divider-menu-h"></div>
-		
-		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-				<div class="table-responsive">
+		<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+			<div class="mdl-tabs__tab-bar">
+				<a href="#tabListClient" class="mdl-tabs__tab is-active">LISTA</a>
+			</div>
 			
-					<table id="tablax"  class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive" >
+			<div class="mdl-tabs__panel is-active" id="tabListClient">
+			<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--11-col-desktop mdl-cell--1-offset-desktop">
+						<div class="full-width panel mdl-shadow--4dp">
+							<div class="full-width panel-tittle bg-success text-center tittles">
+								Lista de Seguimientos
+							</div>
+							<div class="full-width panel-content">
+							
+								<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+									<div class="table-responsive">
+									
+					<table id="tablax"  class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width table-responsive" class="col-lg-12">
 					
-						<thead>
-							<tr>
-						
-							<th class="text-center ">Fecha de llegada</th>
-								<th class="text-center " >Nombre</th>
-								<th class="text-center ">N° teléfono</th>
+					<thead>
+						<tr>
 					
-								<th class="text-center ">Ubicación</th>
-                                <th class="text-center text-gran-body">Descripción</th>
-                                <th></th>
-                                <th class="text-center " >Comunicación</th>
-                                <th class="text-center ">Estatus cliente</th>
-                               <th class="text-center ">Cotización entregada</th>
-                               <th class="text-center ">Cerrado</th>
-                               <th class="text-center ">Notas</th>
-
-								<th class="text-center ">Editar</th>
-						
-								<th class="text-center ">Generar estatus</th>
-								
-							</tr>
-						</thead>
+						<th style="text-align: center;">Fecha de llegada</th>
+							<th style="text-align: center;" >Nombre</th>
+							<th style="text-align: center;">N° teléfono</th>
+				
+							<th style="text-align: center;">Ubicación</th>
+							<th style="text-align: center;">Descripción</th>
+							<th></th>
+							<th style="text-align: center;" >Comunicación</th>
+							<th style="text-align: center;">Estatus cliente</th>
+						   <th style="text-align: center;">Cotización entregada</th>
+						   <th style="text-align: center;">Cerrado</th>
+						   <th style="text-align: center;">Notas</th>
+						   <th style="text-align: center;">Editar</th>
 					
-                        <tbody>
-						<?php
-                         require ("../funciones/db.php");
-						 $sql = $conexion ->query("SELECT * FROM seguimiento /** Trae todos los datos de la tabña seguimientos */
-						 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  /**Se combinan los registros de la tabla clientes con la de seguimiento mediante el ID*/
-						 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus   /**Se combinan los registros de la tabla estatus cliente con la de seguimiento mediante el nombre del status*/
-						 INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'  /**Se combinan los registros de la tabla usuarios con la de seguimiento mediante el ID*/
-						  ");
-						 
-						  $result = mysqli_num_rows($sql);
-						  if($result > 0 ){
-						 while($resultado = mysqli_fetch_assoc($sql)){
-                         ?>
-						 <tr style="width: 100%;" >
+							<th style="text-align: center;">Generar estatus</th>
+							
+						</tr>
+					</thead>
+				
+					<tbody>
+					<?php
+					 require ("../funciones/db.php");
+					 $sql = $conexion ->query("SELECT * FROM seguimiento 
+					 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  
+					 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus 
+					 INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'
+					  ");
+					 
+					  $result = mysqli_num_rows($sql);
+					  if($result > 0 ){
+					 while($resultado = mysqli_fetch_assoc($sql)){
+					 ?>
+					 <tr style="width: 100%;" >
+				
+					 <td style="text-align: center;"><?php echo $resultado['Fecha_registro']; ?></td>
+								<td style="text-align: center;"><?php echo $resultado['Nombre']; ?></td>
+								<td style="text-align: center;"><?php echo $resultado['Telefono']; ?></td>
+								<td style="text-align: center;"><?php echo $resultado['Ubicacion']; ?></td>
+								<td style="text-align: center;"><?php echo $resultado['Descripcion']; ?></td>
+								<td></td>
+								<td style="text-align: center;"><?php echo $resultado['Comunicacion']; ?></td>
+								<td style="text-align: center;"><?php echo $resultado['Nombre_Estatus']; ?></td>
+								<td style="text-align: center;"><?php echo $resultado['Cotizacion_Entrega']; ?></td>
+								<td style="text-align: center;"><?php echo $resultado['Cerrado']; ?></td>
+								<td style="text-align: center;"><?php echo $resultado['Notas']; ?></td>
+						   <td style="text-align: center;"> 
+						   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
+						   </td>
+						  
+						   <td style="text-align: center;" >
+						   <a  href="pdf.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton morado "><i class="zmdi zmdi-file-text"></i></a>
+						  
+								</td >
+						  
+					 </tr>		
+					<?php
+					 }
+					}
+					 ?>
 					
-                         <td class="text-center "><?php echo $resultado['Fecha_registro']; ?></td>
-									<td class="text-center "><?php echo $resultado['Nombre']; ?></td>
-									<td class="text-center "><?php echo $resultado['Telefono']; ?></td>
-									<td class="text-center "><?php echo $resultado['Ubicacion']; ?></td>
-									<td class="text-center text-gran-body"><?php echo $resultado['Descripcion']; ?></td><!-- tiene un estilo diferente porque contiene mucho texto-->
-                                    <td></td>
-                                    <td class="text-center "><?php echo $resultado['Comunicacion']; ?></td>
-									<td class="text-center "><?php echo $resultado['Nombre_Estatus']; ?></td>
-                                    <td class="text-center "><?php echo $resultado['Cotizacion_Entrega']; ?></td>
-									<td class="text-center "><?php echo $resultado['Cerrado']; ?></td>
-				    <td class="text-center text-gran-body"><?php echo $resultado['Notas']; ?></td><!-- tiene un estilo diferente porque contiene mucho texto-->
-
-						       <td class="text-center "> 
-							   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a><!-- De acuerdo al ID de seguimiento nos mandará a la parte de editar y mostrará los datos que se ven recientemente-->
-							   </td>
-							  
-							   <td class="text-center " >
-							   <a  href="pdf.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton morado "><i class="zmdi zmdi-file-text"></i></a><!--De acuerdo al ID de seguimiento nos mostrará la información del cliente y el estatus del proyecto o cliente-->
-							  
-									</td >
-							  
-							  
-							   
-							 
-							  
-						 </tr>		
-                        <?php
-						 }
-						}
-						 ?>
-						
-					</tbody>
-					</table>
-		
-				 
-					
-				 
+				</tbody>
+				</table>
 				</div>
 			</div>
 		</div>
-		
+			
+			</div>
+			
+		</div>
+			</div>
+		</div>
 	</section>
 	<!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -160,8 +164,7 @@
                 },
                 
                 lengthMenu: [ [10, 25, -1], [10, 25, "Todos"] ],
-				order: [[1, 'desc']] // Ordenar por la primera.
-				
+				order: [[1, 'desc']] // Ordenar por la primera
             });
         });
     </script>
