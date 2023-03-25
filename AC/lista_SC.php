@@ -55,21 +55,21 @@
 					<thead>
 						<tr>
 					
-						<th style="text-align: center;">Fecha de llegada</th>
-							<th style="text-align: center;" >Nombre</th>
-							<th style="text-align: center;">N° teléfono</th>
+						<th class="text-center">Fecha de llegada</th>
+							<th class="text-center" >Nombre</th>
+							<th class="text-center">N° teléfono</th>
 				
-							<th style="text-align: center;">Ubicación</th>
-							<th style="text-align: center;">Descripción</th>
+							<th class="text-center">Ubicación</th>
+							<th class="text-center">Descripción</th>
 							<th></th>
-							<th style="text-align: center;" >Comunicación</th>
-							<th style="text-align: center;">Estatus cliente</th>
-						   <th style="text-align: center;">Cotización entregada</th>
-						   <th style="text-align: center;">Cerrado</th>
-						   <th style="text-align: center;">Notas</th>
-						   <th style="text-align: center;">Editar</th>
+							<th class="text-center" >Comunicación</th>
+							<th class="text-center">Estatus cliente</th>
+						   <th class="text-center">Cotización entregada</th>
+						   <th class="text-center">Cerrado</th>
+						   <th class="text-center">Notas</th>
+						   <th class="text-center">Editar</th>
 					
-							<th style="text-align: center;">Generar estatus</th>
+							<th class="text-center">Generar estatus</th>
 							
 						</tr>
 					</thead>
@@ -89,22 +89,22 @@
 					 ?>
 					 <tr style="width: 100%;" >
 				
-					 <td style="text-align: center;"><?php echo $resultado['Fecha_registro']; ?></td>
-								<td style="text-align: center;"><?php echo $resultado['Nombre']; ?></td>
-								<td style="text-align: center;"><?php echo $resultado['Telefono']; ?></td>
-								<td style="text-align: center;"><?php echo $resultado['Ubicacion']; ?></td>
-								<td style="text-align: center;"><?php echo $resultado['Descripcion']; ?></td>
+					 <td class="text-center"><?php echo $resultado['Fecha_registro']; ?></td>
+								<td class="text-center"><?php echo $resultado['Nombre']; ?></td>
+								<td class="text-center"><?php echo $resultado['Telefono']; ?></td>
+								<td class="text-center"><?php echo $resultado['Ubicacion']; ?></td>
+								<td class="text-center text-gran-body"><?php echo $resultado['Descripcion']; ?></td>
 								<td></td>
-								<td style="text-align: center;"><?php echo $resultado['Comunicacion']; ?></td>
-								<td style="text-align: center;"><?php echo $resultado['Nombre_Estatus']; ?></td>
-								<td style="text-align: center;"><?php echo $resultado['Cotizacion_Entrega']; ?></td>
-								<td style="text-align: center;"><?php echo $resultado['Cerrado']; ?></td>
-								<td style="text-align: center;"><?php echo $resultado['Notas']; ?></td>
-						   <td style="text-align: center;"> 
+								<td class="text-center"><?php echo $resultado['Comunicacion']; ?></td>
+								<td class="text-center"><?php echo $resultado['Nombre_Estatus']; ?></td>
+								<td class="text-center"><?php echo $resultado['Cotizacion_Entrega']; ?></td>
+								<td class="text-center"><?php echo $resultado['Cerrado']; ?></td>
+								<td class="text-center text-gran-body"><?php echo $resultado['Notas']; ?></td>
+						   <td class="text-center"> 
 						   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
 						   </td>
 						  
-						   <td style="text-align: center;" >
+						   <td class="text-center" >
 						   <a  href="pdf.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton morado "><i class="zmdi zmdi-file-text"></i></a>
 						  
 								</td >
