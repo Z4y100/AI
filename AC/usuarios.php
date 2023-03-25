@@ -90,7 +90,7 @@ require_once("../funciones/db.php");
 														<td class="text-center"><?php echo $data['Fecha_Creacion']; ?></td>
 														<td class="text-center ">
 															<a href="editar_Usu.php?id=<?php echo $data['Id_Usuario'];?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
-															<td><a href="borrarU.php?BORRAR_ID=<?php echo $data['Id_Usuario']; ?>" class="boton verde"><img src="../assets/icons/delete.png" alt="eliminar" width="15" height="15"></a></td>
+															<td><a href="ConfirmarEliminacionMaster.php?id=<?php echo $data['Id_Usuario']; ?>" class="boton verde"><img src="../assets/icons/delete.png" alt="eliminar" width="15" height="15"></a></td>
                                                             
 															
 														</td>
