@@ -12,12 +12,15 @@ require_once("../funciones/db.php");
 	<link rel="stylesheet" href="css/material.min.css">
 	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-	<link rel="stylesheet" href="../Sistema/css/main.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="../Sistema//css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
-	<link rel="icon" href="../Sistema/assets/img/avatar-aitech.png"/>
 	<script src="js/material.min.js" ></script>
 	<script src="js/sweetalert2.min.js" ></script>
+	<link rel="icon" href="../Sistema/assets/img/avatar-aitech.png"/>
 	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
 	<script src="js/main.js" ></script>
 </head>
@@ -90,7 +93,7 @@ require_once("../funciones/db.php");
 														<td class="text-center"><?php echo $data['Fecha_Creacion']; ?></td>
 														<td class="text-center ">
 															<a href="editar_Usu.php?id=<?php echo $data['Id_Usuario'];?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
-															<td><a href="ConfirmarEliminacionMaster.php?id=<?php echo $data['Id_Usuario']; ?>" class="boton verde"><img src="../assets/icons/delete.png" alt="eliminar" width="15" height="15"></a></td>
+															<td><a href="ConfirmarEliminacionMaster.php?id=<?php echo $data['Id_Usuario']; ?>" class="boton rojo"><i class="zmdi zmdi-delete"></i></a></td>
                                                             
 															
 														</td>

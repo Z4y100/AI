@@ -44,8 +44,7 @@
 	<link rel="stylesheet" href="css/material.min.css">
 	<link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="../Sistema//css/style.css">
+	<link rel="stylesheet" href="../Sistema/css/main.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
 	<link rel="icon" href="../Sistema/assets/img/avatar-aitech.png"/>
@@ -184,7 +183,7 @@
 									   
 									<p class="text-center">
 									
-										<input style="color: #FFFFFF;"  type="submit" value="Guardar" class="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--colored bg-primary">
+										<input style="color: #FFFFFF;"  type="submit" value="Guardar" class="button">
 										<div class="mdl-tooltip" >Registrar</div>
 									</p>
 
