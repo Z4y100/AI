@@ -114,15 +114,17 @@ if (empty($_REQUEST['id'])) {
 									    </div>
 									
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="tel" name="Correo" value="<?php echo $correo;?>" id="Correo">
-												<label class="mdl-textfield__label" for="TelefonoCliente">CORREO</label>
-												<span class="mdl-textfield__error">Número de teléfono invalido</span>
+												<input class="mdl-textfield__input" type="email" name="Correo" value="<?php echo $correo;?>" id="Correo">
+												<label class="mdl-textfield__label" for="CorreoUsuario">CORREO</label>
+												<span class="mdl-textfield__error">Correo invalido</span>
 											</div>
 
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="text" name="Contraseña" id="Contraseña" value="<?php echo $contraseña; ?>">
+												<input class="mdl-textfield__input" type="password"  minlength="6" name="Contraseña" id="Contraseña" value="<?php echo $contraseña; ?>">
 												<label class="mdl-textfield__label" for="UbicacionCliente">CONTRASEÑA</label>
+												<span class="mdl-textfield__error" id="password-error">La contraseña debe tener al menos 6 caracteres.</span>
+										
 											</div>
 									    </div>
 								
