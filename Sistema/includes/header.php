@@ -113,7 +113,7 @@
 					<li class="full-width">
 						<a href="usuarios.php" class="full-width">
 							<div class="navLateral-body-cl">
-							<i class="zmdi zmdi-file-text"></i>
+							<i class="zmdi zmdi-account"></i>
 							</div>
 							<div class="navLateral-body-cr">
 								USUARIOS REGISTRADOS
@@ -128,7 +128,7 @@
 					<li class="full-width">
 						<a href="Rusuario.php" class="full-width">
 							<div class="navLateral-body-cl">
-							<i class="zmdi zmdi-file-text"></i>
+							<i class="zmdi zmdi-border-color"></i>
 							</div>
 							<div class="navLateral-body-cr">
 								REGISTRAR NUEVO USUARIO
