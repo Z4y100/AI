@@ -47,7 +47,7 @@ function Footer()
 }
 }
 require '../../funciones/db.php';
-$consulta=mysqli_query($conexion,"SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'");
+$consulta=mysqli_query($conexion,"SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario ");
 $resultado=mysqli_num_rows($consulta);
 $pdf = new PDF();
 $pdf->AliasNbPages();
