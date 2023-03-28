@@ -67,6 +67,8 @@
 						   <th class="text-center">Cotización entregada</th>
 						   <th class="text-center">Cerrado</th>
 						   <th class="text-center">Notas</th>
+						   <?php if ($_SESSION['id_rol'] ==3) {?><th class="text-center">Usuario</th>
+							<?php } ?>
 						   <th class="text-center">Editar</th>
 					
 							<th class="text-center">Generar estatus</th>
@@ -76,12 +78,25 @@
 				
 					<tbody>
 					<?php
+
+
+
+					 if ($_SESSION['id_rol'] !=3) {
+
 					 require ("../funciones/db.php");
 					 $sql = $conexion ->query("SELECT * FROM seguimiento 
 					 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  
 					 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus 
 					 INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'
 					  ");
+					 } else {
+						require ("../funciones/db.php");
+						$sql = $conexion ->query("SELECT * FROM seguimiento 
+						INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  
+						INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus 
+						INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario");
+
+					 }
 					 
 					  $result = mysqli_num_rows($sql);
 					  if($result > 0 ){
@@ -100,6 +115,8 @@
 								<td class="text-center"><?php echo $resultado['Cotizacion_Entrega']; ?></td>
 								<td class="text-center"><?php echo $resultado['Cerrado']; ?></td>
 								<td class="text-center text-gran-body"><?php echo $resultado['Notas']; ?></td>
+								<?php if ($_SESSION['id_rol'] ==3) {?><td class="text-center"><?php echo $resultado['Usuario']; ?></td>
+									<?php } ?>
 						   <td class="text-center"> 
 						   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
 						   </td>
