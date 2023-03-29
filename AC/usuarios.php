@@ -23,6 +23,11 @@ require_once("../funciones/db.php");
 	<link rel="icon" href="../Sistema/assets/img/avatar-aitech.png"/>
 	<script src="js/jquery.mCustomScrollbar.concat.min.js" ></script>
 	<script src="js/main.js" ></script>
+	<style>
+    .oculto {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 	<?php include_once "../Sistema/includes/header.php"; ?>
@@ -60,9 +65,9 @@ require_once("../funciones/db.php");
 													<th class="text-center">Id</th>
 													<th class="text-center">Usuario</th>
 													<th class="text-center">Correo</th>
-													<th></th>
-													<th  class="text-center">Contraseña</th>
-													<th class="text-center">Tipo_Proyecto</th>
+													<th onclick="alternarColumna(4)"><img src="../assets/icons/passverde.png" height ="20" width="20" /></th>
+													<th  class="oculto">Contraseña</th>
+													<th  class="text-center">Tipo_Proyecto</th>
 													<th  class="text-center">Rol</th>
 													<th  class="text-center">Fecha Creacion</th>
 													<th  class="text-center"></th>
@@ -87,7 +92,7 @@ require_once("../funciones/db.php");
 														<td  class="text-center"><?php echo $data['Usuario']; ?></td>
 														<td class="text-center"><?php echo $data['Correo']; ?></td>
 														<td></td>
-														<td class="text-center"><?php echo $data['Contraseña']; ?></td>
+														<td class="oculto"><?php echo $data['Contraseña']; ?></td>
 														<td class="text-center"><?php echo $data['Nombre_Proyecto']; ?></td>
 														<td class="text-center"><?php echo $data['Nombre']; ?></td>
 														<td class="text-center"><?php echo $data['Fecha_Creacion']; ?></td>
@@ -103,7 +108,7 @@ require_once("../funciones/db.php");
 											} ?>
 											
 
-									
+											
 										</tbody>
 										</table>
 				</div>
@@ -117,6 +122,34 @@ require_once("../funciones/db.php");
 			</div>
 		</div>
 	</section>
+	<script>
+    function alternarColumna(numeroColumna) {
+      var tabla = document.getElementById("tablax");
+      var columnas = tabla.getElementsByTagName("th");
+      var celdas = tabla.getElementsByTagName("td");
+
+      for (var i = 0; i < columnas.length; i++) {
+        if (i === numeroColumna) {
+          if (columnas[i].classList.contains("oculto")) {
+            columnas[i].classList.remove("oculto");
+            for (var j = i; j < celdas.length; j += columnas.length) {
+              celdas[j].classList.remove("oculto");
+            }
+          } else {
+            columnas[i].classList.add("oculto");
+            for (var j = i; j < celdas.length; j += columnas.length) {
+              celdas[j].classList.add("oculto");
+            }
+          }
+        } else {
+          columnas[i].classList.remove("oculto");
+          for (var j = i; j < celdas.length; j += columnas.length) {
+            celdas[j].classList.remove("oculto");
+          }
+        }
+      }
+    }
+  </script>
 		
 </body>
 </html>
