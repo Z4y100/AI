@@ -27,6 +27,19 @@ require_once("../funciones/db.php");
     .oculto {
       display: none;
     }
+    .visible {
+      animation: barrido 0.5s ease-in-out;
+    }
+    @keyframes barrido {
+      0% {
+        opacity: 0;
+        transform: translateX(-10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -132,19 +145,25 @@ require_once("../funciones/db.php");
         if (i === numeroColumna) {
           if (columnas[i].classList.contains("oculto")) {
             columnas[i].classList.remove("oculto");
+            columnas[i].classList.add("visible");
             for (var j = i; j < celdas.length; j += columnas.length) {
               celdas[j].classList.remove("oculto");
+              celdas[j].classList.add("visible");
             }
           } else {
             columnas[i].classList.add("oculto");
+            columnas[i].classList.remove("visible");
             for (var j = i; j < celdas.length; j += columnas.length) {
               celdas[j].classList.add("oculto");
+              celdas[j].classList.remove("visible");
             }
           }
         } else {
           columnas[i].classList.remove("oculto");
+          columnas[i].classList.add("visible");
           for (var j = i; j < celdas.length; j += columnas.length) {
             celdas[j].classList.remove("oculto");
+            celdas[j].classList.add("visible");
           }
         }
       }
