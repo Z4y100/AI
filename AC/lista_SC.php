@@ -84,17 +84,17 @@
 					 if ($_SESSION['id_rol'] !=3) {
 
 					 require ("../funciones/db.php");
-					 $sql = $conexion ->query("SELECT * FROM seguimiento 
-					 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  
-					 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus 
-					 INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario'
+					 $sql = $conexion ->query("SELECT * FROM seguimiento /**Se obtienen todos los datos de la tabla seguimiento*/ 
+					 INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  /** Se combinan los datos de la tabla clientes con la tabla la deseguimiento mediante el id del cliente */  
+					 INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus /** Se combinan los datos de la tabla estatus cliente con la de seguimiento mediante el estatus cliente, que es el nombre del mismo */ 
+					 INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario WHERE Usuario = '$usuario' /**Se combian los datos de la tabla usuarios con la de seguimiento mediante el id del usuario y solo se mostraran los datos que contengan el nombre el usuario*/ 
 					  ");
 					 } else {
 						require ("../funciones/db.php");
 						$sql = $conexion ->query("SELECT * FROM seguimiento 
-						INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente  
+						INNER JOIN clientes ON seguimiento.id_cliente = clientes.id_cliente 
 						INNER JOIN estatus_cliente ON seguimiento.estatus_cliente = estatus_cliente.nombre_estatus 
-						INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario");
+						INNER JOIN usuarios ON seguimiento.id_usuario = usuarios.id_usuario"); 
 
 					 }
 					 

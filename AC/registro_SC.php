@@ -5,9 +5,9 @@
     if (empty($_POST['Descripcion'])  || empty($_POST['Comunicacion']) || empty($_POST['Estatus_Cliente']) || empty($_POST['Cotizacion_Entrega']) ||empty($_POST['Cerrado']) ) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
-              </div>';
+              </div>';/** 	Son los campos que forzosamente deben estar llenos o que son importantes*/
     } else {
-		$id_cliente=$_GET['id'];
+		$id_cliente=$_GET['id'];/** Es el id que se toma del cliente al que se le hara el seguimiento, es una forma para que el usuario se evite la molestia de volver a llenar todos los campos*/
 	
       $descripcion = $_POST['Descripcion'];
 	  $comunicacion = $_POST['Comunicacion'];
@@ -23,11 +23,11 @@
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Seguimiento Registrado
-              </div>';
+              </div>';/** Solo se registraran los datos que pertenecen a la tabla seguimiento */
       } else {
         $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000;">
                 Error al registrar el seguimiento
-              </div>';
+              </div>';/**Esta alerta aparecería en caso de agregar un campo que no existe o agregar y que no sea la tabla correcta*/
       }
     }
   }

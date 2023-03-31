@@ -22,7 +22,7 @@
       Descripcion ='$descripcion',
       Comunicacion = '$comunicacion', Estatus_Cliente = '$estatus_cliente', 
       Cotizacion_Entrega = '$cotizacion_entrega',
-      Cerrado ='$cerrado', Notas = '$notas' WHERE Id_Seguimiento = $id_seguimiento");/** Son los campos que se pueden actualizar */
+      Cerrado ='$cerrado', Notas = '$notas' WHERE Id_Seguimiento = $id_seguimiento");/** Son los campos que se pueden actualizar en la tabla seguimiento */
       
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Seguimiento Modificado
