@@ -117,14 +117,8 @@
 								<td class="text-center text-gran-body"><?php echo $resultado['Notas']; ?></td>
 								<?php if ($_SESSION['id_rol'] ==3) {?><td class="text-center"><?php echo $resultado['Usuario']; ?></td>
 									<?php } ?>
-						   <td class="text-center"> 
-						   <a href="editar_SC.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton verde"><i class="zmdi zmdi-border-color"></i></a>
-						   </td>
 						  
-						   <td class="text-center" >
-						   <a  href="pdf.php?id=<?php echo $resultado['Id_Seguimiento']; ?>" class="boton morado "><i class="zmdi zmdi-file-text"></i></a>
-						  
-								</td >
+									
 						  
 					 </tr>		
 					<?php
