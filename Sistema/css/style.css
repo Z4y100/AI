@@ -1,9 +1,13 @@
-.boton{
-	text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+.boton{/*Estilo de la forma y transiciones del botón. 
+
+	Estos botones se utilizan para las tablas: usuario, clientes y          
+	seguimiento*/
+	
+		  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 		  text-align:center;
 		  text-decoration: none;
-	font-family: 'Helvetica Neue', Helvetica, sans-serif;
-	display:inline-block;
+		  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+		  display:inline-block;
 		  color: #FFF;
 		  background: #7F8C8D;
 		  padding: 7px 20px;
@@ -18,78 +22,72 @@
 		  -o-transition: all 0.2s ease-in-out;
 		  transition: all 0.2s ease-in-out;
 }
+	
  
-.azul{
-background: #3498DB;
-box-shadow: 0px 5px 0px 0px #2980B9;
-}
+.azul{/*Estilo del botón azul*/
 
-.azul:hover{
-background: #39a0e5;
-}
-
-.azul:active{
-box-shadow: 0px 2px 0px 0px #2980B9;
-}
-
-.verde{
-background: #2ECC71;
-box-shadow: 0px 5px 0px 0px #27AE60;
-}
-
-.verde:hover{
-background: #32db78;
-}
-
-.verde:active{
-box-shadow: 0px 2px 0px 0px #27AE60;
-}
-
-.rojo{
-background: #E74C3C;
-box-shadow: 0px 5px 0px 0px #C0392B;
-}
-
-.rojo:hover{
-background: #ff5242;
-}
-
-.rojo:active{
-box-shadow: 0px 2px 0px 0px #C0392B;
-}
-
-
-.morado{
-background: #8c3ce7;
-box-shadow: 0px 5px 0px 0px #8c2bc0;
-}
-
-.morado:hover{
-background: #9a42ff;
-}
-
-.morado:active{
-box-shadow: 0px 2px 0px 0px #732bc0;
-}
-
-
-
-
-.text-gran-body{/*Estilo para textos muy largos para una tabla*/
-	white-space: normal;
-	min-width: 300px; max-width: 400px;
-	word-wrap: break-word;
-	text-align: center;
-	align-content: center;
-	overflow: hidden;
-}
-
-
-.columna-width{
-	margin: 0;
-	padding: 0;
-	height: 50px;
-	width: 10px;
-	box-sizing: border-box;
-	height: 52dp 
-}
+	background: #3498DB;
+	box-shadow: 0px 5px 0px 0px #2980B9;
+	}
+	
+	.azul:hover{
+	background: #39a0e5;
+	}
+	
+	.azul:active{
+	box-shadow: 0px 2px 0px 0px #2980B9;
+	}
+	
+	.verde{/*Estilo para el botón verde*/
+	
+	background: #2ECC71;
+	box-shadow: 0px 5px 0px 0px #27AE60;
+	}
+	
+	.verde:hover{
+	background: #32db78;
+	}
+	
+	.verde:active{
+	box-shadow: 0px 2px 0px 0px #27AE60;
+	}
+	
+	.rojo{/*Estilo para el botón rojo*/
+	
+	background: #E74C3C;
+	box-shadow: 0px 5px 0px 0px #C0392B;
+	}
+	
+	.rojo:hover{
+	background: #ff5242;
+	}
+	
+	.rojo:active{
+	box-shadow: 0px 2px 0px 0px #C0392B;
+	}
+	
+	.morado{ /*Estilo para el botón morado*/
+	
+	background: #8c3ce7;
+	box-shadow: 0px 5px 0px 0px #8c2bc0;
+	}
+	
+	.morado:hover{
+	background: #9a42ff;
+	}
+	
+	.morado:active{
+	box-shadow: 0px 2px 0px 0px #732bc0;
+	}
+	
+	
+	
+	.text-gran-body{/*Estilo para textos muy largos para una tabla*/
+		white-space: normal;
+		min-width: 300px; max-width: 400px;
+		word-wrap: break-word;
+		text-align: center;
+		align-content: center;
+		overflow: hidden;
+	}
+	

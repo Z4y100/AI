@@ -79,7 +79,7 @@
 						</a>
 					</li>
 					<?php } ?>
-					<?php if ($_SESSION['id_rol'] <=2||$_SESSION['id_rol'] == 3) { ?><!--  Privilegios de atención a clientes-->
+				
 						<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="lista_Cli.php" class="full-width">
@@ -91,9 +91,8 @@
 							</div>
 						</a>
 					</li>
-					<?php } ?>
-
-					<?php if ($_SESSION['id_rol'] ==1||$_SESSION['id_rol'] == 3) { ?><!--  Privilegios de Administradores-->
+				
+					<?php if ($_SESSION['id_rol'] ==1||$_SESSION['id_rol'] == 3) { ?><!--  Privilegios de Administradores y usuario máster-->
 						<li class="full-width divider-menu-h"></li>
 					<li class="full-width">
 						<a href="lista_SC.php" class="full-width">

@@ -23,7 +23,7 @@
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Seguimiento Registrado
-              </div>';/** Solo se registraran los datos que pertenecen a la tabla seguimiento */
+              </div>';/** Solo se registrarán los datos que pertenecen a la tabla seguimiento */
       } else {
         $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000;">
                 Error al registrar el seguimiento
