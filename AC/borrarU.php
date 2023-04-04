@@ -5,13 +5,15 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
     
     // Preparar la consulta preparada
+    $consulta1 = $conexion->prepare("DELETE FROM clientes WHERE Id_Usuario = ?");
     $consulta = $conexion->prepare("DELETE FROM usuarios WHERE Id_Usuario = ?");
     
     // Vincular el ID como parámetro a la consulta
+    $consulta1->bind_param("i", $id);
     $consulta->bind_param("i", $id);
     
     // Ejecutar la consulta
-    if ($consulta->execute()) {
+    if ($consulta1->execute() && $consulta->execute()) {
         
 
         echo '<script type="text/javascript">'; 

@@ -109,7 +109,7 @@ $fecha_actual=date("Y-m-d");
 											</div>
 										<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
 											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-												<input class="mdl-textfield__input" type="password" minlength="6" name="Contraseña" id="ContraseñaUsuario">
+												<input class="mdl-textfield__input" type="" minlength="6" name="Contraseña" id="ContraseñaUsuario">
 												<label class="mdl-textfield__label" for="ContraseñaUsuario">CONTRASEÑA</label>
 												<span class="mdl-textfield__error" id="password-error">La contraseña debe tener al menos 6 caracteres.</span>
 											</div>
