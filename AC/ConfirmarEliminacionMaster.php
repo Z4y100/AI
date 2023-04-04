@@ -3,7 +3,7 @@
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
     
-    // Mostrar una ventana emergente de confirmación
+    // Mostrar una ventana emergente de confirmación con js
     echo "<script>
         var confirmar = confirm('¿Estás seguro de eliminar este registro?');
         if (confirmar) {

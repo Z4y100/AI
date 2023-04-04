@@ -12,7 +12,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $consulta1->bind_param("i", $id);
     $consulta->bind_param("i", $id);
     
-    // Ejecutar la consulta
+    // Ejecutar la consulta y posteriormente mostrar alerta en pantalla
     if ($consulta1->execute() && $consulta->execute()) {
         
 
