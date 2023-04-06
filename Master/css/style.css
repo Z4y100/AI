@@ -1,0 +1,228 @@
+/* para darle color a todo el cuerpo, o sea a todos los elementos*/ 
+/*body {
+    color:tomato;
+}*/
+
+/*para darle color al h1: */ 
+/*h1 {
+    color:tomato;
+}*/
+
+/*para darle color al h1 pero mandandolo a llamar por su id (llamado titulo)*/
+#titulo {
+    color:tomato;
+}
+
+/* para seleccionar todos los parrafos y darles color:*/
+/* p {
+    color: slateblue;
+} */
+
+
+/*aqui selecciono todas las clases llamadas texto*/ 
+/*.texto {
+    color:rgb(230, 22, 7);
+} */
+
+
+p.texto{
+    color:greenyellow;
+}
+
+p.especial{
+    color:blueviolet;
+}
+
+p.loco{
+    color:lightgrey
+}
+
+/*Esta instruccion hace que se le de estilo a todos los elementos tipo <p> que se encuentren dentro de un div*/
+div p {
+    color:aquamarine;
+}
+
+div h2 {
+    color:rgb(243, 118, 206);
+}
+
+div h3, h4 {
+    color: orangered;
+}
+
+/*El siguiente comando modifica todo el html solo si otros bloques no han definido esas propiedades antes*/
+
+* {
+    font-size: 24px;
+    /*aqui no poner colores ya que despues 
+    para cambiarle el color a los links, 
+    agarrara los de aqui delselector universal en 
+    ves de lo que especifiquemos despues */ 
+}
+
+.grove {
+   /* border: 5px red outset; */
+
+    /*
+    dotted
+    dashed
+    solid
+    double
+    groove
+    ridge
+    inset
+    outset
+    none
+    hidden  */
+
+    border-style: solid;
+    border-color:green;
+    border-radius: 10px;
+    border-width: 5px;
+
+} 
+
+#fondo {
+    background-color: rgb(0, 255, 179);
+    /*opacity: 0.3;*/
+    background-image: url("paleta.png");
+    height: 200px;
+   /* background-size: contain; */
+   background-size: 200px 200px;
+   background-repeat: no-repeat; /* repeat-x  repeat-y  */
+    background-position: center top; 
+
+}
+
+.margen {
+    background-color: chocolate;
+    margin: 15px 20px 25px 30px; /* Deja que los bordes no salgan, se mantengan pegados a las letras*/
+    padding: 30px 25px 20px 15px; /*Deja que los bordes salgan*/
+    border: solid 1px black; /*agrega linea al rededor del margen*/
+    height: 200px;
+    width: 100px;
+    overflow: hidden; /*Todo lo que no se muestre, lo deja dentro del margen*/
+    overflow: scroll; /*Todo lo que no se muestra, uno puede deslizar una barra para verlo*/
+    outline: 1px solid red; /* linea afuera de todo*/
+
+}
+
+.text {
+    /*text-align: center;*/  
+    /*font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
+    font-family: 'rubik'; /*aqui use una fuente de letras de google font que mande a llamar en html en el head*/ 
+    text-align: justify;
+    text-decoration: line-through;
+    text-shadow: 3px 5px 5px blue;
+
+}
+
+/*aqui aplica estilo a los links que no hayan sido visitados*/
+a:link {
+    color: blueviolet;
+}
+
+/*aqui aplica estilo a los links que ya hayan sido visitados*/ 
+a:visited {
+    color:gray;
+}
+
+/*Aqui aplica estilo a los links a los que se les pase el mouse por encima*/
+a:hover{
+    color: yellow;
+}
+
+/*aqui se le da estilo a los links a los que se le de click,
+ademas el orden para estos comandos es siempre como esta aqui*/
+a:active {
+    color: red;
+}
+
+/*le dare formato listas desordenadas*/ 
+ul {
+    background-color: green;
+    list-style-type: disc; /*aqui le agrega diferentes tipos de viñetas*/
+    padding-left: 0;
+    list-style-position: inside;
+}
+
+/*seleccionar nuestra tabla*/ 
+table {
+    width: 100%;
+    border-collapse: collapse; /*quita la separacion de celdas que el bloque de abajo ponia automaticamente*/ 
+}
+
+/*Agregar nuestra tabla dentro de celdas, o sea, 
+agregarle un borde a cada elemento th y td*/ 
+th, td { 
+    border: solid 1px #eee;
+}
+
+th { 
+    background-color: tomato;
+    color: white;
+    text-align: left;
+}
+
+
+/*A contiunuacion a la tabla se le da un formato para que cada
+linea sea una gris, otra blanca, sucesivamente.*/
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+
+/* En este bloque hacemos que cuando pase el cursor por encima de la tabla, se coloren las lineas*/ 
+tr:hover { 
+    background-color: rgba(32, 240, 13, 0.667);
+    /*cursor: pointer;*/ /*permite que cuando pasamos el cursor, aparezca la manita*/ 
+}
+
+span { 
+    display: block;
+   /* display: none; */ /*oculta los elementos span*/
+   /* visibility: hidden;*/ /*lo mismo que la de arriba*/
+   max-width: 300px;
+   background-color: red;
+}
+
+.inline { 
+    display: inline;
+}
+
+#position {
+    /*position: relative;*/
+    background-color: green;
+   /* position: fixed; */ /*Con esta propiedad, el texto no se quita de la pantalla, te va siguiendo*/
+   /* position: sticky; */ /*Esta es la combinacvion entre fixed y relative y es mejor*/
+    left: 20px;
+    /*top: 25px;*/
+
+}
+
+.left {
+    float: left;
+    width: 200px;
+    padding-left: 100px;
+}
+
+.right {
+    float:right;
+    width: 50px;
+}
+
+.container {
+    height: 200px;
+    
+}
+
+.card {
+    border:  solid 0px #dddd;
+    border-radius: 5px;
+    margin: 0;
+    padding: 10px 0px;
+    width: 33.3%;
+}
+
+
+
