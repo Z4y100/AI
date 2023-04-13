@@ -2,13 +2,14 @@
   include "../funciones/db.php";
   if (!empty($_POST)) {
     $alert = "";
+	  /* Se verifica que ningun dato se encuentre vacio */
     if (empty($_POST['Telefono'])  || empty($_POST['Ubicacion']) || empty($_POST['Tipo_proyecto']) || empty($_POST['Procedencia']) ||empty($_POST['Necesidad']) ||empty($_POST['Fecha_registro'])) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
     } else {
-
-		$nombre=$_POST['Nombre'];
+/* Se guardan los datos ingresados en el formulario */
+	$nombre=$_POST['Nombre'];
         $telefono=$_POST['Telefono'];
         $ubicacion=$_POST['Ubicacion'];
         $proyecto=$_POST['Tipo_proyecto'];
@@ -20,7 +21,7 @@
       
 
 		
-        $query = mysqli_query($conexion, "SELECT * FROM clientes where Telefono = '$telefono'");
+        $query = mysqli_query($conexion, "SELECT * FROM clientes where Telefono = '$telefono'"); /* Consulta para verificar que el numero de telefono no se encuentre ya registrado */
         $result = mysqli_fetch_array($query);
 
         if ($result > 0) {
@@ -30,7 +31,7 @@
         }else{
 
       $query_insert = mysqli_query($conexion, "INSERT INTO clientes(Nombre,Telefono,Ubicacion,Tipo_proyecto,Procedencia,Necesidad,Fecha_registro,Id_Usuario)
-	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario')");
+	   values ('$nombre','$telefono','$ubicacion', '$proyecto', '$procedencia', '$necesidad','$fecha','$usuario')"); /* Consulta para registrar los datos  en la base de datos */
       if ($query_insert) {
         $alert = '<div class="alert alert-success" role="alert" style="color: #0000FF; background:#90CAF9; font-size:20px; text-align: center;">
                 Cliente Registrado
@@ -120,15 +121,15 @@
 											<select id="proyecto" name="Tipo_proyecto" class="mdl-list">
 											<option value="">--Selecciona una opción--</option>
 											<?php 
-												include_once('..funciones/db.php');
+												include_once('..funciones/db.php'); /*Consulta para llamar la conexion a la base de datos */
 												
-												$sql='SELECT * FROM tipo_proyecto';
+												$sql='SELECT * FROM tipo_proyecto'; /* Consulta para seleccionar los datos de la tabla tipo_proyecto */
 												$query=mysqli_query($conexion,$sql);
 												while($row=mysqli_fetch_array($query)){
 													
-													$nombreproyecto=$row['Nombre_Proyecto'];
+													$nombreproyecto=$row['Nombre_Proyecto']; /* Aqui se selecciona el campo nombre_proyecto de la tabla */
 												?>
-													<option value="<?php echo $nombreproyecto ?>"><?php echo $nombreproyecto ?></option>
+													<option value="<?php echo $nombreproyecto ?>"><?php echo $nombreproyecto ?></option> 
 												<?php
 												}
 											
@@ -167,7 +168,7 @@
 														<?php 
 															include_once('..funciones/db.php');
 															
-															$sql='SELECT * FROM usuarios';
+															$sql='SELECT * FROM usuarios'; 
 															$query=mysqli_query($conexion,$sql);
 															while($row=mysqli_fetch_array($query)){
 																$id_usuario=$row['Id_Usuario'];
