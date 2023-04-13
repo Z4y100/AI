@@ -4,14 +4,15 @@ if (empty($_SESSION['active'])) {
     header('location: ../');
 }
 $usuario= $_SESSION['usuario'];
-require('fpdf.php');
+require('fpdf.php'); /* Se manda a llamar al archivo que contiene las librerias */
 
 class PDF extends FPDF
 {
 // Cabecera de página
 function Header()
 {
-    date_default_timezone_set('America/Mexico_City');
+    /*Se configura el estilo que queremos para el PDF*/
+    date_default_timezone_set('America/Mexico_City'); /*Toma la hora actual del dispositivo */
     $hoy= new DateTime();
     // Logo
     $this->Image('../assets/img/LogoAitech.png',10,5,30,20,'PNG','');
@@ -47,7 +48,7 @@ function Footer()
 }
 }
 require '../../funciones/db.php';
-$consulta=mysqli_query($conexion,"SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario ");
+$consulta=mysqli_query($conexion,"SELECT * FROM clientes INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario "); /*Consulta para visualizar la lista de los clientes */
 $resultado=mysqli_num_rows($consulta);
 $pdf = new PDF();
 $pdf->AliasNbPages();
