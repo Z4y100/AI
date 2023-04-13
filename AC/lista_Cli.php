@@ -66,7 +66,7 @@
 													<th  class="text-center">Usuario</th>
 													<th  class="text-center">Editar</th>
 												
-													<?php if ($_SESSION['id_rol'] ==1) { ?>
+													<?php if ($_SESSION['id_rol'] ==1) { /*Verifica si el rol que tiene el usuario cuenta con los permisos para agregar seguimientos */?>
 															<th  class="text-center">Agregar segumiento</th> 	<?php } ?>
 													
 												</tr>
@@ -76,7 +76,7 @@
 											
 											<?php
 											include "../funciones/db.php";
-											
+											/* Consulta para mostrar la lista de clientes ordenandolos por fecha*/
 											$consulta = mysqli_query($conexion, "SELECT * FROM clientes  INNER JOIN usuarios ON clientes.id_usuario = usuarios.id_usuario  ORDER BY clientes.Fecha_registro ASC
 											 " );
 											$resultado = mysqli_num_rows($consulta);
@@ -130,6 +130,7 @@
 		</div>
 	</section>
 	<!-- JQUERY -->
+<!-- librerias para darle formato a la tabla -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
         </script>
@@ -140,6 +141,7 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>
     <script>
+	    <!-- Se configuran los datos del buscador y para la paginacion -->
         $(document).ready(function () {
             $('#tablax').DataTable({
                 language: {
