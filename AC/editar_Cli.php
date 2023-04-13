@@ -2,12 +2,13 @@
   include "../funciones/db.php";
   if (!empty($_POST)) {
     $alert = "";
+	  /*Verifica que ningun campo falte*/
     if (empty($_POST['Nombre'])  ||empty($_POST['Telefono'])  || empty($_POST['Ubicacion']) || empty($_POST['Tipo_proyecto']) || empty($_POST['Procedencia']) ||empty($_POST['Necesidad']) ||empty($_POST['Fecha_registro'])) {
       $alert = '<div class="alert alert-danger" role="alert" style="color: #FF0000; background:#FFCDD2; font-size:20px; text-align: center;">
                 Todos los campos son obligatorios
               </div>';
     } else {
-		$id_cliente=$_GET['id'];
+		$id_cliente=$_GET['id']; /* Este campo contiene el id del cliente que se selecciono para realizar modificaciones */
 		$id_usuario=$_POST['Id_Usuario'];
 		$nombre=$_POST['Nombre'];
         $telefono=$_POST['Telefono'];
@@ -18,7 +19,7 @@
         $fecha=$_POST['Fecha_registro'];
         
       
-
+/*Consulta para actuzalizar los campos seleccionados en la base de datos */
       $query_update = mysqli_query($conexion, "UPDATE clientes SET 
 	 Id_Usuario='$id_usuario',
 	    Nombre ='$nombre',
@@ -40,7 +41,7 @@
 // Validar seguimiento
 
 if (empty($_REQUEST['id'])) {
-    header("Location: clientes.php");
+    header("Location: clientes.php"); /* Se dirige a esta direccion para comprobar si se realizaron los cambios */
   }
   $id_cliente = $_REQUEST['id'];
   $sql = mysqli_query($conexion, "SELECT * FROM clientes WHERE Id_Cliente = $id_cliente");
